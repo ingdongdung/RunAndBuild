@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/SimpleCumulus/Demo/DemoScene.unity
+- path: Assets/PJH/normalStage.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
