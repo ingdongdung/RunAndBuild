@@ -2,24 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : Poolable
+public class Tree : MonoBehaviour
 {
-    Rigidbody rigidbody;
+    Rigidbody rb;
     Vector3 dir;
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        dir = transform.right;
+        rb = GetComponent<Rigidbody>();
+        dir = new Vector3(0f, 0f, -1f);
     }
 
     private void OnEnable()
     {
-        rigidbody.AddForce(dir * 10f);
+        //rb.AddForce(dir * 100f);
     }
 
     private void OnBecameInvisible()
     {
-        Push();
+        print("invisible");
+        gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        transform.position += dir * 25f * Time.deltaTime;
     }
 }

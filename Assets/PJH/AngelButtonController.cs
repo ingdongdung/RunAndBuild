@@ -28,6 +28,11 @@ public class AngelButtonController : MonoBehaviour, IPointerDownHandler, IPointe
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            GameObject tree = ObjectPool.Instance.PopFromPool("Tree");
+            tree.transform.position = new Vector3(-3f, 1f, 30f);
+            tree.SetActive(true);
+        }
     }
 }

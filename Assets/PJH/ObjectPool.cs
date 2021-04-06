@@ -1,43 +1,49 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
+public class ObjectPool : Singleton<ObjectPool>
 {
-    [SerializeField]
-    private Poolable poolObj;
+    public List<PooledObject> objectPool = new List<PooledObject>();
 
-    [SerializeField]
-    private int allocateCount;
-
-    private Stack<Poolable> poolStack = new Stack<Poolable>();
-
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        Allocate();
+        for (int ix = 0; ix < objectPool.Count; ++ix)
+            objectPool[ix].Initialize(transform);
     }
 
-    public void Allocate()
+    public bool PushToPool(string itemName, GameObject item, Transform parent = null)
     {
-        for (int i = 0; i < allocateCount; ++i)
+        PooledObject pool = GetPoolItem(itemName);
+
+        if (pool == null)
+            return false;
+
+        pool.PushToPool(item, parent == null ? transform : parent);
+
+        return true;
+    }
+
+    public GameObject PopFromPool(string itemName, Transform parent = null)
+    {
+        PooledObject pool = GetPoolItem(itemName);
+
+        if (pool == null)
+            return null;
+
+        return pool.PopFromPool(parent);
+    }
+
+    PooledObject GetPoolItem(string itemName)
+    {
+        for (int ix = 0; ix < objectPool.Count; ++ix)
         {
-            Poolable allocateObj = Instantiate(poolObj, this.gameObject.transform);
-            allocateObj.Create(this);
-            poolStack.Push(allocateObj);
+            if (objectPool[ix].poolItemName.Equals(itemName))
+                return objectPool[ix];
         }
-    }
+        
+        Debug.LogWarning("There's no matched pool list.");
 
-    public GameObject Pop()
-    {
-        Poolable obj = poolStack.Pop();
-        obj.gameObject.SetActive(true);
-        return obj.gameObject;
-    }
-
-    public void Push(Poolable obj)
-    {
-        obj.gameObject.SetActive(false);
-        poolStack.Push(obj);
+        return null;
     }
 }
