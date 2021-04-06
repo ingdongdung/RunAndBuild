@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 9066effb326206b4c951335bcebee31d
 ModelImporter:
-  serializedVersion: 25
+  serializedVersion: 20200
   internalIDToNameTable:
   - first:
       1: 100000
@@ -263,7 +263,7 @@ ModelImporter:
     second: Base
   externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -279,8 +279,8 @@ ModelImporter:
       : rotation error = 1.284642 deg\n\t'RigNeck' : rotation error = 12.975892 deg\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
-      improve retargeting quality.\n\t'RigSpine1' is inbetween humanoid transforms
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'RigSpine1' is inbetween humanoid transforms
       and has rotation animation that will be discarded.\n\t'RigNeck' is inbetween
       humanoid transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
@@ -300,7 +300,7 @@ ModelImporter:
       takeName: Take 001
       internalID: 7400000
       firstFrame: 0
-      lastFrame: 14.2
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -412,15 +412,18 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 0
     importBlendShapes: 1
     importCameras: 0
     importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
@@ -430,6 +433,9 @@ ModelImporter:
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
@@ -442,7 +448,6 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
-  copyAvatar: 1
   humanDescription:
     serializedVersion: 3
     human:
@@ -767,10 +772,12 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 231d45dba8bff13478d80904318e7bc4,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 231d45dba8bff13478d80904318e7bc4, type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 2
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

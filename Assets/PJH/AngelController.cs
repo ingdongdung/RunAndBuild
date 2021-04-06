@@ -11,9 +11,7 @@ public class AngelController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        // TH Sword Run Without Root Motion
-        //animator.SetBool("TH Run Without Root Motion", true);
-        animator.Play("TH Run Without Root Motion");
+        animator.SetBool("Run", true);
     }
 
     // Update is called once per frame

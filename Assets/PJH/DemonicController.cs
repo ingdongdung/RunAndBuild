@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class DemonicController : MonoBehaviour
 {
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
+
+        animator.SetBool("Run", true);
     }
 
     // Update is called once per frame
