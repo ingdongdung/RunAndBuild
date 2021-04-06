@@ -12,6 +12,7 @@ public class AngelController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         animator.SetBool("Run", true);
+
     }
 
     // Update is called once per frame
