@@ -30,7 +30,24 @@ public class AngelButtonController : MonoBehaviour, IPointerDownHandler, IPointe
     {
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject tree = ObjectPool.Instance.PopFromPool("Tree");
+            int randNum = Random.RandomRange(0, 3);
+
+            string treeName = "Tree";
+            
+            switch(randNum)
+            {
+                case 0:
+                    treeName += "01";
+                    break;
+                case 1:
+                    treeName += "02";
+                    break;
+                case 2:
+                    treeName += "03";
+                    break;
+            }
+
+            GameObject tree = ObjectPool.Instance.PopFromPool(treeName);
             tree.transform.position = new Vector3(-3f, 1f, 30f);
             tree.SetActive(true);
         }

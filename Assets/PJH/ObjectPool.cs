@@ -8,8 +8,8 @@ public class ObjectPool : Singleton<ObjectPool>
 
     void Awake()
     {
-        for (int ix = 0; ix < objectPool.Count; ++ix)
-            objectPool[ix].Initialize(transform);
+        for (int i = 0; i < objectPool.Count; ++i)
+            objectPool[i].Initialize(transform);
     }
 
     public bool PushToPool(string itemName, GameObject item, Transform parent = null)
@@ -36,10 +36,10 @@ public class ObjectPool : Singleton<ObjectPool>
 
     PooledObject GetPoolItem(string itemName)
     {
-        for (int ix = 0; ix < objectPool.Count; ++ix)
+        for (int i = 0; i < objectPool.Count; ++i)
         {
-            if (objectPool[ix].poolItemName.Equals(itemName))
-                return objectPool[ix];
+            if (objectPool[i].poolItemName.Equals(itemName))
+                return objectPool[i];
         }
         
         Debug.LogWarning("There's no matched pool list.");

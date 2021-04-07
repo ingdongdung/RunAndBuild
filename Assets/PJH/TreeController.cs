@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : MonoBehaviour
+public class TreeController : MonoBehaviour
 {
     Rigidbody rb;
     Vector3 dir;
@@ -21,7 +21,7 @@ public class Tree : MonoBehaviour
     private void OnBecameInvisible()
     {
         print("invisible");
-        gameObject.SetActive(false);
+        ObjectPool.Instance.PushToPool(gameObject.name, gameObject);
     }
 
     private void Update()
