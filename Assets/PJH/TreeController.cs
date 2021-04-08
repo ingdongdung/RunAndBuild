@@ -6,6 +6,7 @@ public class TreeController : MonoBehaviour
 {
     Rigidbody rb;
     Vector3 dir;
+    float treeSpeed = 35f;
 
     private void Awake()
     {
@@ -20,12 +21,11 @@ public class TreeController : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        print("invisible");
         ObjectPool.Instance.PushToPool(gameObject.name, gameObject);
     }
 
     private void Update()
     {
-        transform.position += dir * 25f * Time.deltaTime;
+        transform.position += dir * treeSpeed * Time.deltaTime;
     }
 }
