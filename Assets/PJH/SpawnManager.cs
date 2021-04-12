@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    //가 출현할 위치를 담을 배열
+    // 오브젝트가 출현할 위치를 담을 배열
     public Transform[] points;
 
-    public float _elapsedTime = 0f;
+    public float _elapsedTimeForTree = 0f;
+    public float _elapsedTimeForEnemy = 0f;
+    public float _elapsedTimeForBoss = 0f;
     string treeName = "Tree";
-    int treeNum = 3;
-
+    string enemyName = "Enemy";
+    string bossName = "Boss";
+    int treeCount = 3;
+    int enemyCount = 4;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -22,41 +27,89 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetTimer() >= 0.5f)
+        // 나무
+        if (GetTreeTimer() >= 0.5f)
         {
-            SetTimer();
+            SetTreeTimer();
 
-            for (int i = 1; i < points.Length; ++i)
+            foreach(var point in points)
             {
-                int randNum = Random.Range(0, treeNum);
-                switch (randNum)
+                if (point.name.Substring(0, 4) == "tree")
                 {
-                    case 0:
-                        treeName += "01";
-                        break;
-                    case 1:
-                        treeName += "02";
-                        break;
-                    case 2:
-                        treeName += "03";
-                        break;
+                    int randNum = Random.Range(0, treeCount);
+                    switch (randNum)
+                    {
+                        case 0:
+                            treeName += "01";
+                            break;
+                        case 1:
+                            treeName += "02";
+                            break;
+                        case 2:
+                            treeName += "03";
+                            break;
+                    }
+                    GameObject tree = ObjectPool.Instance.PopFromPool(treeName);
+                    tree.transform.position = point.position + new Vector3(0f, 1f, 0f);
+                    treeName = "Tree";
                 }
+            }
+        }
 
-                GameObject tree = ObjectPool.Instance.PopFromPool(treeName);
-                tree.transform.position = points[i].position + new Vector3(0f, 1f, 0f);
-                
-                treeName = "Tree";
+        // 몹 & 보스
+        if (GetEnemyTimer() >= 3.0f)
+        {
+            SetEnemyTimer();
+
+            foreach (var point in points)
+            {
+                if (point.name.Substring(0, 6) == "enemyP")    // 몹
+                {
+                    int randNum = Random.Range(0, enemyCount);
+                    switch (randNum)
+                    {
+                        case 0:
+                            enemyName += "01";
+                            break;
+                        case 1:
+                            enemyName += "02";
+                            break;
+                        case 2:
+                            enemyName += "03";
+                            break;
+                        case 3:
+                            enemyName += "04";
+                            break;
+                    }
+                    GameObject enemy = ObjectPool.Instance.PopFromPool(enemyName);
+                    enemy.transform.position = point.position + new Vector3(0f, 1f, 0f);
+                    enemyName = "Enemy";
+                }
+                else if (point.name.Substring(0, 6) == "enemyB")    // 보스
+                {
+
+                }
             }
         }
     }
 
-    float GetTimer()
+    float GetTreeTimer()
     {
-        return (_elapsedTime += Time.deltaTime);
+        return (_elapsedTimeForTree += Time.deltaTime);
     }
 
-    void SetTimer()
+    void SetTreeTimer()
     {
-        _elapsedTime = 0f;
+        _elapsedTimeForTree = 0f;
+    }
+
+    float GetEnemyTimer()
+    {
+        return (_elapsedTimeForEnemy += Time.deltaTime);
+    }
+
+    void SetEnemyTimer()
+    {
+        _elapsedTimeForEnemy = 0f;
     }
 }

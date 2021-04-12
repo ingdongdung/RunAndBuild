@@ -2,21 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreeController : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     Rigidbody rb;
     Vector3 dir;
-    float treeSpeed = 15f;
+    float enemySpeed = 15f;
+
+    FairyController fc;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         dir = new Vector3(0f, 0f, -1f);
+        transform.Rotate(new Vector3(0f, 180f, 0f));
+
+        fc = GameObject.Find("Fairy").GetComponent<FairyController>();
     }
 
     private void OnEnable()
     {
-        //rb.AddForce(dir * 100f);
+        
     }
 
     private void OnBecameInvisible()
@@ -26,6 +31,7 @@ public class TreeController : MonoBehaviour
 
     private void Update()
     {
-        transform.position += dir * treeSpeed * Time.deltaTime;
+        transform.LookAt(fc.transform);
+        transform.position += dir * enemySpeed * Time.deltaTime;
     }
 }
