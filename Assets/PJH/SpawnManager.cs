@@ -22,17 +22,21 @@ public class SpawnManager : MonoBehaviour
     {
         // Hierarchy View의 Spawn Point를 찾아 하위에 있는 모든 Transform 컴포넌트를 찾아옴
         points = GameObject.Find("SpawnPoint").GetComponentsInChildren<Transform>();
+        StartCoroutine(StartTreeSpawning());
+        StartCoroutine(StartMonsterSpawning());
     }
 
     // Update is called once per frame
     void Update()
     {
-        // 나무
-        if (GetTreeTimer() >= 0.5f)
-        {
-            SetTreeTimer();
+        
+    }
 
-            foreach(var point in points)
+    IEnumerator StartTreeSpawning()
+    {
+        while (true)
+        {
+            foreach (var point in points)
             {
                 if (point.name.Substring(0, 4) == "tree")
                 {
@@ -54,13 +58,14 @@ public class SpawnManager : MonoBehaviour
                     treeName = "Tree";
                 }
             }
+            yield return new WaitForSeconds(0.5f);
         }
+    }
 
-        // 몹 & 보스
-        if (GetEnemyTimer() >= 3.0f)
+    IEnumerator StartMonsterSpawning()
+    {
+        while (true)
         {
-            SetEnemyTimer();
-
             foreach (var point in points)
             {
                 if (point.name.Substring(0, 6) == "enemyP")    // 몹
@@ -85,31 +90,12 @@ public class SpawnManager : MonoBehaviour
                     enemy.transform.position = point.position + new Vector3(0f, 1f, 0f);
                     enemyName = "Enemy";
                 }
-                else if (point.name.Substring(0, 6) == "enemyB")    // 보스
-                {
+                //else if (point.name.Substring(0, 6) == "enemyB")    // 보스
+                //{
 
-                }
+                //}
             }
+            yield return new WaitForSeconds(10);
         }
-    }
-
-    float GetTreeTimer()
-    {
-        return (_elapsedTimeForTree += Time.deltaTime);
-    }
-
-    void SetTreeTimer()
-    {
-        _elapsedTimeForTree = 0f;
-    }
-
-    float GetEnemyTimer()
-    {
-        return (_elapsedTimeForEnemy += Time.deltaTime);
-    }
-
-    void SetEnemyTimer()
-    {
-        _elapsedTimeForEnemy = 0f;
     }
 }

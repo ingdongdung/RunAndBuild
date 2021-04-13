@@ -8,11 +8,15 @@ public class EnemyController : MonoBehaviour
     Vector3 dir;
     float enemySpeed = 25f;
 
+    bool onceForCoroutine;
+
     FairyController fc;
+    AngelController ac;
+    DemonicController dc;
 
     public Animator animator;
     public bool meetPlayer;
-    public float _elapsedTimeForEnemy = 0f;
+    public bool attackPlayer;
 
     private void Awake()
     {
@@ -20,9 +24,13 @@ public class EnemyController : MonoBehaviour
         dir = new Vector3(0f, 0f, -1f);
         transform.Rotate(new Vector3(0f, 180f, 0f));
         
-
         fc = GameObject.Find("Fairy").GetComponent<FairyController>();
+        ac = GameObject.Find("Angel").GetComponent<AngelController>();
+        dc = GameObject.Find("Demonic").GetComponent<DemonicController>();
+
         meetPlayer = false;
+        attackPlayer = false;
+        onceForCoroutine = false;
     }
 
     private void Start()
@@ -44,19 +52,30 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if (DistanceToPlayer() <= 5f)
+        if (DistanceToPlayer() <= 5f && !meetPlayer && !attackPlayer)
         {
             meetPlayer = true;
+            attackPlayer = true;
             animator.SetBool("Run", false);
+
+            fc.MeetEnemy();
+            ac.MeetEnemy();
+            dc.MeetEnemy();
+            
+            fc.animator.SetBool("Fly Forward", false);
+            ac.animator.SetBool("Run", false);
+            dc.animator.SetBool("Run", false);
         }
 
-        if (!meetPlayer)
+        if (!meetPlayer && !attackPlayer)
         {
             MoveToPlayer();
         }
-        else
+        
+        if (attackPlayer && !onceForCoroutine)
         {
-            AttackToPlayer();
+            StartCoroutine(EnemyAttackTimer());
+            onceForCoroutine = true;
         }
     }
 
@@ -71,38 +90,27 @@ public class EnemyController : MonoBehaviour
         transform.position += dir * enemySpeed * Time.deltaTime;
     }
 
-    private void AttackToPlayer()
+    IEnumerator EnemyAttackTimer()
     {
-        SetEnemyTimer();
-
-        if (GetEnemyTimer() <= 3.5f)
+        while (true)
         {
             if (transform.name == "Enemy01")
             {
-                animator.SetBool("Melee Right Attack 01", true);
+                animator.Play("Melee Right Attack 01");
             }
             else if (transform.name == "Enemy02")
             {
-                animator.SetBool("Melee Right Attack 02", true);
+                animator.Play("Melee Right Attack 02");
             }
             else if (transform.name == "Enemy03")
             {
-                animator.SetBool("Melee Right Attack 03", true);
+                animator.Play("Melee Right Attack 03");
             }
             else if (transform.name == "Enemy04")
             {
-                animator.SetBool("Melee Left Attack 01", true);
+                animator.Play("Melee Left Attack 01");
             }
+            yield return new WaitForSeconds(2);
         }
-    }
-
-    float GetEnemyTimer()
-    {
-        return (_elapsedTimeForEnemy += Time.deltaTime);
-    }
-
-    void SetEnemyTimer()
-    {
-        _elapsedTimeForEnemy = 0f;
     }
 }

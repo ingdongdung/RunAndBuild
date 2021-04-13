@@ -6,7 +6,7 @@ public class TreeController : MonoBehaviour
 {
     Rigidbody rb;
     Vector3 dir;
-    float treeSpeed = 15f;
+    float treeSpeed = 25f;
 
     private void Awake()
     {

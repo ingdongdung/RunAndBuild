@@ -15,9 +15,16 @@ public class AngelButtonController : MonoBehaviour, IPointerDownHandler, IPointe
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        ac.animator.SetBool("Run", false);
-        ac.animator.Play("Jump Right Attack 01");
-        ac.animator.SetBool("Run", true);
+        if (!ac.GetCharacterState())
+        {
+            ac.animator.SetBool("Run", false);
+            ac.animator.Play("Jump Right Attack 01");
+            ac.animator.SetBool("Run", true);
+        }
+        else
+        {
+            ac.animator.Play("Jump Right Attack 01");
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)

@@ -6,6 +6,8 @@ public class FairyController : MonoBehaviour
 {
     public Animator animator;
 
+    bool meetEnemy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,11 +15,23 @@ public class FairyController : MonoBehaviour
 
         animator.SetBool("Fly Idle", true);
         animator.SetBool("Fly Forward", true);
+
+        meetEnemy = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void MeetEnemy()
+    {
+        meetEnemy = true;
+    }
+
+    public bool GetCharacterState()
+    {
+        return meetEnemy;
     }
 }

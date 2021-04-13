@@ -15,9 +15,16 @@ public class DemonicButtonController : MonoBehaviour, IPointerDownHandler, IPoin
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        dc.animator.SetBool("Run", false);
-        dc.animator.Play("Melee Left Attack 01");
-        dc.animator.SetBool("Run", true);
+        if (!dc.GetCharacterState())
+        {
+            dc.animator.SetBool("Run", false);
+            dc.animator.Play("Melee Left Attack 01");
+            dc.animator.SetBool("Run", true);
+        }
+        else
+        {
+            dc.animator.Play("Melee Left Attack 01");
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
