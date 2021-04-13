@@ -21,16 +21,10 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        dir = new Vector3(0f, 0f, -1f);
-        transform.Rotate(new Vector3(0f, 180f, 0f));
         
         fc = GameObject.Find("Fairy").GetComponent<FairyController>();
         ac = GameObject.Find("Angel").GetComponent<AngelController>();
         dc = GameObject.Find("Demonic").GetComponent<DemonicController>();
-
-        meetPlayer = false;
-        attackPlayer = false;
-        onceForCoroutine = false;
     }
 
     private void Start()
@@ -42,7 +36,12 @@ public class EnemyController : MonoBehaviour
 
     private void OnEnable()
     {
-        
+        // 재사용 시 초기화되어야 할 것들
+        dir = new Vector3(0f, 0f, -1f);
+        transform.Rotate(new Vector3(0f, 180f, 0f));
+        meetPlayer = false;
+        attackPlayer = false;
+        onceForCoroutine = false;
     }
 
     private void OnBecameInvisible()
@@ -62,7 +61,7 @@ public class EnemyController : MonoBehaviour
             ac.MeetEnemy();
             dc.MeetEnemy();
             
-            fc.animator.SetBool("Fly Forward", false);
+            //fc.animator.SetBool("Fly Forward", false);
             ac.animator.SetBool("Run", false);
             dc.animator.SetBool("Run", false);
         }

@@ -18,12 +18,12 @@ public class FairyButtonController : MonoBehaviour, IPointerDownHandler, IPointe
         if (!fc.GetCharacterState())
         {
             fc.animator.SetBool("Fly Forward", false);
-            fc.animator.Play("Fly Cast Spell 01");
+            fc.animator.Play("Fly Cast Spell 02");
             fc.animator.SetBool("Fly Forward", true);
         }
         else
         {
-            fc.animator.Play("Fly Cast Spell 01");
+            fc.animator.Play("Fly Cast Spell 02");
         }
     }
 
