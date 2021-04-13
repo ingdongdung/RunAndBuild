@@ -96,7 +96,7 @@ public class EnemyController : MonoBehaviour
         {
             if (transform.name == "Enemy01")
             {
-                animator.Play("Melee Right Attack 01");
+                animator.Play("Melee Left Attack 01");
             }
             else if (transform.name == "Enemy02")
             {
@@ -108,7 +108,7 @@ public class EnemyController : MonoBehaviour
             }
             else if (transform.name == "Enemy04")
             {
-                animator.Play("Melee Left Attack 01");
+                animator.Play("Melee Right Attack 01");
             }
             yield return new WaitForSeconds(2);
         }
