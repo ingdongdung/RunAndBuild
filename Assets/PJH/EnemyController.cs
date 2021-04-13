@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public const float MAXHP = 100f;
+
     Rigidbody rb;
     Vector3 dir;
-    float enemySpeed = 25f;
+    public float enemySpeed = 25f;
+    public float enemyHp = 100f;
+    public float enemyPower = 10f;
 
     bool onceForCoroutine;
 
@@ -87,6 +91,11 @@ public class EnemyController : MonoBehaviour
     {
         transform.LookAt(fc.transform);
         transform.position += dir * enemySpeed * Time.deltaTime;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        enemyHp -= damage;
     }
 
     IEnumerator EnemyAttackTimer()

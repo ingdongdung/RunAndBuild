@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class FairyController : MonoBehaviour
 {
+    public const float MAXHP = 100f;
+
     public Animator animator;
 
     bool meetEnemy;
     bool onceForCoroutine;
+
+    public float fairyHp = 300f;
+    public float fairyPower = 30f;
 
     Coroutine fairyAttackTimer;
 
