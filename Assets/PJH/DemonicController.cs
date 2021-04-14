@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class DemonicController : MonoBehaviour
 {
+    public const float MAXHP = 300f;
+
     public Animator animator;
 
     bool meetEnemy;
     bool onceForCoroutine;
+
+    public float demonicHp = 300f;
+    public float demonicPower = 30f;
 
     public Coroutine demonicAttackTimer;
 
@@ -17,12 +22,22 @@ public class DemonicController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         animator.SetBool("Run", true);
+
+        demonicAttackTimer = null;
     }
 
     private void OnEnable()
     {
         meetEnemy = false;
         onceForCoroutine = false;
+    }
+
+    private void OnDisable()
+    {
+        if (demonicAttackTimer != null)
+        {
+            StopCoroutine(demonicAttackTimer);
+        }
     }
 
     // Update is called once per frame
@@ -46,6 +61,11 @@ public class DemonicController : MonoBehaviour
             }
             yield return new WaitForSeconds(2);
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        demonicHp -= damage;
     }
 
     public void MeetEnemy()

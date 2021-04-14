@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class AngelController : MonoBehaviour
 {
+    public const float MAXHP = 300f;
+
     public Animator animator;
 
     bool meetEnemy;
     bool onceForCoroutine;
+
+    public float angelHp = 300f;
+    public float angelPower = 30f;
 
     Coroutine angelAttackTimer;
 
@@ -17,12 +22,22 @@ public class AngelController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         animator.SetBool("Run", true);
+
+        angelAttackTimer = null;
     }
 
     private void OnEnable()
     {
         meetEnemy = false;
         onceForCoroutine = false;
+    }
+
+    private void OnDisable()
+    {
+        if (angelAttackTimer != null)
+        {
+            StopCoroutine(angelAttackTimer);
+        }
     }
 
     // Update is called once per frame
@@ -46,6 +61,11 @@ public class AngelController : MonoBehaviour
             }
             yield return new WaitForSeconds(2);
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        angelHp -= damage;
     }
 
     public void MeetEnemy()

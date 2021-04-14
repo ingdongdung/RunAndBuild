@@ -87,7 +87,7 @@ public class SpawnManager : MonoBehaviour
                             break;
                     }
                     GameObject enemy = ObjectPool.Instance.PopFromPool(enemyName);
-                    enemy.transform.position = point.position + new Vector3(0f, 1f, 0f);
+                    enemy.transform.position = point.position + new Vector3(0f, 1.21f, 0f);
                     enemyName = "Enemy";
                 }
                 //else if (point.name.Substring(0, 6) == "enemyB")    // 보스

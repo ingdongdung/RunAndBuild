@@ -6,21 +6,24 @@ public class EnemyController : MonoBehaviour
 {
     public const float MAXHP = 100f;
 
+    public float enemySpeed;
+    public float enemyHp;
+    public float enemyPower;
+
     Rigidbody rb;
     Vector3 dir;
-    public float enemySpeed = 25f;
-    public float enemyHp = 100f;
-    public float enemyPower = 10f;
-
-    bool onceForCoroutine;
 
     FairyController fc;
     AngelController ac;
     DemonicController dc;
 
+    bool onceForCoroutine;
+
     public Animator animator;
     public bool meetPlayer;
     public bool attackPlayer;
+
+    public Coroutine enemyAttackTimer;
 
     private void Awake()
     {
@@ -36,6 +39,12 @@ public class EnemyController : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.SetBool("Walk", false);
         animator.SetBool("Run", true);
+
+        enemySpeed = 25f;
+        enemyHp = 100f;
+        enemyPower = 10f;
+
+        enemyAttackTimer = null;
     }
 
     private void OnEnable()
@@ -46,6 +55,14 @@ public class EnemyController : MonoBehaviour
         meetPlayer = false;
         attackPlayer = false;
         onceForCoroutine = false;
+    }
+
+    private void OnDisable()
+    {
+        if (enemyAttackTimer != null)
+        {
+            StopCoroutine(enemyAttackTimer);
+        }
     }
 
     private void OnBecameInvisible()
@@ -64,10 +81,6 @@ public class EnemyController : MonoBehaviour
             fc.MeetEnemy();
             ac.MeetEnemy();
             dc.MeetEnemy();
-            
-            //fc.animator.SetBool("Fly Forward", false);
-            ac.animator.SetBool("Run", false);
-            dc.animator.SetBool("Run", false);
         }
 
         if (!meetPlayer && !attackPlayer)
@@ -77,7 +90,7 @@ public class EnemyController : MonoBehaviour
         
         if (attackPlayer && !onceForCoroutine)
         {
-            StartCoroutine(EnemyAttackTimer());
+            enemyAttackTimer = StartCoroutine(EnemyAttackTimer());
             onceForCoroutine = true;
         }
     }
