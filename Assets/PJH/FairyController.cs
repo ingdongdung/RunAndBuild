@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class FairyController : MonoBehaviour
 {
-    public const float MAXHP = 300f;
-
     public Animator animator;
 
     bool meetEnemy;
     bool onceForCoroutine;
 
+    public float MAXHP = 300f;
     public float fairyHp = 300f;
     public float fairyPower = 40f;
 
     Coroutine fairyAttackTimer;
     GameObject[] enemyArray;
+    int layerMask;
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +26,14 @@ public class FairyController : MonoBehaviour
         animator.SetBool("Fly Forward", true);
 
         fairyAttackTimer = null;
+        layerMask = 1 << LayerMask.NameToLayer("Enemy");    // enemy 레이어만 충돌 체크
     }
 
     private void OnEnable()
     {
         meetEnemy = false;
         onceForCoroutine = false;
+        fairyHp = MAXHP;
     }
 
     private void OnDisable()
@@ -87,11 +89,9 @@ public class FairyController : MonoBehaviour
         transform.LookAt(enemyArray[saveNumber].transform);
 
         RaycastHit hit;
-        Physics.Raycast(transform.position, transform.forward, out hit, 10);
-
-        // **************************** 21.04.14. 16:14 여기서부터
-        // 게임 오브젝트 찾아지는지 확인해야 됨
-        //hit.collider.gameObject.GetComponent<EnemyController>().TakeDamage(fairyPower);
+        Physics.Raycast(transform.position + new Vector3(0f, 0.75f, 0f), transform.forward, out hit, 10f, layerMask);
+        Debug.DrawRay(transform.position + new Vector3(0f, 0.75f, 0f), transform.forward * 10f, Color.red, 10f);
+        hit.collider.gameObject.GetComponent<EnemyController>().TakeDamage(fairyPower);
     }
 
     private float DistanceToEnemy(GameObject enemy)
