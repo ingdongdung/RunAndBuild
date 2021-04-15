@@ -58,6 +58,8 @@ public class DemonicController : MonoBehaviour
     {
         while (true)
         {
+            TargetToEnemy();
+
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Melee Left Attack 01"))
             {
                 animator.Play("Right Punch Attack");

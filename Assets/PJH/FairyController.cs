@@ -13,6 +13,8 @@ public class FairyController : MonoBehaviour
     public float fairyHp = 300f;
     public float fairyPower = 40f;
 
+    public Vector3 fairyDir;
+
     Coroutine fairyAttackTimer;
     GameObject[] enemyArray;
     int layerMask;
@@ -27,6 +29,8 @@ public class FairyController : MonoBehaviour
 
         fairyAttackTimer = null;
         layerMask = 1 << LayerMask.NameToLayer("Enemy");    // enemy 레이어만 충돌 체크
+
+        fairyDir = new Vector3(0f, 0f, 0f);
     }
 
     private void OnEnable()
@@ -91,7 +95,15 @@ public class FairyController : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(transform.position + new Vector3(0f, 0.75f, 0f), transform.forward, out hit, 10f, layerMask);
         Debug.DrawRay(transform.position + new Vector3(0f, 0.75f, 0f), transform.forward * 10f, Color.red, 10f);
-        hit.collider.gameObject.GetComponent<EnemyController>().TakeDamage(fairyPower);
+
+        fairyDir = transform.forward;
+        Invoke("ShootTheBullet", 0.5f);
+        //hit.collider.gameObject.GetComponent<EnemyController>().TakeDamage(fairyPower);
+    }
+
+    private void ShootTheBullet()
+    {
+        ObjectPool.Instance.PopFromPool("FairyBullet");
     }
 
     private float DistanceToEnemy(GameObject enemy)

@@ -304,6 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  MAXHP: 300
   demonicHp: 300
   demonicPower: 30
 --- !u!1 &441025660
@@ -1138,6 +1139,38 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19846566, guid: a1fe740b8976f464fabd5f938548c13e, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19846566, guid: a1fe740b8976f464fabd5f938548c13e, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19846566, guid: a1fe740b8976f464fabd5f938548c13e, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19846566, guid: a1fe740b8976f464fabd5f938548c13e, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19876836, guid: a1fe740b8976f464fabd5f938548c13e, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19876836, guid: a1fe740b8976f464fabd5f938548c13e, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19922664, guid: a1fe740b8976f464fabd5f938548c13e, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19987118, guid: a1fe740b8976f464fabd5f938548c13e, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1fe740b8976f464fabd5f938548c13e, type: 3}
 --- !u!1 &884124885
@@ -1561,6 +1594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  MAXHP: 300
   angelHp: 300
   angelPower: 30
 --- !u!1 &1227927335
@@ -1876,6 +1910,10 @@ MonoBehaviour:
     prefab: {fileID: 128828, guid: 3275cd13660af874abbe46e30c35ddaf, type: 3}
     poolCount: 1
     poolList: []
+  - poolItemName: FairyBullet
+    prefab: {fileID: 5771625271411428467, guid: 76d923b60329f4e469ef749d9a8ce6dd, type: 3}
+    poolCount: 3
+    poolList: []
 --- !u!4 &1413872609
 Transform:
   m_ObjectHideFlags: 0
@@ -1908,6 +1946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  MAXHP: 300
   fairyHp: 300
   fairyPower: 40
 --- !u!1 &1562848745

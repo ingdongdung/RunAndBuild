@@ -58,6 +58,8 @@ public class AngelController : MonoBehaviour
     {
         while (true)
         {
+            TargetToEnemy();
+
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Jump Right Attack 01"))
             {
                 animator.Play("Melee Right Attack 03");
