@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3672326, g: 0.71111244, b: 0.82480437, a: 1}
+  m_IndirectSpecularColor: {r: 0.36772898, g: 0.7111048, b: 0.8247998, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1914,6 +1914,10 @@ MonoBehaviour:
     prefab: {fileID: 5771625271411428467, guid: 76d923b60329f4e469ef749d9a8ce6dd, type: 3}
     poolCount: 3
     poolList: []
+  - poolItemName: FairyBulletEffect
+    prefab: {fileID: 100002, guid: e9391f622091e1449bdef4ef15af4948, type: 3}
+    poolCount: 3
+    poolList: []
 --- !u!4 &1413872609
 Transform:
   m_ObjectHideFlags: 0
@@ -1949,6 +1953,7 @@ MonoBehaviour:
   MAXHP: 300
   fairyHp: 300
   fairyPower: 40
+  fairyDir: {x: 0, y: 0, z: 0}
 --- !u!1 &1562848745
 GameObject:
   m_ObjectHideFlags: 0

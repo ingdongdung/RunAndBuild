@@ -109,7 +109,7 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         enemyHp -= damage;
-        print(transform.name + " was damaged of " + damage);
+        //print(transform.name + " was damaged of " + damage);
     }
 
     IEnumerator EnemyAttackTimer()
