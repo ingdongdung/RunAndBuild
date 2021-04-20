@@ -42,7 +42,7 @@ public class EnemyController : MonoBehaviour
 
         enemySpeed = 25f;
         enemyHp = 100f;
-        enemyPower = 10f;
+        enemyPower = 3f;
 
         enemyAttackTimer = null;
     }
@@ -109,7 +109,26 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         enemyHp -= damage;
+        animator.Play("Take Damage");
         //print(transform.name + " was damaged of " + damage);
+    }
+
+    private void DamageDistribution()
+    {
+        // angel - demonic - fairy
+
+        if (ac.angelHp > 0f)
+        {
+            ac.TakeDamage(enemyPower);
+        }
+        else if (dc.demonicHp > 0f)
+        {
+            dc.TakeDamage(enemyPower);
+        }
+        else if (fc.fairyHp > 0f)
+        {
+            fc.TakeDamage(enemyPower);
+        }
     }
 
     IEnumerator EnemyAttackTimer()
@@ -119,18 +138,22 @@ public class EnemyController : MonoBehaviour
             if (transform.name == "Enemy01")
             {
                 animator.Play("Melee Left Attack 01");
+                DamageDistribution();
             }
             else if (transform.name == "Enemy02")
             {
                 animator.Play("Melee Right Attack 02");
+                DamageDistribution();
             }
             else if (transform.name == "Enemy03")
             {
                 animator.Play("Melee Right Attack 03");
+                DamageDistribution();
             }
             else if (transform.name == "Enemy04")
             {
                 animator.Play("Melee Right Attack 01");
+                DamageDistribution();
             }
             yield return new WaitForSeconds(2);
         }
