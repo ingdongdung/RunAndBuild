@@ -5,12 +5,10 @@ using UnityEngine.EventSystems;
 
 public class DemonicButtonController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    private DemonicController dc;
-
     // Start is called before the first frame update
     void Start()
     {
-        dc = GameObject.Find("Demonic").GetComponent<DemonicController>();
+        
     }
 
     public void OnPointerDown(PointerEventData eventData)
