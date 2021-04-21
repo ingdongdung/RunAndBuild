@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -13,11 +14,9 @@ public class EnemyController : MonoBehaviour
     Rigidbody rb;
     Vector3 dir;
 
-    FairyController fc;
-    AngelController ac;
-    DemonicController dc;
-
     bool onceForCoroutine;
+
+    Image hpBarImage;
 
     public Animator animator;
     public bool meetPlayer;
@@ -28,10 +27,6 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        
-        fc = GameObject.Find("Fairy").GetComponent<FairyController>();
-        ac = GameObject.Find("Angel").GetComponent<AngelController>();
-        dc = GameObject.Find("Demonic").GetComponent<DemonicController>();
     }
 
     private void Start()
@@ -78,9 +73,9 @@ public class EnemyController : MonoBehaviour
             attackPlayer = true;
             animator.SetBool("Run", false);
 
-            fc.MeetEnemy();
-            ac.MeetEnemy();
-            dc.MeetEnemy();
+            GameManager.Instance.fc.MeetEnemy();
+            GameManager.Instance.ac.MeetEnemy();
+            GameManager.Instance.dc.MeetEnemy();
         }
 
         if (!meetPlayer && !attackPlayer)
@@ -97,12 +92,12 @@ public class EnemyController : MonoBehaviour
 
     private float DistanceToPlayer()
     {
-        return Vector3.Distance(transform.position, fc.transform.position);
+        return Vector3.Distance(transform.position, GameManager.Instance.fc.transform.position);
     }
 
     private void MoveToPlayer()
     {
-        transform.LookAt(fc.transform);
+        transform.LookAt(GameManager.Instance.fc.transform);
         transform.position += dir * enemySpeed * Time.deltaTime;
     }
 
@@ -117,17 +112,17 @@ public class EnemyController : MonoBehaviour
     {
         // angel - demonic - fairy
 
-        if (ac.angelHp > 0f)
+        if (GameManager.Instance.ac.angelHp > 0f)
         {
-            ac.TakeDamage(enemyPower);
+            GameManager.Instance.ac.TakeDamage(enemyPower);
         }
-        else if (dc.demonicHp > 0f)
+        else if (GameManager.Instance.dc.demonicHp > 0f)
         {
-            dc.TakeDamage(enemyPower);
+            GameManager.Instance.dc.TakeDamage(enemyPower);
         }
-        else if (fc.fairyHp > 0f)
+        else if (GameManager.Instance.fc.fairyHp > 0f)
         {
-            fc.TakeDamage(enemyPower);
+            GameManager.Instance.fc.TakeDamage(enemyPower);
         }
     }
 

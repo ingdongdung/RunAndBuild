@@ -5,25 +5,23 @@ using UnityEngine.EventSystems;
 
 public class AngelButtonController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    private AngelController ac;
-
     // Start is called before the first frame update
     void Start()
     {
-        ac = GameObject.Find("Angel").GetComponent<AngelController>();
+
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!ac.GetCharacterState())
+        if (!GameManager.Instance.ac.GetCharacterState())
         {
-            ac.animator.SetBool("Run", false);
-            ac.animator.Play("Jump Right Attack 01");
-            ac.animator.SetBool("Run", true);
+            GameManager.Instance.ac.animator.SetBool("Run", false);
+            GameManager.Instance.ac.animator.Play("Jump Right Attack 01");
+            GameManager.Instance.ac.animator.SetBool("Run", true);
         }
         else
         {
-            ac.animator.Play("Jump Right Attack 01");
+            GameManager.Instance.ac.animator.Play("Jump Right Attack 01");
         }
     }
 

@@ -5,25 +5,23 @@ using UnityEngine.EventSystems;
 
 public class FairyButtonController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    private FairyController fc;
-
     // Start is called before the first frame update
     void Start()
     {
-        fc = GameObject.Find("Fairy").GetComponent<FairyController>();
+        
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!fc.GetCharacterState())
+        if (!GameManager.Instance.fc.GetCharacterState())
         {
-            fc.animator.SetBool("Fly Forward", false);
-            fc.animator.Play("Fly Cast Spell 02");
-            fc.animator.SetBool("Fly Forward", true);
+            GameManager.Instance.fc.animator.SetBool("Fly Forward", false);
+            GameManager.Instance.fc.animator.Play("Fly Cast Spell 02");
+            GameManager.Instance.fc.animator.SetBool("Fly Forward", true);
         }
         else
         {
-            fc.animator.Play("Fly Cast Spell 02");
+            GameManager.Instance.fc.animator.Play("Fly Cast Spell 02");
         }
     }
 
