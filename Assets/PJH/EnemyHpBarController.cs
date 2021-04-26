@@ -9,11 +9,8 @@ public class EnemyHpBarController : MonoBehaviour
     RectTransform rectParent;
     RectTransform rectHp;
 
-    [HideInInspector]
     public Vector3 offset = Vector3.zero;
-    [HideInInspector]
     public Transform targetTransform;
-
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +19,11 @@ public class EnemyHpBarController : MonoBehaviour
         uiCamera = canvas.worldCamera;
         rectParent = canvas.GetComponent<RectTransform>();
         rectHp = gameObject.GetComponent<RectTransform>();
+    }
+
+    private void OnEnable()
+    {
+        gameObject.transform.position = GameManager.Instance.uiCanvas.transform.position;
     }
 
     // Update is called once per frame
@@ -43,8 +45,8 @@ public class EnemyHpBarController : MonoBehaviour
             screenPos *= -1.0f;
         }
 
-        var localPos = Vector2.zero;
         // 스크린좌표에서 캔버스좌표로 변경하는 과정.
+        var localPos = Vector2.zero;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(rectParent, screenPos, uiCamera, out localPos);
 
         rectHp.localPosition = localPos;

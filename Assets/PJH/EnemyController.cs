@@ -5,24 +5,23 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
-    public const float MAXHP = 100f;
+    private Rigidbody rb;
+    private Vector3 dir;
+    private bool onceForCoroutine;
+    private Image hpBarImage;
+    private GameObject hb;
 
+    public const float MAXHP = 100f;
     public float enemySpeed;
     public float enemyHp;
     public float enemyPower;
 
-    Rigidbody rb;
-    Vector3 dir;
-
-    bool onceForCoroutine;
-
-    Image hpBarImage;
-
     public Animator animator;
     public bool meetPlayer;
     public bool attackPlayer;
-
     public Coroutine enemyAttackTimer;
+
+    public Vector3 hpBarOffset = new Vector3(0f, 2.2f, 0f);
 
     private void Awake()
     {
@@ -36,7 +35,7 @@ public class EnemyController : MonoBehaviour
         animator.SetBool("Run", true);
 
         enemySpeed = 25f;
-        enemyHp = 100f;
+        enemyHp = MAXHP;
         enemyPower = 3f;
 
         enemyAttackTimer = null;
@@ -50,6 +49,9 @@ public class EnemyController : MonoBehaviour
         meetPlayer = false;
         attackPlayer = false;
         onceForCoroutine = false;
+        enemyHp = MAXHP;
+
+        SetHpBar();
     }
 
     private void OnDisable()
@@ -58,6 +60,8 @@ public class EnemyController : MonoBehaviour
         {
             StopCoroutine(enemyAttackTimer);
         }
+        hb.transform.parent = ObjectPool.Instance.gameObject.GetComponent<Transform>();
+        ObjectPool.Instance.PushToPool(hb.name, hb);
     }
 
     private void OnBecameInvisible()
@@ -106,6 +110,16 @@ public class EnemyController : MonoBehaviour
         enemyHp -= damage;
         animator.Play("Take Damage");
         //print(transform.name + " was damaged of " + damage);
+        hpBarImage.fillAmount = enemyHp / MAXHP;
+        CheckToDead();
+    }
+
+    private void CheckToDead()
+    {
+        if (enemyHp <= 0f)
+        {
+            ObjectPool.Instance.PushToPool(gameObject.name, gameObject);
+        }
     }
 
     private void DamageDistribution()
@@ -124,6 +138,18 @@ public class EnemyController : MonoBehaviour
         {
             GameManager.Instance.fc.TakeDamage(enemyPower);
         }
+    }
+
+    private void SetHpBar()
+    {
+        hb = ObjectPool.Instance.PopFromPool("EnemyHpBar");
+        hb.transform.parent = GameManager.Instance.uiCanvas.GetComponent<Transform>();
+        hpBarImage = hb.GetComponentsInChildren<Image>()[1];
+        hpBarImage.fillAmount = MAXHP;
+
+        var hpBar = hb.GetComponent<EnemyHpBarController>();
+        hpBar.targetTransform = gameObject.transform;
+        hpBar.offset = hpBarOffset;
     }
 
     IEnumerator EnemyAttackTimer()

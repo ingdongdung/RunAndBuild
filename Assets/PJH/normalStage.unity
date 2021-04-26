@@ -1826,6 +1826,7 @@ MonoBehaviour:
   fc: {fileID: 0}
   ac: {fileID: 0}
   dc: {fileID: 0}
+  uiCanvas: {fileID: 0}
 --- !u!4 &1252562191
 Transform:
   m_ObjectHideFlags: 0
@@ -2040,7 +2041,7 @@ MonoBehaviour:
     poolList: []
   - poolItemName: EnemyHpBar
     prefab: {fileID: 1493463027569657271, guid: c24f92c543deab14d879365927537d64, type: 3}
-    poolCount: 5
+    poolCount: 10
     poolList: []
 --- !u!4 &1413872609
 Transform:

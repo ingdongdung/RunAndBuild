@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
     public FairyController fc;
     public AngelController ac;
     public DemonicController dc;
-    Canvas uiCanvas;
+    public Canvas uiCanvas;
 
     private void Awake()
     {
@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
         ac = GameObject.Find("Angel").GetComponent<AngelController>();
         dc = GameObject.Find("Demonic").GetComponent<DemonicController>();
 
-        uiCanvas = GameObject.Find("UI Canvas").GetComponent<Canvas>();
+        uiCanvas = GameObject.Find("UI Canvas for enemy").GetComponent<Canvas>();
     }
 
     // Start is called before the first frame update
