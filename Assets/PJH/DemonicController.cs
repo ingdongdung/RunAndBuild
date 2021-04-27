@@ -88,9 +88,11 @@ public class DemonicController : MonoBehaviour
         transform.LookAt(enemyArray[saveNumber].transform);
 
         RaycastHit hit;
-        Physics.Raycast(transform.position + new Vector3(0f, 0.75f, 0f), transform.forward, out hit, 10f, layerMask);
-        Debug.DrawRay(transform.position + new Vector3(0f, 0.75f, 0f), transform.forward * 10f, Color.red, 10f);
-        hit.collider.gameObject.GetComponent<EnemyController>().TakeDamage(demonicPower);
+        if (Physics.Raycast(transform.position + new Vector3(0f, 0.75f, 0f), transform.forward, out hit, 10f, layerMask))
+        {
+            Debug.DrawRay(transform.position + new Vector3(0f, 0.75f, 0f), transform.forward * 10f, Color.red, 10f);
+            hit.collider.gameObject.GetComponent<EnemyController>().TakeDamage(demonicPower);
+        }
     }
 
     private float DistanceToEnemy(GameObject enemy)
