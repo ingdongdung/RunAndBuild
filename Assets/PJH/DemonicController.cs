@@ -58,17 +58,14 @@ public class DemonicController : MonoBehaviour
     {
         while (true)
         {
+            LookAtEnemy();
+            yield return new WaitForSeconds(0.5f);
             TargetToEnemy();
-
-            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Melee Left Attack 01"))
-            {
-                animator.Play("Right Punch Attack");
-            }
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1.5f);
         }
     }
 
-    private void TargetToEnemy()
+    private void LookAtEnemy()
     {
         enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
         int saveNumber = 0;
@@ -87,6 +84,14 @@ public class DemonicController : MonoBehaviour
         //print(saveNumber);
         transform.LookAt(enemyArray[saveNumber].transform);
 
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Melee Left Attack 01"))
+        {
+            animator.Play("Right Punch Attack");
+        }
+    }
+
+    private void TargetToEnemy()
+    {
         RaycastHit hit;
         if (Physics.Raycast(transform.position + new Vector3(0f, 0.75f, 0f), transform.forward, out hit, 10f, layerMask))
         {

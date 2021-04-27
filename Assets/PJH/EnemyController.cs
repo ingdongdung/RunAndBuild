@@ -65,8 +65,14 @@ public class EnemyController : MonoBehaviour
         {
             StopCoroutine(enemyDieTimer);
         }
-        hb.transform.parent = ObjectPool.Instance.gameObject.GetComponent<Transform>();
-        ObjectPool.Instance.PushToPool(hb.name, hb);
+        if (hb != null)
+        {
+            if (hb.transform.parent.name == "UI Canvas for enemy")
+            {
+                hb.transform.parent = ObjectPool.Instance.gameObject.GetComponent<Transform>();
+                ObjectPool.Instance.PushToPool(hb.name, hb);
+            }
+        }
     }
 
     private void OnBecameInvisible()
