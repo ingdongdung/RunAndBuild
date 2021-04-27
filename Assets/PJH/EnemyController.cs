@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
     public bool meetPlayer;
     public bool attackPlayer;
     public Coroutine enemyAttackTimer;
+    public Coroutine enemyDieTimer;
 
     public Vector3 hpBarOffset = new Vector3(0f, 2.2f, 0f);
 
@@ -59,6 +60,10 @@ public class EnemyController : MonoBehaviour
         if (enemyAttackTimer != null)
         {
             StopCoroutine(enemyAttackTimer);
+        }
+        if (enemyDieTimer != null)
+        {
+            StopCoroutine(enemyDieTimer);
         }
         hb.transform.parent = ObjectPool.Instance.gameObject.GetComponent<Transform>();
         ObjectPool.Instance.PushToPool(hb.name, hb);
@@ -108,9 +113,12 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         enemyHp -= damage;
-        animator.Play("Take Damage");
-        //print(transform.name + " was damaged of " + damage);
+        
+        if (enemyHp > 0f)
+            animator.Play("Take Damage");
+
         hpBarImage.fillAmount = enemyHp / MAXHP;
+
         CheckToDead();
     }
 
@@ -118,8 +126,15 @@ public class EnemyController : MonoBehaviour
     {
         if (enemyHp <= 0f)
         {
-            ObjectPool.Instance.PushToPool(gameObject.name, gameObject);
+            animator.Play("Die");
+            enemyDieTimer = StartCoroutine(CheckToDeadTimer());
         }
+    }
+
+    IEnumerator CheckToDeadTimer()
+    {
+        yield return new WaitForSeconds(1.0f);
+        ObjectPool.Instance.PushToPool(gameObject.name, gameObject);
     }
 
     private void DamageDistribution()
@@ -156,25 +171,28 @@ public class EnemyController : MonoBehaviour
     {
         while (true)
         {
-            if (transform.name == "Enemy01")
+            if (enemyHp > 0f)
             {
-                animator.Play("Melee Left Attack 01");
-                DamageDistribution();
-            }
-            else if (transform.name == "Enemy02")
-            {
-                animator.Play("Melee Right Attack 02");
-                DamageDistribution();
-            }
-            else if (transform.name == "Enemy03")
-            {
-                animator.Play("Melee Right Attack 03");
-                DamageDistribution();
-            }
-            else if (transform.name == "Enemy04")
-            {
-                animator.Play("Melee Right Attack 01");
-                DamageDistribution();
+                if (transform.name == "Enemy01")
+                {
+                    animator.Play("Melee Left Attack 01");
+                    DamageDistribution();
+                }
+                else if (transform.name == "Enemy02")
+                {
+                    animator.Play("Melee Right Attack 02");
+                    DamageDistribution();
+                }
+                else if (transform.name == "Enemy03")
+                {
+                    animator.Play("Melee Right Attack 03");
+                    DamageDistribution();
+                }
+                else if (transform.name == "Enemy04")
+                {
+                    animator.Play("Melee Right Attack 01");
+                    DamageDistribution();
+                }
             }
             yield return new WaitForSeconds(2);
         }
