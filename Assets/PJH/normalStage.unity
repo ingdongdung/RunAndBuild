@@ -2047,6 +2047,14 @@ MonoBehaviour:
     prefab: {fileID: 100000, guid: ada5d62ffe762ce4fbccc70dcdbc9022, type: 3}
     poolCount: 2
     poolList: []
+  - poolItemName: AngelSkillForGround
+    prefab: {fileID: 100008, guid: 1ca16f2a31fb6a548ad8954bed1d321f, type: 3}
+    poolCount: 5
+    poolList: []
+  - poolItemName: AngelSkillForAir
+    prefab: {fileID: 1628744458893394, guid: e243632bb3aff9549abdcfcc2ef0c4f0, type: 3}
+    poolCount: 5
+    poolList: []
 --- !u!4 &1413872609
 Transform:
   m_ObjectHideFlags: 0

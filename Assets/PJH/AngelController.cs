@@ -84,7 +84,7 @@ public class AngelController : MonoBehaviour
         //print(saveNumber);
         transform.LookAt(enemyArray[saveNumber].transform);
 
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Melee Left Attack 01"))
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Jump Right Attack 01"))
         {
             animator.Play("Melee Right Attack 03");
         }
