@@ -6,6 +6,13 @@ using UnityEngine.EventSystems;
 public class FairyButtonController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public Coroutine fairySkillCoroutine;
+    private float fairyHealAmount;
+
+    private void Awake()
+    {
+        fairyHealAmount = 70f;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,26 +35,39 @@ public class FairyButtonController : MonoBehaviour, IPointerDownHandler, IPointe
         {
             GameManager.Instance.fc.animator.SetBool("Fly Forward", false);
             GameManager.Instance.fc.animator.Play("Fly Cast Spell 02");
-            fairySkillCoroutine = StartCoroutine(FairySkill3());
+            fairySkillCoroutine = StartCoroutine(FairySkill());
             GameManager.Instance.fc.animator.SetBool("Fly Forward", true);
         }
         else
         {
             GameManager.Instance.fc.animator.Play("Fly Cast Spell 02");
+            fairySkillCoroutine = StartCoroutine(FairySkill());
         }
     }
 
-    IEnumerator FairySkill3()
+    IEnumerator FairySkill()
     {
         yield return new WaitForSeconds(0.5f);
         ObjectPool.Instance.PopFromPool("FairySkill").transform.position = GameManager.Instance.ac.transform.position;
-        yield return new WaitForSeconds(0.1f);
         ObjectPool.Instance.PopFromPool("FairySkill").transform.position = GameManager.Instance.dc.transform.position;
+        SkillEffect();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    private void SkillEffect()
+    {
+        if (GameManager.Instance.ac.angelHp > 0f)
+        {
+            GameManager.Instance.ac.TakeDamage(-fairyHealAmount);
+        }
+        if (GameManager.Instance.dc.demonicHp > 0f)
+        {
+            GameManager.Instance.dc.TakeDamage(-fairyHealAmount);
+        }
     }
 }

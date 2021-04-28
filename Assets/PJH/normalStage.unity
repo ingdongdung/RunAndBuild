@@ -2047,10 +2047,6 @@ MonoBehaviour:
     prefab: {fileID: 100000, guid: ada5d62ffe762ce4fbccc70dcdbc9022, type: 3}
     poolCount: 2
     poolList: []
-  - poolItemName: FairySkill2
-    prefab: {fileID: 100000, guid: ada5d62ffe762ce4fbccc70dcdbc9022, type: 3}
-    poolCount: 2
-    poolList: []
 --- !u!4 &1413872609
 Transform:
   m_ObjectHideFlags: 0
