@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyHpBarController : MonoBehaviour
 {
-    Camera uiCamera;
-    Canvas canvas;
-    RectTransform rectParent;
-    RectTransform rectHp;
+    private Camera uiCamera;
+    private Canvas canvas;
+    private RectTransform rectParent;
+    private RectTransform rectHp;
 
     public Vector3 offset = Vector3.zero;
     public Transform targetTransform;

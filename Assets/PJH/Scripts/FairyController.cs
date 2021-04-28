@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class FairyController : MonoBehaviour
 {
+    private bool meetEnemy;
+    private bool onceForCoroutine;
+    private int layerMask;
+    private Coroutine fairyAttackTimer;
+    private GameObject[] enemyArray;
+
     public Animator animator;
-
-    bool meetEnemy;
-    bool onceForCoroutine;
-
     public float MAXHP = 300f;
     public float fairyHp = 300f;
     public float fairyPower = 40f;
-
     public Vector3 fairyDir;
-
-    Coroutine fairyAttackTimer;
-    GameObject[] enemyArray;
-    int layerMask;
 
     // Start is called before the first frame update
     void Start()

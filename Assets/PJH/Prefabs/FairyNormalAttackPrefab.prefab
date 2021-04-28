@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5971134965168907835}
   - component: {fileID: 984823810315095013}
   - component: {fileID: 7695666094896079710}
+  - component: {fileID: 3707799063595039178}
   m_Layer: 0
   m_Name: FairyNormalAttackPrefab
   m_TagString: Untagged
@@ -4832,6 +4833,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3707799063595039178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5771625271411428467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc44d5cf31437f45819f0325baa96e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5772182463228835643
 GameObject:
   m_ObjectHideFlags: 0

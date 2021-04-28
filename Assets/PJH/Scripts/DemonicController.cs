@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class DemonicController : MonoBehaviour
 {
+    private bool meetEnemy;
+    private bool onceForCoroutine;
+    private int layerMask;
+    private Coroutine demonicAttackTimer;
+    private GameObject[] enemyArray;
+
     public Animator animator;
-
-    bool meetEnemy;
-    bool onceForCoroutine;
-
     public float MAXHP = 300f;
     public float demonicHp = 300f;
     public float demonicPower = 30f;
 
-    public Coroutine demonicAttackTimer;
-    GameObject[] enemyArray;
-    int layerMask;
 
     // Start is called before the first frame update
     void Start()

@@ -5,8 +5,9 @@ using UnityEngine.EventSystems;
 
 public class FairyButtonController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public Coroutine fairySkillCoroutine;
     private float fairyHealAmount;
+
+    public Coroutine fairySkillCoroutine;
 
     private void Awake()
     {

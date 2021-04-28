@@ -5,16 +5,16 @@ using UnityEngine;
 [System.Serializable]
 public class PooledObject
 {
+    [SerializeField]
+    private List<GameObject> poolList = new List<GameObject>();
+    // 생성한 객체들을 저장할 리스트
+
     // 객체를 검색할 때 사용할 이름
     public string poolItemName = string.Empty;
     // 오브젝트 풀에 저장할 프리팹
     public GameObject prefab = null;
     // 초기화할 때 생성할 객체의 수
     public int poolCount = 0;
-    
-    [SerializeField]
-    private List<GameObject> poolList = new List<GameObject>();
-    // 생성한 객체들을 저장할 리스트
     
     public void Initialize(Transform parent = null)
     {

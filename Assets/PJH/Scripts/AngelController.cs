@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class AngelController : MonoBehaviour
 {
+    private bool meetEnemy;
+    private bool onceForCoroutine;
+    private int layerMask;
+    private Coroutine angelAttackTimer;
+    private GameObject[] enemyArray;
+
     public Animator animator;
-
-    bool meetEnemy;
-    bool onceForCoroutine;
-
     public float MAXHP = 300f;
     public float angelHp = 300f;
     public float angelPower = 30f;
 
-    Coroutine angelAttackTimer;
-    GameObject[] enemyArray;
-    int layerMask;
 
     // Start is called before the first frame update
     void Start()

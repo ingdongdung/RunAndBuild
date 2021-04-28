@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    // 오브젝트가 출현할 위치를 담을 배열
-    public Transform[] points;
+    private string treeName = "Tree";
+    private string enemyName = "Enemy";
+    private string bossName = "Boss";
+    private int treeCount = 3;
+    private int enemyCount = 4;
 
     public float _elapsedTimeForTree = 0f;
     public float _elapsedTimeForEnemy = 0f;
     public float _elapsedTimeForBoss = 0f;
-    string treeName = "Tree";
-    string enemyName = "Enemy";
-    string bossName = "Boss";
-    int treeCount = 3;
-    int enemyCount = 4;
-    
+
+    // 오브젝트가 출현할 위치를 담을 배열
+    public Transform[] points;
 
     // Start is called before the first frame update
     void Start()

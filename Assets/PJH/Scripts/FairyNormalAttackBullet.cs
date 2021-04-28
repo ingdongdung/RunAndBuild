@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FairyNormalAttackBullet : MonoBehaviour
 {
-    float bulletSpeed;
-    Vector3 bulletDir;
+    private float bulletSpeed;
+    private Vector3 bulletDir;
 
     private void Awake()
     {
