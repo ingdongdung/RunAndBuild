@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
     private GameObject hb;
 
     public const float MAXHP = 100f;
+    public const float SPEED = 25f;
     public float enemySpeed;
     public float enemyHp;
     public float enemyPower;
@@ -35,7 +36,7 @@ public class EnemyController : MonoBehaviour
         animator.SetBool("Walk", false);
         animator.SetBool("Run", true);
 
-        enemySpeed = 25f;
+        enemySpeed = SPEED;
         enemyHp = MAXHP;
         enemyPower = 3f;
 
@@ -51,6 +52,7 @@ public class EnemyController : MonoBehaviour
         attackPlayer = false;
         onceForCoroutine = false;
         enemyHp = MAXHP;
+        enemySpeed = SPEED;
 
         SetHpBar();
     }
@@ -75,13 +77,13 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void OnBecameInvisible()
-    {
-        ObjectPool.Instance.PushToPool(gameObject.name, gameObject);
-    }
-
     private void Update()
     {
+        if (DistanceToPlayer() <= 20f && !meetPlayer && !attackPlayer)
+        {
+            enemySpeed -= 0.04f;
+        }
+
         if (DistanceToPlayer() <= 5f && !meetPlayer && !attackPlayer)
         {
             meetPlayer = true;
