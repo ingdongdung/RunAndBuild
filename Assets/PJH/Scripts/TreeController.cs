@@ -12,11 +12,12 @@ public class TreeController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         dir = new Vector3(0f, 0f, -1f);
+        treeSpeed = 25f;
     }
 
     private void OnEnable()
     {
-        //rb.AddForce(dir * 100f);
+        treeSpeed = 25f;
     }
 
     private void OnBecameInvisible()
@@ -26,6 +27,15 @@ public class TreeController : MonoBehaviour
 
     private void Update()
     {
-        transform.position += dir * treeSpeed * Time.deltaTime;
+        if (GameManager.Instance.DistanceToEnemy(GameManager.Instance.enemyArray[GameManager.Instance.Search()]) <= 20f &&
+            !GameManager.Instance.meetEnemy)
+        {
+            treeSpeed -= 0.04f;
+        }
+
+        if (!GameManager.Instance.meetEnemy)
+        {
+            transform.position += dir * treeSpeed * Time.deltaTime;
+        }
     }
 }

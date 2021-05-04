@@ -32,7 +32,7 @@ public class DemonicButtonController : MonoBehaviour, IPointerDownHandler, IPoin
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (!GameManager.Instance.dc.GetCharacterState())
+        if (!GameManager.Instance.meetEnemy)
         {
             GameManager.Instance.dc.animator.SetBool("Run", false);
             GameManager.Instance.dc.animator.Play("Melee Left Attack 01");

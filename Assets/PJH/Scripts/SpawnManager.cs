@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnManager : MonoBehaviour
+public class SpawnManager : Singleton<SpawnManager>
 {
     private string treeName = "Tree";
     private string enemyName = "Enemy";
@@ -14,6 +14,9 @@ public class SpawnManager : MonoBehaviour
     public float _elapsedTimeForEnemy = 0f;
     public float _elapsedTimeForBoss = 0f;
 
+    public Coroutine treeSpawningCoroutine;
+    public bool treeSpawnFlag;
+
     // 오브젝트가 출현할 위치를 담을 배열
     public Transform[] points;
 
@@ -22,14 +25,25 @@ public class SpawnManager : MonoBehaviour
     {
         // Hierarchy View의 Spawn Point를 찾아 하위에 있는 모든 Transform 컴포넌트를 찾아옴
         points = GameObject.Find("SpawnPoint").GetComponentsInChildren<Transform>();
-        StartCoroutine(StartTreeSpawning());
+        treeSpawningCoroutine = StartCoroutine(StartTreeSpawning());
         StartCoroutine(StartMonsterSpawning());
+
+        treeSpawnFlag = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameManager.Instance.meetEnemy && treeSpawnFlag)
+        {
+            StopCoroutine(treeSpawningCoroutine);
+            treeSpawnFlag = false;
+        }
+    }
+
+    public bool GetTreeSpawnFlag()
+    {
+        return treeSpawnFlag;
     }
 
     IEnumerator StartTreeSpawning()

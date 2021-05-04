@@ -32,7 +32,7 @@ public class AngelButtonController : MonoBehaviour, IPointerDownHandler, IPointe
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (!GameManager.Instance.ac.GetCharacterState())
+        if (!GameManager.Instance.meetEnemy)
         {
             GameManager.Instance.ac.animator.SetBool("Run", false);
             GameManager.Instance.ac.animator.Play("Jump Right Attack 01");

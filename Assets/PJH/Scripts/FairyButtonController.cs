@@ -32,7 +32,7 @@ public class FairyButtonController : MonoBehaviour, IPointerDownHandler, IPointe
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (!GameManager.Instance.fc.GetCharacterState())
+        if (!GameManager.Instance.meetEnemy)
         {
             GameManager.Instance.fc.animator.SetBool("Fly Forward", false);
             GameManager.Instance.fc.animator.Play("Fly Cast Spell 02");
