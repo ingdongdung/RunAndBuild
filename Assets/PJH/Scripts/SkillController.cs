@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FairySkillController : MonoBehaviour
+public class SkillController : MonoBehaviour
 {
     public Coroutine particleTimerCoroutine;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     private void OnEnable()
@@ -25,7 +25,7 @@ public class FairySkillController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator particleTimer()

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 400000}
   - component: {fileID: 19800000}
-  - component: {fileID: 2007287765472907655}
   - component: {fileID: 19900000}
+  - component: {fileID: 6543524627386608943}
   m_Layer: 0
   m_Name: CFX3_ResurrectionLight_Circle
   m_TagString: Untagged
@@ -4691,18 +4691,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &2007287765472907655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62a56c66a722a91409cb2eae7caa1711, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!199 &19900000
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4769,6 +4757,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &6543524627386608943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd2770e31ae0504ca04b5b6cd4d200b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
