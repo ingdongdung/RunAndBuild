@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AngelController : MonoBehaviour
 {
-    private bool meetEnemy;
     private bool onceForCoroutine;
     private int layerMask;
     private Coroutine angelAttackTimer;
@@ -29,7 +28,6 @@ public class AngelController : MonoBehaviour
 
     private void OnEnable()
     {
-        meetEnemy = false;
         onceForCoroutine = false;
         angelHp = MAXHP;
     }
@@ -45,7 +43,7 @@ public class AngelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (meetEnemy && !onceForCoroutine)
+        if (GameManager.Instance.meetEnemy && !onceForCoroutine)
         {
             animator.SetBool("Run", false);
             angelAttackTimer = StartCoroutine(PlayerAttackTimer());
@@ -109,19 +107,9 @@ public class AngelController : MonoBehaviour
         angelHp -= damage;
     }
 
-    public void MeetEnemy()
-    {
-        meetEnemy = true;
-    }
-
-    public bool GetCharacterState()
-    {
-        return meetEnemy;
-    }
-
     public void Initialize()        // 플레이어 앞 적이 다 죽으면 실행할 메소드
     {
-        meetEnemy = false;
+        GameManager.Instance.meetEnemy = false;
         onceForCoroutine = false;
         StopCoroutine(angelAttackTimer);
     }

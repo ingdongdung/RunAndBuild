@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FairyController : MonoBehaviour
 {
-    private bool meetEnemy;
     private bool onceForCoroutine;
     private int layerMask;
     private Coroutine fairyAttackTimer;
@@ -32,7 +31,6 @@ public class FairyController : MonoBehaviour
 
     private void OnEnable()
     {
-        meetEnemy = false;
         onceForCoroutine = false;
         fairyHp = MAXHP;
     }
@@ -48,7 +46,7 @@ public class FairyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (meetEnemy && !onceForCoroutine)
+        if (GameManager.Instance.meetEnemy && !onceForCoroutine)
         {
             animator.SetBool("Fly Forward", false);
             fairyAttackTimer = StartCoroutine(PlayerAttackTimer());
@@ -113,19 +111,9 @@ public class FairyController : MonoBehaviour
         fairyHp -= damage;
     }
 
-    public void MeetEnemy()
-    {
-        meetEnemy = true;
-    }
-
-    public bool GetCharacterState()
-    {
-        return meetEnemy;
-    }
-    
     public void Initialize()        // 플레이어 앞 적이 다 죽으면 실행할 메소드
     {
-        meetEnemy = false;
+        GameManager.Instance.meetEnemy = false;
         onceForCoroutine = false;
         StopCoroutine(fairyAttackTimer);
     }

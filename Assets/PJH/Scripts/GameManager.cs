@@ -9,6 +9,9 @@ public class GameManager : Singleton<GameManager>
     public DemonicController dc;
     public Canvas uiCanvas;
 
+    public GameObject[] enemyArray;
+    public bool meetEnemy;
+
     private void Awake()
     {
         fc = GameObject.Find("Fairy").GetComponent<FairyController>();
@@ -16,6 +19,13 @@ public class GameManager : Singleton<GameManager>
         dc = GameObject.Find("Demonic").GetComponent<DemonicController>();
 
         uiCanvas = GameObject.Find("UI Canvas for enemy").GetComponent<Canvas>();
+
+        meetEnemy = false;
+    }
+
+    private void OnEnable()
+    {
+        meetEnemy = false;
     }
 
     // Start is called before the first frame update
@@ -29,4 +39,22 @@ public class GameManager : Singleton<GameManager>
     {
         
     }
+
+    //public float DistanceToEnemy()
+    //{
+    //    enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
+    //    int saveNumber = 0;
+    //    float minDistance = DistanceToEnemy(enemyArray[0]);
+    //    for (int i = 1; i < enemyArray.Length; ++i)
+    //    {
+    //        //print("enemy" + i + " : " + DistanceToEnemy(enemyArray[i]));
+    //        if (minDistance >= DistanceToEnemy(enemyArray[i]))
+    //        {
+    //            minDistance = DistanceToEnemy(enemyArray[i]);
+    //            saveNumber = i;
+    //        }
+    //    }
+
+    //    return Vector3.Distance(transform.position, enemy.transform.position);
+    //}
 }

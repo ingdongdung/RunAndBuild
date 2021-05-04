@@ -90,9 +90,10 @@ public class EnemyController : MonoBehaviour
             attackPlayer = true;
             animator.SetBool("Run", false);
 
-            GameManager.Instance.fc.MeetEnemy();
-            GameManager.Instance.ac.MeetEnemy();
-            GameManager.Instance.dc.MeetEnemy();
+            GameManager.Instance.meetEnemy = true;
+            //GameManager.Instance.fc.MeetEnemy();
+            //GameManager.Instance.ac.MeetEnemy();
+            //GameManager.Instance.dc.MeetEnemy();
         }
 
         if (!meetPlayer && !attackPlayer)
