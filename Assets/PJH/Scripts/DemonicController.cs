@@ -6,9 +6,9 @@ public class DemonicController : MonoBehaviour
 {
     private bool onceForCoroutine;
     private int layerMask;
-    private Coroutine demonicAttackTimer;
     private GameObject[] enemyArray;
 
+    public Coroutine demonicAttackTimer;
     public Animator animator;
     public float MAXHP = 300f;
     public float demonicHp = 300f;
@@ -26,6 +26,8 @@ public class DemonicController : MonoBehaviour
         layerMask = 1 << LayerMask.NameToLayer("Enemy");    // enemy 레이어만 충돌 체크
 
         basePosition = new Vector3(2f, 0f, 16.34f);
+
+        transform.position = basePosition;
     }
 
     private void OnEnable()
@@ -67,6 +69,9 @@ public class DemonicController : MonoBehaviour
     private void LookAtEnemy()
     {
         enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemyArray.Length == 0)
+            return;
+
         int saveNumber = 0;
         float minDistance = DistanceToEnemy(enemyArray[0]);
         for (int i = 1; i < enemyArray.Length; ++i)

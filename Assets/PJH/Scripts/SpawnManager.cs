@@ -46,7 +46,7 @@ public class SpawnManager : Singleton<SpawnManager>
         return treeSpawnFlag;
     }
 
-    IEnumerator StartTreeSpawning()
+    public IEnumerator StartTreeSpawning()
     {
         while (true)
         {

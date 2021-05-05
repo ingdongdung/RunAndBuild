@@ -27,10 +27,14 @@ public class TreeController : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.DistanceToEnemy(GameManager.Instance.enemyArray[GameManager.Instance.Search()]) <= 20f &&
-            !GameManager.Instance.meetEnemy)
+        if (GameManager.Instance.enemyArray.Length > 0)
         {
-            treeSpeed -= 0.04f;
+            if (GameManager.Instance.Search() >= 0 &&
+                GameManager.Instance.DistanceToEnemy(GameManager.Instance.enemyArray[GameManager.Instance.Search()]) <= 20f &&
+                !GameManager.Instance.meetEnemy)
+            {
+                treeSpeed -= 0.04f;
+            }
         }
 
         if (!GameManager.Instance.meetEnemy)

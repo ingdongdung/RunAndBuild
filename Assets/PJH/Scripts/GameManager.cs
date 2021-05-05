@@ -14,6 +14,8 @@ public class GameManager : Singleton<GameManager>
     public bool onceForCoroutine;
     public Coroutine SearchCoroutine;
 
+    private Vector3 baseDirection;
+
     private void Awake()
     {
         fc = GameObject.Find("Fairy").GetComponent<FairyController>();
@@ -25,6 +27,9 @@ public class GameManager : Singleton<GameManager>
         meetEnemy = false;
         onceForCoroutine = false;
         SearchCoroutine = null;
+
+        baseDirection = new Vector3(0f, 0f, 1f) - new Vector3(0f, 0f, 0f);
+        baseDirection.Normalize();
     }
 
     private void OnEnable()
@@ -59,6 +64,31 @@ public class GameManager : Singleton<GameManager>
             SearchCoroutine = StartCoroutine(DistanceToEnemyTimer());
             onceForCoroutine = true;
         }
+
+        // 눈 앞의 적이 다 죽었을 때
+        if (enemyArray.Length == 0 && meetEnemy && onceForCoroutine)
+        {
+            StopCoroutine(SearchCoroutine);
+            meetEnemy = false;
+            onceForCoroutine = false;
+
+            SpawnManager.Instance.treeSpawningCoroutine = StartCoroutine(SpawnManager.Instance.StartTreeSpawning());
+            SpawnManager.Instance.treeSpawnFlag = true;
+
+            fc.Initialize();
+            ac.Initialize();
+            dc.Initialize();
+
+
+            fc.transform.rotation = Quaternion.Euler(baseDirection);
+            ac.transform.rotation = Quaternion.Euler(baseDirection);
+            dc.transform.rotation = Quaternion.Euler(baseDirection);
+
+
+            fc.animator.SetBool("Fly Forward", true);
+            ac.animator.SetBool("Run", true);
+            dc.animator.SetBool("Run", true);
+        }
     }
 
     IEnumerator DistanceToEnemyTimer()
@@ -72,7 +102,7 @@ public class GameManager : Singleton<GameManager>
         enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
         int saveNumber = 0;
 
-        if (enemyArray.Length != 0)
+        if (enemyArray.Length > 0)
         {
             float minDistance = DistanceToEnemy(enemyArray[0]);
             for (int i = 1; i < enemyArray.Length; ++i)
@@ -88,7 +118,8 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            print("그런건 없어용(Search()'s return value is -1)");
+            print(enemyArray.Length);
+            print("그런 건 없어용 (Search()'s return value is -1)");
             return -1;
         }
     }

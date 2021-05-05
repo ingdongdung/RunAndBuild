@@ -6,14 +6,15 @@ public class FairyController : MonoBehaviour
 {
     private bool onceForCoroutine;
     private int layerMask;
-    private Coroutine fairyAttackTimer;
     private GameObject[] enemyArray;
 
+    public Coroutine fairyAttackTimer;
     public Animator animator;
     public float MAXHP = 300f;
     public float fairyHp = 300f;
     public float fairyPower = 40f;
     public Vector3 fairyDir;
+    public Vector3 basePosition;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,9 @@ public class FairyController : MonoBehaviour
         layerMask = 1 << LayerMask.NameToLayer("Enemy");    // enemy 레이어만 충돌 체크
 
         fairyDir = new Vector3(0f, 0f, 0f);
+        basePosition = new Vector3(0f, 0f, 13.79f);
+
+        transform.position = basePosition;
     }
 
     private void OnEnable()
@@ -71,7 +75,12 @@ public class FairyController : MonoBehaviour
     private void TargetToEnemy()
     {
         enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemyArray.Length == 0)
+            return;
+
         int saveNumber = 0;
+
+
         float minDistance = DistanceToEnemy(enemyArray[0]);
         for (int i = 1; i < enemyArray.Length; ++i)
         {
@@ -91,7 +100,7 @@ public class FairyController : MonoBehaviour
         if (Physics.Raycast(transform.position + new Vector3(0f, 0.75f, 0f), transform.forward, out hit, 10f, layerMask))
         {
             Debug.DrawRay(transform.position + new Vector3(0f, 0.75f, 0f), transform.forward * 10f, Color.red, 10f);
-            fairyDir = transform.forward;
+            fairyDir = transform.forward;       // bullet의 방향을 위한 변수
             Invoke("ShootTheBullet", 0.5f);
         }
     }
