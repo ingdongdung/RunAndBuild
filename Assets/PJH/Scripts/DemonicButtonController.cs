@@ -54,7 +54,6 @@ public class DemonicButtonController : MonoBehaviour, IPointerDownHandler, IPoin
 
     IEnumerator DemonicSkill()
     {
-        yield return new WaitForSeconds(0.5f);
 
         enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -73,10 +72,31 @@ public class DemonicButtonController : MonoBehaviour, IPointerDownHandler, IPoin
         // DemonicSkillForBats
         // DemonicSkillForHit
 
-        // 여기부터 05.04 10:14
-        ObjectPool.Instance.PopFromPool("AngelSkillForGround").transform.position = enemyArray[saveNumber].transform.position;
-        ObjectPool.Instance.PopFromPool("AngelSkillForAir").transform.position = enemyArray[saveNumber].transform.position + new Vector3(0f, 1f, 0f);
+        ObjectPool.Instance.PopFromPool("DemonicSkillForFog").transform.position = GameManager.Instance.dc.transform.position;
+
+        Vector3 dir = GameManager.Instance.fc.transform.position - enemyArray[saveNumber].transform.position;
+        dir.Normalize();
+        GameManager.Instance.dc.transform.position = enemyArray[saveNumber].transform.position - dir * 2f;
+        GameManager.Instance.dc.transform.LookAt(enemyArray[saveNumber].transform);
+
+        ObjectPool.Instance.PopFromPool("DemonicSkillForFog").transform.position = GameManager.Instance.dc.transform.position;
+        ObjectPool.Instance.PopFromPool("DemonicSkillForBats").transform.position = GameManager.Instance.dc.transform.position;
+
+        yield return new WaitForSeconds(0.5f);
+
+        ObjectPool.Instance.PopFromPool("DemonicSkillForHit").transform.position = enemyArray[saveNumber].transform.position + new Vector3(0f, 1f, 0f);
         SkillEffect(saveNumber);
+
+        yield return new WaitForSeconds(0.5f);
+        ObjectPool.Instance.PopFromPool("DemonicSkillForFog").transform.position = GameManager.Instance.dc.transform.position;
+
+        dir = new Vector3(0, 0, 1);
+        
+        GameManager.Instance.dc.transform.position = GameManager.Instance.dc.basePosition;
+        //GameManager.Instance.dc.transform.LookAt(enemyArray[saveNumber].transform);
+
+        ObjectPool.Instance.PopFromPool("DemonicSkillForFog").transform.position = GameManager.Instance.dc.transform.position;
+        ObjectPool.Instance.PopFromPool("DemonicSkillForBats").transform.position = GameManager.Instance.dc.transform.position;
     }
 
     private void SkillEffect(int idx)

@@ -13,7 +13,7 @@ public class DemonicController : MonoBehaviour
     public float MAXHP = 300f;
     public float demonicHp = 300f;
     public float demonicPower = 30f;
-
+    public Vector3 basePosition;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +24,8 @@ public class DemonicController : MonoBehaviour
 
         demonicAttackTimer = null;
         layerMask = 1 << LayerMask.NameToLayer("Enemy");    // enemy 레이어만 충돌 체크
+
+        basePosition = new Vector3(2f, 0f, 16.34f);
     }
 
     private void OnEnable()
