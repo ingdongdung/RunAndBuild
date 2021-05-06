@@ -9,7 +9,7 @@ public class ShopPurchaseItem : MonoBehaviour
     {
         this.itemName.text = data.name;
         this.price.text = data.price.ToString();
-        this.image.sprite = ImageManager.Instance.GetShopImage(data.id);
+        // this.image.sprite = ImageManager.Instance.GetShopImage(data.id);
     }
 
     [SerializeField] private Text itemName;

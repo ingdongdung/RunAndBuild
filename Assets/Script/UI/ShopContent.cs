@@ -44,17 +44,20 @@ public class ShopContent : MonoBehaviour
     private void SetItem(ShopCategory cat)
     {
         List<PurchaseItemData> list = this.itemDataList.FindAll(l => l.category == cat);
-        foreach (PurchaseItemData data in list)
+        if (list != null && list.Count != 0)
         {
-            ShopPurchaseItem item = Instantiate<ShopPurchaseItem>(this.shopItemPrefab, this.content.transform);
-            item.SetItem(data);
+            foreach (PurchaseItemData data in list)
+            {
+                ShopPurchaseItem item = Instantiate<ShopPurchaseItem>(this.shopItemPrefab, this.content.transform);
+                item.SetItem(data);
+            }
         }
     }
 
     private void LoadData()
     {
-        itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 1, "빵야빵야", 100));
-        itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 2, "퍽 퍽", 200));
-        itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 3, "휘리릭", 300));
+        // itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 1, "빵야빵야", 100));
+        // itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 2, "퍽 퍽", 200));
+        // itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 3, "휘리릭", 300));
     }
 }
