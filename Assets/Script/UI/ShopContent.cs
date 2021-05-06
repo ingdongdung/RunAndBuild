@@ -5,8 +5,8 @@ using UnityEngine;
 public enum ShopCategory
 {
     BUILDING = 0,
-    AA,
-    BB,
+    Interior,
+    Environment,
 }
 
 public class ShopContent : MonoBehaviour
@@ -56,8 +56,18 @@ public class ShopContent : MonoBehaviour
 
     private void LoadData()
     {
-        // itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 1, "빵야빵야", 100));
-        // itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 2, "퍽 퍽", 200));
-        // itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 3, "휘리릭", 300));
+        itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 1, "빵야빵야", 100));
+        itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 2, "퍽 퍽", 200));
+        itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 3, "휘리릭", 300));
+
+        
+        itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 4, "빵야빵야", 100));
+        itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 5, "퍽 퍽", 200));
+        itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 6, "휘리릭", 300));
+
+        
+        itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 7, "빵야빵야", 100));
+        itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 8, "퍽 퍽", 200));
+        itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 9, "휘리릭", 300));
     }
 }
