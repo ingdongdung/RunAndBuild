@@ -6303,7 +6303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 432442, guid: 37051fd28a93f274fbe34d9a48966a12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 432442, guid: 37051fd28a93f274fbe34d9a48966a12, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13786,8 +13786,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.7999135, y: 2.0027854, z: 1.4880842}
-  m_Center: {x: -0.39995676, y: 0.85199916, z: 0.22688806}
+  m_Size: {x: 0.987926, y: 1.9279337, z: 1.4880842}
+  m_Center: {x: -0.29078954, y: 0.88942504, z: 0.22688806}
 --- !u!4 &706124284 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 419446, guid: 20b7208fcb17e504b913a59a09391dfd, type: 3}
@@ -15963,8 +15963,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1912937, y: 2.9094334, z: 1}
-  m_Center: {x: 0.018944383, y: 0.71884394, z: -4.7171265e-17}
+  m_Size: {x: 1.1912937, y: 2.2056766, z: 1}
+  m_Center: {x: 0.018944383, y: 1.0707223, z: -4.7171265e-17}
 --- !u!54 &821720517
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16081,7 +16081,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -20743,7 +20742,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -27349,7 +27347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 419446, guid: 20b7208fcb17e504b913a59a09391dfd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.46
+      value: 1.15
       objectReference: {fileID: 0}
     - target: {fileID: 419446, guid: 20b7208fcb17e504b913a59a09391dfd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29377,7 +29375,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -29972,7 +29969,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -37809,7 +37805,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -39138,8 +39133,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.189182, z: 1}
-  m_Center: {x: 0, y: 0.71850574, z: 0}
+  m_Size: {x: 1, y: 1.9793204, z: 1}
+  m_Center: {x: 0, y: 0.8234355, z: 0}
 --- !u!54 &2028906199
 Rigidbody:
   m_ObjectHideFlags: 0
