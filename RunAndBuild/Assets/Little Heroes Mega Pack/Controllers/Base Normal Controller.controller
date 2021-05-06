@@ -19,7 +19,7 @@ AnimatorController:
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
+    m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Walk Backward
     m_Type: 4
@@ -8280,7 +8280,7 @@ AnimatorStateMachine:
     m_Position: {x: 1440, y: 348, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110232562}
-    m_Position: {x: 612, y: 108, z: 0}
+    m_Position: {x: 610, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110254064}
     m_Position: {x: 864, y: -456, z: 0}
