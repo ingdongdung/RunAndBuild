@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 419446}
+  - component: {fileID: 1156696710227585226}
   - component: {fileID: 9592094}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Angel Male 01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,6 +46,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1156696710227585226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb7fe5e6590ce0428873fd9869e49a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &9592094
 Animator:
   serializedVersion: 3
@@ -73,7 +86,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 485940}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRArm2Gizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 400884}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRUpWing5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +149,7 @@ GameObject:
   - component: {fileID: 435426}
   - component: {fileID: 3366388}
   - component: {fileID: 2372420}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Hair Male 06 Grey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,6 +189,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -215,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 455672}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLArm1Gizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 478238}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRibcageGizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 436128}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Dummy Prop Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +320,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 491718}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Dummy Prop Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +355,7 @@ GameObject:
   - component: {fileID: 425658}
   - component: {fileID: 3338020}
   - component: {fileID: 2302784}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Headband 05 Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,6 +395,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -422,7 +437,7 @@ GameObject:
   - component: {fileID: 423356}
   - component: {fileID: 3346470}
   - component: {fileID: 2372690}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Halo 01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,6 +477,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -502,7 +518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 490610}
   - component: {fileID: 13721928}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,6 +550,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -602,7 +619,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 497888}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLLeg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -633,7 +650,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 433228}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLBtmWing5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +681,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 493426}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLMidWing2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -695,7 +712,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 449754}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLUpWing4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -726,7 +743,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 483820}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRMidWing6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,7 +773,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 488770}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRMidWing1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -788,7 +805,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 496676}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigMain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -824,7 +841,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 486080}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLLeg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -855,7 +872,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 417610}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRArm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -886,7 +903,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 441678}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLBtmWing1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -917,7 +934,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 474324}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLBtmWing4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -948,7 +965,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 477166}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRUpWing4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -979,7 +996,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 443906}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLMidWing4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1010,7 +1027,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 481726}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLLegPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1040,7 +1057,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 478090}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRLeg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1071,7 +1088,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 491630}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRBtmWing1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1102,7 +1119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 439434}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Dummy Prop Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1135,7 +1152,7 @@ GameObject:
   - component: {fileID: 468224}
   - component: {fileID: 13762580}
   - component: {fileID: 9591938}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Wings 11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1167,6 +1184,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1272,7 +1290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 454618}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRMidWing2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1305,7 +1323,7 @@ GameObject:
   - component: {fileID: 446424}
   - component: {fileID: 19895538}
   - component: {fileID: 19956372}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Glitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1333,19 +1351,19 @@ ParticleSystem:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127562}
-  serializedVersion: 7
+  serializedVersion: 8
   lengthInSec: 0.7
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
+  emitterVelocityMode: 1
   looping: 1
   prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-  useRigidbodyForVelocity: 1
   startDelay:
     serializedVersion: 2
     minMaxState: 0
@@ -1877,6 +1895,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     maxNumParticles: 20
+    customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -6047,6 +6066,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6111,7 +6131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 410134}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRArm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6142,7 +6162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 412986}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigSpine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6173,7 +6193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 488028}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigNeck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6204,7 +6224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 468908}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Dummy Prop Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6235,7 +6255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 419094}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigPelvis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6268,7 +6288,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 469840}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRUpWing3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6299,7 +6319,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 470938}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLUpWing2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6330,7 +6350,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 414394}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLMidWing1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6362,7 +6382,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 435256}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRBtmWing5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6395,7 +6415,7 @@ GameObject:
   - component: {fileID: 438088}
   - component: {fileID: 3329128}
   - component: {fileID: 2322038}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Shield 10 Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6435,6 +6455,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6474,7 +6495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 430452}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLUpWing3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6507,7 +6528,7 @@ GameObject:
   - component: {fileID: 486826}
   - component: {fileID: 3348108}
   - component: {fileID: 2320152}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Sword 10 Blue Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6548,6 +6569,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6587,7 +6609,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 490282}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLArm2Gizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6617,7 +6639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 403528}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRUpWing6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6647,7 +6669,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 434342}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRLeg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6678,7 +6700,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 434264}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRMidWing3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6709,7 +6731,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 437390}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRBtmWing3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6740,7 +6762,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 491048}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigPelvisGizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6772,7 +6794,7 @@ GameObject:
   - component: {fileID: 479154}
   - component: {fileID: 19822552}
   - component: {fileID: 19979668}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6800,19 +6822,19 @@ ParticleSystem:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150938}
-  serializedVersion: 7
+  serializedVersion: 8
   lengthInSec: 0.7
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 1
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
+  emitterVelocityMode: 0
   looping: 1
   prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-  useRigidbodyForVelocity: 1
   startDelay:
     serializedVersion: 2
     minMaxState: 0
@@ -7079,7 +7101,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -7132,7 +7154,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -7344,6 +7366,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     maxNumParticles: 10
+    customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -11505,6 +11528,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -11514,7 +11538,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9d672c85440fc1245bec1f0c0fadd90b, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11569,7 +11592,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 417248}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11599,7 +11622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 469628}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigSpine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11630,7 +11653,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 466292}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRLegPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11660,7 +11683,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 467824}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRUpWing2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11691,7 +11714,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 425792}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLArm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11722,7 +11745,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 432638}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLBtmWing3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11753,7 +11776,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 401102}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLUpWing1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11785,7 +11808,7 @@ GameObject:
   m_Component:
   - component: {fileID: 422898}
   - component: {fileID: 9562668}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Wings 11 Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11837,7 +11860,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 449812}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLBtmWing6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11867,7 +11890,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 444862}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11897,7 +11920,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 443130}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRArm1Gizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11927,7 +11950,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 462040}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRMidWing5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11958,7 +11981,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 417622}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLMidWing3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11989,7 +12012,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 450210}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRArmPalmGizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12019,7 +12042,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 475716}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRBtmWing2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12050,7 +12073,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 493882}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12081,7 +12104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 440876}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRBtmWing6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12111,7 +12134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 426254}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLMidWing6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12141,7 +12164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 440100}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRBtmWing4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12172,7 +12195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 403494}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLMidWing5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12203,7 +12226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 424132}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRUpWing1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12234,7 +12257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 495946}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRLegAnkle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12264,7 +12287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 442072}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLUpWing5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12295,7 +12318,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 495590}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRMidWing4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12326,7 +12349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 437198}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRArmPalm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12357,7 +12380,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 402038}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLArmPalmGizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12387,7 +12410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 410548}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigHeadGizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12417,7 +12440,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 496950}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLUpWing6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12449,7 +12472,7 @@ GameObject:
   - component: {fileID: 443030}
   - component: {fileID: 19848850}
   - component: {fileID: 19932910}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Glitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12477,19 +12500,19 @@ ParticleSystem:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189586}
-  serializedVersion: 7
+  serializedVersion: 8
   lengthInSec: 0.7
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
+  emitterVelocityMode: 1
   looping: 1
   prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-  useRigidbodyForVelocity: 1
   startDelay:
     serializedVersion: 2
     minMaxState: 0
@@ -12756,7 +12779,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -12809,7 +12832,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -13021,6 +13044,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     maxNumParticles: 20
+    customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -17191,6 +17215,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -17200,7 +17225,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9d672c85440fc1245bec1f0c0fadd90b, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17255,7 +17279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 424230}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLBtmWing2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17286,7 +17310,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 492544}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigRibcage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17320,7 +17344,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 469968}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLArmPalm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17351,7 +17375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 414030}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLLegAnkle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17381,7 +17405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 454266}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RigLArm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
