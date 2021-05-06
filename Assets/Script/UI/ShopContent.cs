@@ -16,8 +16,13 @@ public class ShopContent : MonoBehaviour
         this.tab = (ShopCategory)cat;
         this.Init();
     }
+
+    public void OnClickClose()
+    {
+        this.gameObject.SetActive(false);
+    }
     // Start is called before the first frame update
-    protected void Start()
+    protected void OnEnable()
     {
         this.LoadData();
         this.tab = ShopCategory.BUILDING;
@@ -37,8 +42,8 @@ public class ShopContent : MonoBehaviour
         foreach (ShopCategoryItem item in categories)
         {
             item.SeleteItem(this.tab);
-            SetItem(this.tab);
         }
+        this.SetItem(this.tab);
     }
 
     private void SetItem(ShopCategory cat)
@@ -56,18 +61,16 @@ public class ShopContent : MonoBehaviour
 
     private void LoadData()
     {
-        itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 1, "빵야빵야", 100));
-        itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 2, "퍽 퍽", 200));
-        itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 3, "휘리릭", 300));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 1, "베이커리", 100));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 2, "목공소", 200));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 3, "풍력발전소", 300));
 
-        
-        itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 4, "빵야빵야", 100));
-        itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 5, "퍽 퍽", 200));
-        itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 6, "휘리릭", 300));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 4, "빵야빵야", 100));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 5, "퍽 퍽", 200));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 6, "휘리릭", 300));
 
-        
-        itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 7, "빵야빵야", 100));
-        itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 8, "퍽 퍽", 200));
-        itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 9, "휘리릭", 300));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 7, "빵야빵야", 100));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 8, "퍽 퍽", 200));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 9, "휘리릭", 300));
     }
 }

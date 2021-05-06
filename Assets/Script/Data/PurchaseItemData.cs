@@ -8,6 +8,7 @@ public class PurchaseItemData
         this.category = category;
         this.id = id;
         this.price = price;
+        this.name = name;
         this.category = category;
     }
     public int id;
