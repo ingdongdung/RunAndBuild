@@ -2052,7 +2052,7 @@ MonoBehaviour:
   - poolList: []
     poolItemName: FairySkill
     prefab: {fileID: 100000, guid: ada5d62ffe762ce4fbccc70dcdbc9022, type: 3}
-    poolCount: 2
+    poolCount: 3
   - poolList: []
     poolItemName: AngelSkillForGround
     prefab: {fileID: 100008, guid: 1ca16f2a31fb6a548ad8954bed1d321f, type: 3}
