@@ -6303,7 +6303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 432442, guid: 37051fd28a93f274fbe34d9a48966a12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 432442, guid: 37051fd28a93f274fbe34d9a48966a12, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13786,8 +13786,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5664449, z: 1}
-  m_Center: {x: 0, y: 0.7890649, z: 0}
+  m_Size: {x: 1.7999135, y: 2.0027854, z: 1.4880842}
+  m_Center: {x: -0.39995676, y: 0.85199916, z: 0.22688806}
 --- !u!4 &706124284 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 419446, guid: 20b7208fcb17e504b913a59a09391dfd, type: 3}
@@ -15963,8 +15963,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1912937, y: 2.1940813, z: 1}
-  m_Center: {x: 0.018944383, y: 1.07652, z: -4.7171265e-17}
+  m_Size: {x: 1.1912937, y: 2.9094334, z: 1}
+  m_Center: {x: 0.018944383, y: 0.71884394, z: -4.7171265e-17}
 --- !u!54 &821720517
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -27349,7 +27349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 419446, guid: 20b7208fcb17e504b913a59a09391dfd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.000001
+      value: 1.46
       objectReference: {fileID: 0}
     - target: {fileID: 419446, guid: 20b7208fcb17e504b913a59a09391dfd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -39138,8 +39138,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1280198, y: 1.5698979, z: 1}
-  m_Center: {x: -0.031202555, y: 0.8677372, z: 0}
+  m_Size: {x: 1, y: 2.189182, z: 1}
+  m_Center: {x: 0, y: 0.71850574, z: 0}
 --- !u!54 &2028906199
 Rigidbody:
   m_ObjectHideFlags: 0

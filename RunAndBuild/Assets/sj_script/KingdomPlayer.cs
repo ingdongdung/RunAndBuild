@@ -107,7 +107,7 @@ public class KingdomPlayer : MonoBehaviour
     IEnumerator PlayerAnimationBehavior(string animationTag)
     {
         beforeAnim = currentAnim;
-       
+        Debug.Log(animationTag);
         if (animationTag == "Walk")
         {
             currentAnim = "Walk";
