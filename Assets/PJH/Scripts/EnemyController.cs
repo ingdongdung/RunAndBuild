@@ -67,14 +67,6 @@ public class EnemyController : MonoBehaviour
         {
             StopCoroutine(enemyDieTimer);
         }
-        if (hb != null)
-        {
-            if (hb.transform.parent.name == "UI Canvas for enemy")
-            {
-                hb.transform.parent = ObjectPool.Instance.gameObject.GetComponent<Transform>();
-                ObjectPool.Instance.PushToPool(hb.name, hb);
-            }
-        }
     }
 
     private void Update()
@@ -140,6 +132,16 @@ public class EnemyController : MonoBehaviour
     IEnumerator CheckToDeadTimer()
     {
         yield return new WaitForSeconds(1.0f);
+
+        if (hb != null)
+        {
+            if (hb.transform.parent.name == "UI Canvas for enemy")
+            {
+                hb.transform.parent = ObjectPool.Instance.gameObject.GetComponent<Transform>();
+                ObjectPool.Instance.PushToPool(hb.name, hb);
+            }
+        }
+
         ObjectPool.Instance.PushToPool(gameObject.name, gameObject);
     }
 

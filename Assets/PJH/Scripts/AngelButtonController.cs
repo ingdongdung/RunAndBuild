@@ -17,12 +17,15 @@ public class AngelButtonController : MonoBehaviour, IPointerDownHandler, IPointe
     // Start is called before the first frame update
     void Start()
     {
-        
+        angelSkillCoroutine = null;
     }
 
     private void OnDisable()
     {
-        StopCoroutine(angelSkillCoroutine);
+        if (angelSkillCoroutine != null)
+        {
+            StopCoroutine(angelSkillCoroutine);
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)

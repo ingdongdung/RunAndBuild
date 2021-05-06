@@ -17,12 +17,15 @@ public class FairyButtonController : MonoBehaviour, IPointerDownHandler, IPointe
     // Start is called before the first frame update
     void Start()
     {
-        
+        fairySkillCoroutine = null;
     }
 
     private void OnDisable()
     {
-        StopCoroutine(fairySkillCoroutine);
+        if (fairySkillCoroutine != null)
+        {
+            StopCoroutine(fairySkillCoroutine);
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)

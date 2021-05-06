@@ -17,12 +17,15 @@ public class DemonicButtonController : MonoBehaviour, IPointerDownHandler, IPoin
     // Start is called before the first frame update
     void Start()
     {
-        
+        demonicSkillCoroutine = null;
     }
 
     private void OnDisable()
     {
-        StopCoroutine(demonicSkillCoroutine);
+        if (demonicSkillCoroutine != null)
+        {
+            StopCoroutine(demonicSkillCoroutine);
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
