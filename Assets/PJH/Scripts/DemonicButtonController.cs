@@ -93,9 +93,8 @@ public class DemonicButtonController : MonoBehaviour, IPointerDownHandler, IPoin
         yield return new WaitForSeconds(0.5f);
         ObjectPool.Instance.PopFromPool("DemonicSkillForFog").transform.position = GameManager.Instance.dc.transform.position;
 
-        dir = new Vector3(0, 0, 1);
-        
         GameManager.Instance.dc.transform.position = GameManager.Instance.dc.basePosition;
+        GameManager.Instance.dc.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 1));
         //GameManager.Instance.dc.transform.LookAt(enemyArray[saveNumber].transform);
 
         ObjectPool.Instance.PopFromPool("DemonicSkillForFog").transform.position = GameManager.Instance.dc.transform.position;
