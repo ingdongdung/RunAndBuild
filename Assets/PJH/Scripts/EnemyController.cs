@@ -28,14 +28,11 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
-        animator.SetBool("Walk", false);
-        animator.SetBool("Run", true);
-
         enemySpeed = SPEED;
         enemyHp = MAXHP;
         enemyPower = 3f;
@@ -45,6 +42,9 @@ public class EnemyController : MonoBehaviour
 
     private void OnEnable()
     {
+        animator.SetBool("Walk", false);
+        animator.SetBool("Run", true);
+
         // 재사용 시 초기화되어야 할 것들
         dir = new Vector3(0f, 0f, -1f);
         transform.Rotate(new Vector3(0f, 180f, 0f));
@@ -91,9 +91,6 @@ public class EnemyController : MonoBehaviour
             animator.SetBool("Run", false);
 
             GameManager.Instance.meetEnemy = true;
-            //GameManager.Instance.fc.MeetEnemy();
-            //GameManager.Instance.ac.MeetEnemy();
-            //GameManager.Instance.dc.MeetEnemy();
         }
 
         if (!meetPlayer && !attackPlayer)

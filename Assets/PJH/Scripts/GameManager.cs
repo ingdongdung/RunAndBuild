@@ -75,18 +75,30 @@ public class GameManager : Singleton<GameManager>
             SpawnManager.Instance.treeSpawningCoroutine = StartCoroutine(SpawnManager.Instance.StartTreeSpawning());
             SpawnManager.Instance.treeSpawnFlag = true;
 
+            InitializeCharacter();
+        }
+    }
+
+    private void InitializeCharacter()
+    {
+        if (fc.enabled)
+        {
             fc.Initialize();
-            ac.Initialize();
-            dc.Initialize();
-
-
             fc.transform.rotation = Quaternion.Euler(baseDirection);
-            ac.transform.rotation = Quaternion.Euler(baseDirection);
-            dc.transform.rotation = Quaternion.Euler(baseDirection);
-
-
             fc.animator.SetBool("Fly Forward", true);
+        }
+
+        if (ac.enabled)
+        {
+            ac.Initialize();
+            ac.transform.rotation = Quaternion.Euler(baseDirection);
             ac.animator.SetBool("Run", true);
+        }
+
+        if (dc.enabled)
+        {
+            dc.Initialize();
+            dc.transform.rotation = Quaternion.Euler(baseDirection);
             dc.animator.SetBool("Run", true);
         }
     }

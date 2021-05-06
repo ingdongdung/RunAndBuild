@@ -6,7 +6,6 @@ public class DemonicController : MonoBehaviour
 {
     private bool onceForCoroutine;
     private int layerMask;
-    private GameObject[] enemyArray;
 
     public Coroutine demonicAttackTimer;
     public Animator animator;
@@ -68,25 +67,21 @@ public class DemonicController : MonoBehaviour
 
     private void LookAtEnemy()
     {
-        enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemyArray.Length == 0)
+        GameManager.Instance.enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
+        if (GameManager.Instance.enemyArray.Length == 0)
             return;
 
         int saveNumber = 0;
-        float minDistance = DistanceToEnemy(enemyArray[0]);
-        for (int i = 1; i < enemyArray.Length; ++i)
+        float minDistance = DistanceToEnemy(GameManager.Instance.enemyArray[0]);
+        for (int i = 1; i < GameManager.Instance.enemyArray.Length; ++i)
         {
-            //print("enemy" + i + " : " + DistanceToEnemy(enemyArray[i]));
-            if (minDistance >= DistanceToEnemy(enemyArray[i]))
+            if (minDistance >= DistanceToEnemy(GameManager.Instance.enemyArray[i]))
             {
-                minDistance = DistanceToEnemy(enemyArray[i]);
+                minDistance = DistanceToEnemy(GameManager.Instance.enemyArray[i]);
                 saveNumber = i;
             }
         }
-        // 첫번째 공격 이후 타겟이 바뀌는데 확인해보니 제일 거리 가까운 애한테 공격하는거였음
-        // 왜 첫번째 타겟 정할 때랑 두번째 이후부터랑 타겟 거리가 달라지는지 모르겠음
-        //print(saveNumber);
-        transform.LookAt(enemyArray[saveNumber].transform);
+        transform.LookAt(GameManager.Instance.enemyArray[saveNumber].transform);
 
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Melee Left Attack 01"))
         {
