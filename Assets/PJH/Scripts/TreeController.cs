@@ -29,8 +29,8 @@ public class TreeController : MonoBehaviour
     {
         if (GameManager.Instance.enemyArray.Length > 0)
         {
-            if (GameManager.Instance.Search() >= 0 &&
-                GameManager.Instance.DistanceToEnemy(GameManager.Instance.enemyArray[GameManager.Instance.Search()]) <= 20f &&
+            if (GameManager.Instance.SearchEnemy() >= 0 &&
+                GameManager.Instance.DistanceToEnemy(GameManager.Instance.enemyArray[GameManager.Instance.SearchEnemy()]) <= 20f &&
                 !GameManager.Instance.meetEnemy)
             {
                 treeSpeed -= 0.04f;

@@ -15,6 +15,7 @@ public class SpawnManager : Singleton<SpawnManager>
     public float _elapsedTimeForBoss = 0f;
 
     public Coroutine treeSpawningCoroutine;
+    public Coroutine monsterSpawningCoroutine;
     public bool treeSpawnFlag;
 
     // 오브젝트가 출현할 위치를 담을 배열
@@ -26,7 +27,7 @@ public class SpawnManager : Singleton<SpawnManager>
         // Hierarchy View의 Spawn Point를 찾아 하위에 있는 모든 Transform 컴포넌트를 찾아옴
         points = GameObject.Find("SpawnPoint").GetComponentsInChildren<Transform>();
         treeSpawningCoroutine = StartCoroutine(StartTreeSpawning());
-        StartCoroutine(StartMonsterSpawning());
+        monsterSpawningCoroutine = StartCoroutine(StartMonsterSpawning());
 
         treeSpawnFlag = true;
     }
@@ -37,6 +38,7 @@ public class SpawnManager : Singleton<SpawnManager>
         if (GameManager.Instance.meetEnemy && treeSpawnFlag)
         {
             StopCoroutine(treeSpawningCoroutine);
+            StopCoroutine(monsterSpawningCoroutine);
             treeSpawnFlag = false;
         }
     }
@@ -76,40 +78,37 @@ public class SpawnManager : Singleton<SpawnManager>
         }
     }
 
-    IEnumerator StartMonsterSpawning()
+    public IEnumerator StartMonsterSpawning()
     {
-        while (true)
+        yield return new WaitForSeconds(2f);
+        foreach (var point in points)
         {
-            foreach (var point in points)
+            if (point.name.Substring(0, 6) == "enemyP")    // 몹
             {
-                if (point.name.Substring(0, 6) == "enemyP")    // 몹
+                int randNum = Random.Range(0, enemyCount);
+                switch (randNum)
                 {
-                    int randNum = Random.Range(0, enemyCount);
-                    switch (randNum)
-                    {
-                        case 0:
-                            enemyName += "01";
-                            break;
-                        case 1:
-                            enemyName += "02";
-                            break;
-                        case 2:
-                            enemyName += "03";
-                            break;
-                        case 3:
-                            enemyName += "04";
-                            break;
-                    }
-                    GameObject enemy = ObjectPool.Instance.PopFromPool(enemyName);
-                    enemy.transform.position = point.position + new Vector3(0f, 1.21f, 0f);
-                    enemyName = "Enemy";
+                    case 0:
+                        enemyName += "01";
+                        break;
+                    case 1:
+                        enemyName += "02";
+                        break;
+                    case 2:
+                        enemyName += "03";
+                        break;
+                    case 3:
+                        enemyName += "04";
+                        break;
                 }
-                //else if (point.name.Substring(0, 6) == "enemyB")    // 보스
-                //{
-
-                //}
+                GameObject enemy = ObjectPool.Instance.PopFromPool(enemyName);
+                enemy.transform.position = point.position + new Vector3(0f, 1.21f, 0f);
+                enemyName = "Enemy";
             }
-            yield return new WaitForSeconds(10);
+            //else if (point.name.Substring(0, 6) == "enemyB")    // 보스
+            //{
+
+            //}
         }
     }
 }

@@ -73,6 +73,7 @@ public class GameManager : Singleton<GameManager>
             onceForCoroutine = false;
 
             SpawnManager.Instance.treeSpawningCoroutine = StartCoroutine(SpawnManager.Instance.StartTreeSpawning());
+            SpawnManager.Instance.monsterSpawningCoroutine = StartCoroutine(SpawnManager.Instance.StartMonsterSpawning());
             SpawnManager.Instance.treeSpawnFlag = true;
 
             InitializeCharacter();
@@ -105,11 +106,11 @@ public class GameManager : Singleton<GameManager>
 
     IEnumerator DistanceToEnemyTimer()
     {
-        Search();
+        SearchEnemy();
         yield return new WaitForSeconds(0.25f);
     }
 
-    public int Search()
+    public int SearchEnemy()
     {
         enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
         int saveNumber = 0;
@@ -130,8 +131,7 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            print(enemyArray.Length);
-            print("그런 건 없어용 (Search()'s return value is -1)");
+            Debug.Log("Search()'s return value is -1");
             return -1;
         }
     }
