@@ -5,15 +5,15 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637545990022083763
-    m_Hash: 3323674085
+      ticks: 637559023611888289
+    m_Hash: 4140749883
   m_LockFileStatus:
     m_FilePath: C:/Users/dtw18/Documents/GitHub/RunAndBuild/RunAndBuild/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637556096764548734
+      ticks: 637559023977638441
     m_Hash: 1259995202
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -61,6 +61,7 @@ m_ResolvedPackages:
     - 1.3.7
     - 1.3.8
     - 1.3.9
+    - 1.5.7
     - 2.0.0-preview.6
     - 2.0.0-preview.8
     - 2.0.0-preview.15
@@ -73,6 +74,7 @@ m_ResolvedPackages:
     - 2.1.0-preview.6
     compatible:
     - 1.3.9
+    - 1.5.7
     - 2.0.0-preview.6
     - 2.0.0-preview.8
     - 2.0.0-preview.15
@@ -165,9 +167,11 @@ m_ResolvedPackages:
     - 3.0.3
     - 3.0.4
     - 3.0.5
+    - 3.0.6
     compatible:
     - 3.0.5
-    verified: 3.0.5
+    - 3.0.6
+    verified: 3.0.6
   dependencies: []
   resolvedDependencies: []
   keywords: []
@@ -497,6 +501,7 @@ m_ResolvedPackages:
     - 1.5.3
     - 1.5.4
     - 1.5.5
+    - 1.5.6
     - 2.0.0
     - 2.0.1-preview.1
     - 2.0.1
@@ -517,6 +522,7 @@ m_ResolvedPackages:
     - 2.1.3
     - 2.1.4
     - 2.1.5
+    - 2.1.6
     - 3.0.0-preview.1
     - 3.0.0-preview.3
     - 3.0.0-preview.4
@@ -533,10 +539,12 @@ m_ResolvedPackages:
     - 3.0.3
     - 3.0.4
     - 3.0.5
+    - 3.0.6
     compatible:
     - 3.0.4
     - 3.0.5
-    verified: 3.0.5
+    - 3.0.6
+    verified: 3.0.6
   dependencies:
   - name: com.unity.ugui
     version: 1.0.0
@@ -655,11 +663,13 @@ m_ResolvedPackages:
     - 1.5.4
     - 1.6.0-pre.1
     - 1.6.0-pre.3
+    - 1.6.0-pre.4
     compatible:
     - 1.5.2
     - 1.5.4
     - 1.6.0-pre.1
     - 1.6.0-pre.3
+    - 1.6.0-pre.4
     verified: 1.5.4
   dependencies:
   - name: com.unity.modules.director
