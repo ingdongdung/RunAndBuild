@@ -35,11 +35,12 @@ public class ShopContent : MonoBehaviour
     [SerializeField] private GameObject content;
     [SerializeField] private List<ShopCategoryItem> categories;
     [SerializeField] private List<PurchaseItemData> itemDataList = new List<PurchaseItemData>();
+    [SerializeField] private List<Sprite> sprites;
     private ShopCategory tab;
 
     private void Init()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < content.transform.childCount; i++)
         {
             Debug.Log(content.transform.GetChild(i));
             Destroy(content.transform.GetChild(i).gameObject);
@@ -59,7 +60,7 @@ public class ShopContent : MonoBehaviour
             foreach (PurchaseItemData data in list)
             {
                 ShopPurchaseItem item = Instantiate<ShopPurchaseItem>(this.shopItemPrefab, this.content.transform);
-                item.SetItem(data);
+                item.SetItem(data, sprites.Find(s => s.name == name));
             }
         }
     }
