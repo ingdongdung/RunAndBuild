@@ -39,6 +39,11 @@ public class ShopContent : MonoBehaviour
 
     private void Init()
     {
+        for (int i = 0; i < 3; i++)
+        {
+            Debug.Log(content.transform.GetChild(i));
+            Destroy(content.transform.GetChild(i).gameObject);
+        }
         foreach (ShopCategoryItem item in categories)
         {
             item.SeleteItem(this.tab);
@@ -65,12 +70,12 @@ public class ShopContent : MonoBehaviour
         this.itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 2, "목공소", 200));
         this.itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 3, "풍력발전소", 300));
 
-        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 4, "빵야빵야", 100));
-        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 5, "퍽 퍽", 200));
-        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 6, "휘리릭", 300));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 4, "임시아이템1", 100));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 5, "임시아이템2", 200));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 6, "임시아이템3", 300));
 
-        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 7, "빵야빵야", 100));
-        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 8, "퍽 퍽", 200));
-        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 9, "휘리릭", 300));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 7, "임시아이템4", 100));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 8, "임시아이템5", 200));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 9, "임시아이템6", 300));
     }
 }
