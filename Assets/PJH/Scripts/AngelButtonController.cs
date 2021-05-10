@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class AngelButtonController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
@@ -8,6 +9,10 @@ public class AngelButtonController : MonoBehaviour, IPointerDownHandler, IPointe
     private GameObject[] enemyArray;
     private Coroutine angelSkillCoroutine;
     private float angelSkillDamage;
+
+    public Image img;
+    public Button btn;
+    public float cooltime = 10f;
 
     private void Awake()
     {
