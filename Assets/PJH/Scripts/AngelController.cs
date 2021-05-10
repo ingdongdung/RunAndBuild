@@ -108,6 +108,8 @@ public class AngelController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         angelHp -= damage;
+
+        GameManager.Instance.aHpBarImage.fillAmount = angelHp / MAXHP;
     }
 
     public void Initialize()        // 플레이어 앞 적이 다 죽으면 실행할 메소드

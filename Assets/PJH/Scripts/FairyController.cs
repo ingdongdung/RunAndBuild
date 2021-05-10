@@ -116,6 +116,8 @@ public class FairyController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         fairyHp -= damage;
+
+        GameManager.Instance.fHpBarImage.fillAmount = fairyHp / MAXHP;
     }
 
     public void Initialize()        // 플레이어 앞 적이 다 죽으면 실행할 메소드

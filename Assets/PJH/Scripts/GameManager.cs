@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
     public FairyController fc;
     public AngelController ac;
     public DemonicController dc;
+    public CharacterHpBarController fchb;
+    public CharacterHpBarController achb;
+    public CharacterHpBarController dchb;
+    public Image fHpBarImage;
+    public Image aHpBarImage;
+    public Image dHpBarImage;
     public Canvas uiCanvas;
 
     public GameObject[] enemyArray;
@@ -21,6 +28,17 @@ public class GameManager : Singleton<GameManager>
         fc = GameObject.Find("Fairy").GetComponent<FairyController>();
         ac = GameObject.Find("Angel").GetComponent<AngelController>();
         dc = GameObject.Find("Demonic").GetComponent<DemonicController>();
+
+        fchb = GameObject.Find("FairyHpBar").GetComponent<CharacterHpBarController>();
+        achb = GameObject.Find("AngelHpBar").GetComponent<CharacterHpBarController>();
+        dchb = GameObject.Find("DemonicHpBar").GetComponent<CharacterHpBarController>();
+
+        fHpBarImage = fchb.GetComponentsInChildren<Image>()[1];
+        fHpBarImage.fillAmount = fc.MAXHP;
+        aHpBarImage = achb.GetComponentsInChildren<Image>()[1];
+        aHpBarImage.fillAmount = ac.MAXHP;
+        dHpBarImage = dchb.GetComponentsInChildren<Image>()[1];
+        dHpBarImage.fillAmount = dc.MAXHP;
 
         uiCanvas = GameObject.Find("UI Canvas for enemy").GetComponent<Canvas>();
 

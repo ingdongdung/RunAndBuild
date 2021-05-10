@@ -107,6 +107,8 @@ public class DemonicController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         demonicHp -= damage;
+
+        GameManager.Instance.dHpBarImage.fillAmount = demonicHp / MAXHP;
     }
 
     public void Initialize()        // 플레이어 앞 적이 다 죽으면 실행할 메소드
