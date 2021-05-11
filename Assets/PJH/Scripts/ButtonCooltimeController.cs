@@ -8,12 +8,12 @@ public class ButtonCooltimeController : MonoBehaviour, IPointerDownHandler, IPoi
 {
     public Image img;
     public Button btn;
+    public Text txt;
     public float aCooltime;
     public float dCooltime;
     public float fCooltime;
 
     private float leftTime;
-    private bool isClicked;
     private Coroutine CooltimeCoroutine;
 
     // Start is called before the first frame update
@@ -23,12 +23,13 @@ public class ButtonCooltimeController : MonoBehaviour, IPointerDownHandler, IPoi
             img = gameObject.GetComponent<Image>();
         if (btn == null)
             btn = gameObject.GetComponent<Button>();
+        if (txt == null)
+            txt = gameObject.GetComponentInChildren<Text>();
 
         aCooltime = 11f;
         dCooltime = 13f;
         fCooltime = 17f;
         leftTime = 0f;
-        isClicked = true;
     }
 
     private void OnDisable()
@@ -43,7 +44,7 @@ public class ButtonCooltimeController : MonoBehaviour, IPointerDownHandler, IPoi
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (isClicked)
+        if (btn.enabled)
         {
             if (btn)
                 btn.enabled = false;
@@ -71,8 +72,6 @@ public class ButtonCooltimeController : MonoBehaviour, IPointerDownHandler, IPoi
 
     IEnumerator StartCooltime(float cooltime)
     {
-        isClicked = false;
-
         while (leftTime > 0f)
         {
             leftTime -= Time.deltaTime;
@@ -81,18 +80,18 @@ public class ButtonCooltimeController : MonoBehaviour, IPointerDownHandler, IPoi
                 leftTime = 0f;
                 if (btn)
                     btn.enabled = true;
-
-                isClicked = false;
             }
 
             float ratio = 1.0f - (leftTime / cooltime);
             if (img)
                 img.fillAmount = ratio;
+            if (txt)
+                txt.text = string.Format("{0:0.#}", leftTime);
 
             yield return null;
         }
-
-        isClicked = true;
+        if (txt)
+            txt.text = "";
     }
 
     // Update is called once per frame
