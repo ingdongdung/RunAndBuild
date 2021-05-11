@@ -6,13 +6,11 @@ using UnityEngine.EventSystems;
 
 public class AngelButtonController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    public Button btn;
+
     private GameObject[] enemyArray;
     private Coroutine angelSkillCoroutine;
     private float angelSkillDamage;
-
-    public Image img;
-    public Button btn;
-    public float cooltime = 10f;
 
     private void Awake()
     {
@@ -22,6 +20,8 @@ public class AngelButtonController : MonoBehaviour, IPointerDownHandler, IPointe
     // Start is called before the first frame update
     void Start()
     {
+        btn = gameObject.GetComponent<Button>();
+
         angelSkillCoroutine = null;
     }
 
@@ -40,17 +40,20 @@ public class AngelButtonController : MonoBehaviour, IPointerDownHandler, IPointe
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (!GameManager.Instance.meetEnemy)
+        if (btn.enabled)
         {
-            GameManager.Instance.ac.animator.SetBool("Run", false);
-            GameManager.Instance.ac.animator.Play("Jump Right Attack 01");
-            angelSkillCoroutine = StartCoroutine(AngelSkill());
-            GameManager.Instance.ac.animator.SetBool("Run", true);
-        }
-        else
-        {
-            GameManager.Instance.ac.animator.Play("Jump Right Attack 01");
-            angelSkillCoroutine = StartCoroutine(AngelSkill());
+            if (!GameManager.Instance.meetEnemy)
+            {
+                GameManager.Instance.ac.animator.SetBool("Run", false);
+                GameManager.Instance.ac.animator.Play("Jump Right Attack 01");
+                angelSkillCoroutine = StartCoroutine(AngelSkill());
+                GameManager.Instance.ac.animator.SetBool("Run", true);
+            }
+            else
+            {
+                GameManager.Instance.ac.animator.Play("Jump Right Attack 01");
+                angelSkillCoroutine = StartCoroutine(AngelSkill());
+            }
         }
     }
 

@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class DemonicButtonController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    public Button btn;
+
     private GameObject[] enemyArray;
     private Coroutine demonicSkillCoroutine;
     private float demonicSkillDamage;
@@ -17,6 +20,8 @@ public class DemonicButtonController : MonoBehaviour, IPointerDownHandler, IPoin
     // Start is called before the first frame update
     void Start()
     {
+        btn = gameObject.GetComponent<Button>();
+
         demonicSkillCoroutine = null;
     }
 
@@ -35,17 +40,20 @@ public class DemonicButtonController : MonoBehaviour, IPointerDownHandler, IPoin
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (!GameManager.Instance.meetEnemy)
+        if (btn.enabled)
         {
-            GameManager.Instance.dc.animator.SetBool("Run", false);
-            GameManager.Instance.dc.animator.Play("Melee Left Attack 01");
-            demonicSkillCoroutine = StartCoroutine(DemonicSkill());
-            GameManager.Instance.dc.animator.SetBool("Run", true);
-        }
-        else
-        {
-            GameManager.Instance.dc.animator.Play("Melee Left Attack 01");
-            demonicSkillCoroutine = StartCoroutine(DemonicSkill());
+            if (!GameManager.Instance.meetEnemy)
+            {
+                GameManager.Instance.dc.animator.SetBool("Run", false);
+                GameManager.Instance.dc.animator.Play("Melee Left Attack 01");
+                demonicSkillCoroutine = StartCoroutine(DemonicSkill());
+                GameManager.Instance.dc.animator.SetBool("Run", true);
+            }
+            else
+            {
+                GameManager.Instance.dc.animator.Play("Melee Left Attack 01");
+                demonicSkillCoroutine = StartCoroutine(DemonicSkill());
+            }
         }
     }
 
