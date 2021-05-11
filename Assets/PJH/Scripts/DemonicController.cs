@@ -8,6 +8,7 @@ public class DemonicController : MonoBehaviour
     private int layerMask;
 
     public Coroutine demonicAttackTimer;
+    public Coroutine demonicDeadTimer;
     public Animator animator;
     public float MAXHP = 300f;
     public float demonicHp = 300f;
@@ -40,6 +41,10 @@ public class DemonicController : MonoBehaviour
         if (demonicAttackTimer != null)
         {
             StopCoroutine(demonicAttackTimer);
+        }
+        if (demonicDeadTimer != null)
+        {
+            StopCoroutine(demonicDeadTimer);
         }
     }
 
@@ -85,7 +90,8 @@ public class DemonicController : MonoBehaviour
 
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Melee Left Attack 01"))
         {
-            animator.Play("Right Punch Attack");
+            if (demonicHp > 0f)
+                animator.Play("Right Punch Attack");
         }
     }
 
@@ -109,6 +115,25 @@ public class DemonicController : MonoBehaviour
         demonicHp -= damage;
 
         GameManager.Instance.dHpBarImage.fillAmount = demonicHp / MAXHP;
+
+        CheckToDead();
+    }
+
+    private void CheckToDead()
+    {
+        if (demonicHp <= 0f)
+        {
+            animator.Play("Die");
+            demonicDeadTimer = StartCoroutine(CheckToDeadTimer());
+        }
+    }
+
+    IEnumerator CheckToDeadTimer()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        GameManager.Instance.dBtn.gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     public void Initialize()        // 플레이어 앞 적이 다 죽으면 실행할 메소드

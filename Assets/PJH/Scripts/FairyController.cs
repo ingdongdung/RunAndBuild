@@ -8,6 +8,7 @@ public class FairyController : MonoBehaviour
     private int layerMask;
 
     public Coroutine fairyAttackTimer;
+    public Coroutine fairyDeadTimer;
     public Animator animator;
     public float MAXHP = 300f;
     public float fairyHp = 300f;
@@ -44,6 +45,10 @@ public class FairyController : MonoBehaviour
         {
             StopCoroutine(fairyAttackTimer);
         }
+        if (fairyDeadTimer != null)
+        {
+            StopCoroutine(fairyDeadTimer);
+        }
     }
 
     // Update is called once per frame
@@ -65,7 +70,8 @@ public class FairyController : MonoBehaviour
 
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Fly Cast Spell 02"))
             {
-                animator.Play("Fly Cast Spell 01");
+                if (fairyHp > 0f)
+                    animator.Play("Fly Cast Spell 01");
             }
             yield return new WaitForSeconds(2);
         }
@@ -118,6 +124,39 @@ public class FairyController : MonoBehaviour
         fairyHp -= damage;
 
         GameManager.Instance.fHpBarImage.fillAmount = fairyHp / MAXHP;
+
+        CheckToDead();
+    }
+
+    private void CheckToDead()
+    {
+        if (fairyHp <= 0f)
+        {
+            //if (animator.GetCurrentAnimatorStateInfo(0).IsName("Fly Cast Spell 01"))
+            //{
+            //    animator.SetBool("Fly Cast Spell 01", false);
+            //}
+            //else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Fly Cast Spell 02"))
+            //{
+            //    animator.SetBool("Fly Cast Spell 02", false);
+            //}
+
+            //animator.SetBool("Fly Idle", false);
+            //animator.SetBool("Idle", true);
+            animator.Play("Fly Die");
+            //animator.SetBool("Fly Die", true);
+
+
+            fairyDeadTimer = StartCoroutine(CheckToDeadTimer());
+        }
+    }
+
+    IEnumerator CheckToDeadTimer()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        GameManager.Instance.fBtn.gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     public void Initialize()        // 플레이어 앞 적이 다 죽으면 실행할 메소드

@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
     public bool meetPlayer;
     public bool attackPlayer;
     public Coroutine enemyAttackTimer;
-    public Coroutine enemyDieTimer;
+    public Coroutine enemyDeadTimer;
 
     public Vector3 hpBarOffset = new Vector3(0f, 2.2f, 0f);
 
@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
     {
         enemySpeed = SPEED;
         enemyHp = MAXHP;
-        enemyPower = 3f;
+        enemyPower = 10f;
 
         enemyAttackTimer = null;
     }
@@ -63,9 +63,9 @@ public class EnemyController : MonoBehaviour
         {
             StopCoroutine(enemyAttackTimer);
         }
-        if (enemyDieTimer != null)
+        if (enemyDeadTimer != null)
         {
-            StopCoroutine(enemyDieTimer);
+            StopCoroutine(enemyDeadTimer);
         }
 
         if (hb != null)
@@ -112,7 +112,7 @@ public class EnemyController : MonoBehaviour
 
     private float DistanceToPlayer()
     {
-        return Vector3.Distance(transform.position, GameManager.Instance.fc.transform.position);
+        return Vector3.Distance(transform.position, GameManager.Instance.transform.position);
     }
 
     private void MoveToPlayer()
@@ -138,7 +138,7 @@ public class EnemyController : MonoBehaviour
         if (enemyHp <= 0f)
         {
             animator.Play("Die");
-            enemyDieTimer = StartCoroutine(CheckToDeadTimer());
+            enemyDeadTimer = StartCoroutine(CheckToDeadTimer());
         }
     }
 

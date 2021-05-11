@@ -5,15 +5,18 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
-    public FairyController fc;
     public AngelController ac;
     public DemonicController dc;
-    public CharacterHpBarController fchb;
+    public FairyController fc;
     public CharacterHpBarController achb;
     public CharacterHpBarController dchb;
-    public Image fHpBarImage;
+    public CharacterHpBarController fchb;
     public Image aHpBarImage;
     public Image dHpBarImage;
+    public Image fHpBarImage;
+    public Button aBtn;
+    public Button dBtn;
+    public Button fBtn;
     public Canvas uiCanvas;
 
     public GameObject[] enemyArray;
@@ -32,6 +35,10 @@ public class GameManager : Singleton<GameManager>
         fchb = GameObject.Find("FairyHpBar").GetComponent<CharacterHpBarController>();
         achb = GameObject.Find("AngelHpBar").GetComponent<CharacterHpBarController>();
         dchb = GameObject.Find("DemonicHpBar").GetComponent<CharacterHpBarController>();
+
+        aBtn = GameObject.Find("AngelButton").GetComponent<Button>();
+        dBtn = GameObject.Find("DemonicButton").GetComponent<Button>();
+        fBtn = GameObject.Find("FairyButton").GetComponent<Button>();
 
         fHpBarImage = fchb.GetComponentsInChildren<Image>()[1];
         fHpBarImage.fillAmount = fc.MAXHP;

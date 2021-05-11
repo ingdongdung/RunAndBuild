@@ -34,7 +34,8 @@ public class ButtonCooltimeController : MonoBehaviour, IPointerDownHandler, IPoi
 
     private void OnDisable()
     {
-        StopCoroutine(CooltimeCoroutine);
+        if (CooltimeCoroutine != null)
+            StopCoroutine(CooltimeCoroutine);
     }
 
     public void OnPointerDown(PointerEventData eventData)

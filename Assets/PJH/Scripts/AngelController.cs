@@ -8,12 +8,12 @@ public class AngelController : MonoBehaviour
     private int layerMask;
 
     public Coroutine angelAttackTimer;
+    public Coroutine angelDeadTimer;
     public Animator animator;
     public float MAXHP = 300f;
     public float angelHp = 300f;
     public float angelPower = 30f;
     public Vector3 basePosition;
-
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +41,10 @@ public class AngelController : MonoBehaviour
         if (angelAttackTimer != null)
         {
             StopCoroutine(angelAttackTimer);
+        }
+        if (angelDeadTimer != null)
+        {
+            StopCoroutine(angelDeadTimer);
         }
     }
 
@@ -86,7 +90,8 @@ public class AngelController : MonoBehaviour
 
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Jump Right Attack 01"))
         {
-            animator.Play("Melee Right Attack 03");
+            if (angelHp > 0f)
+                animator.Play("Melee Right Attack 03");
         }
     }
 
@@ -110,6 +115,25 @@ public class AngelController : MonoBehaviour
         angelHp -= damage;
 
         GameManager.Instance.aHpBarImage.fillAmount = angelHp / MAXHP;
+
+        CheckToDead();
+    }
+
+    private void CheckToDead()
+    {
+        if (angelHp <= 0f)
+        {
+            animator.Play("Die");
+            angelDeadTimer = StartCoroutine(CheckToDeadTimer());
+        }
+    }
+
+    IEnumerator CheckToDeadTimer()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        GameManager.Instance.aBtn.gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     public void Initialize()        // 플레이어 앞 적이 다 죽으면 실행할 메소드

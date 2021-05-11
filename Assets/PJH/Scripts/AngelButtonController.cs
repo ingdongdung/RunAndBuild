@@ -21,7 +21,7 @@ public class AngelButtonController : MonoBehaviour, IPointerDownHandler, IPointe
     void Start()
     {
         btn = gameObject.GetComponent<Button>();
-
+        
         angelSkillCoroutine = null;
     }
 
