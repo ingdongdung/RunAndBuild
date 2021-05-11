@@ -20,19 +20,23 @@ public class FairyNormalAttackBullet : MonoBehaviour
 
     private void OnEnable()
     {
-        bulletDir = GameManager.Instance.fc.fairyDir;
-        transform.position = GameManager.Instance.fc.transform.position + new Vector3(0f, 1f, 0f);
+        if (GameManager.Instance.fc)
+        {
+            bulletDir = GameManager.Instance.fc.fairyDir;
+            transform.position = GameManager.Instance.fc.transform.position + new Vector3(0f, 1f, 0f);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += bulletDir * bulletSpeed * Time.deltaTime;
+        if (GameManager.Instance.fc)
+            transform.position += bulletDir * bulletSpeed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") && GameManager.Instance.fc)
         {
             other.gameObject.GetComponent<EnemyController>().TakeDamage(GameManager.Instance.fc.fairyPower);
             GameObject obj = ObjectPool.Instance.PopFromPool("FairyBulletEffect");
