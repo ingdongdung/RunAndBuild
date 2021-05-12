@@ -2475,15 +2475,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7b47a810816234b8c755ba1571bf33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fc: {fileID: 0}
   ac: {fileID: 0}
   dc: {fileID: 0}
-  fchb: {fileID: 0}
+  fc: {fileID: 0}
   achb: {fileID: 0}
   dchb: {fileID: 0}
-  fHpBarImage: {fileID: 0}
+  fchb: {fileID: 0}
   aHpBarImage: {fileID: 0}
   dHpBarImage: {fileID: 0}
+  fHpBarImage: {fileID: 0}
+  aBtn: {fileID: 0}
+  dBtn: {fileID: 0}
+  fBtn: {fileID: 0}
   uiCanvas: {fileID: 0}
   enemyArray: []
   meetEnemy: 0
@@ -2829,6 +2832,18 @@ MonoBehaviour:
   - poolList: []
     poolItemName: DemonicSkillForHit
     prefab: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
+    poolCount: 1
+  - poolList: []
+    poolItemName: FirstBoss
+    prefab: {fileID: 159980, guid: 4ca91ae9a93358e4386570ca97abfd00, type: 3}
+    poolCount: 1
+  - poolList: []
+    poolItemName: MidBoss
+    prefab: {fileID: 128828, guid: 3275cd13660af874abbe46e30c35ddaf, type: 3}
+    poolCount: 1
+  - poolList: []
+    poolItemName: FinalBoss
+    prefab: {fileID: 113730, guid: f14436b37d7130d4b87425d39ee5d50c, type: 3}
     poolCount: 1
 --- !u!4 &1413872609
 Transform:

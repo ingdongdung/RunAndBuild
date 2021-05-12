@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyController : MonoBehaviour
+public class BossController : MonoBehaviour
 {
     private Rigidbody rb;
     private Vector3 dir;
@@ -11,17 +11,17 @@ public class EnemyController : MonoBehaviour
     private Image hpBarImage;
     private GameObject hb;
 
-    public const float MAXHP = 100f;
+    public const float MAXHP = 300f;
     public const float SPEED = 25f;
-    public float enemySpeed;
-    public float enemyHp;
-    public float enemyPower;
+    public float bossSpeed;
+    public float bossHp;
+    public float bossPower;
 
     public Animator animator;
     public bool meetPlayer;
     public bool attackPlayer;
-    public Coroutine enemyAttackTimer;
-    public Coroutine enemyDeadTimer;
+    public Coroutine bossAttackTimer;
+    public Coroutine bossDeadTimer;
 
     public Vector3 hpBarOffset = new Vector3(0f, 2.2f, 0f);
 
@@ -33,11 +33,11 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        enemySpeed = SPEED;
-        enemyHp = MAXHP;
-        enemyPower = 10f;
+        bossSpeed = SPEED;
+        bossHp = MAXHP;
+        bossPower = 50f;
 
-        enemyAttackTimer = null;
+        bossAttackTimer = null;
     }
 
     private void OnEnable()
@@ -51,21 +51,21 @@ public class EnemyController : MonoBehaviour
         meetPlayer = false;
         attackPlayer = false;
         onceForCoroutine = false;
-        enemyHp = MAXHP;
-        enemySpeed = SPEED;
+        bossHp = MAXHP;
+        bossSpeed = SPEED;
 
         SetHpBar();
     }
 
     private void OnDisable()
     {
-        if (enemyAttackTimer != null)
+        if (bossAttackTimer != null)
         {
-            StopCoroutine(enemyAttackTimer);
+            StopCoroutine(bossAttackTimer);
         }
-        if (enemyDeadTimer != null)
+        if (bossDeadTimer != null)
         {
-            StopCoroutine(enemyDeadTimer);
+            StopCoroutine(bossDeadTimer);
         }
 
         if (hb != null)
@@ -86,7 +86,7 @@ public class EnemyController : MonoBehaviour
     {
         if (DistanceToPlayer() <= 20f && !meetPlayer && !attackPlayer)
         {
-            enemySpeed -= 0.04f;
+            bossSpeed -= 0.04f;
         }
 
         if (DistanceToPlayer() <= 5f && !meetPlayer && !attackPlayer)
@@ -102,10 +102,10 @@ public class EnemyController : MonoBehaviour
         {
             MoveToPlayer();
         }
-        
+
         if (attackPlayer && !onceForCoroutine)
         {
-            enemyAttackTimer = StartCoroutine(EnemyAttackTimer());
+            bossAttackTimer = StartCoroutine(BossAttackTimer());
             onceForCoroutine = true;
         }
     }
@@ -118,27 +118,27 @@ public class EnemyController : MonoBehaviour
     private void MoveToPlayer()
     {
         transform.LookAt(GameManager.Instance.fc.transform);
-        transform.position += dir * enemySpeed * Time.deltaTime;
+        transform.position += dir * bossSpeed * Time.deltaTime;
     }
 
     public void TakeDamage(float damage)
     {
-        enemyHp -= damage;
-        
-        if (enemyHp > 0f)
+        bossHp -= damage;
+
+        if (bossHp > 0f)
             animator.Play("Take Damage");
 
-        hpBarImage.fillAmount = enemyHp / MAXHP;
+        hpBarImage.fillAmount = bossHp / MAXHP;
 
         CheckToDead();
     }
 
     private void CheckToDead()
     {
-        if (enemyHp <= 0f)
+        if (bossHp <= 0f)
         {
             animator.Play("Die");
-            enemyDeadTimer = StartCoroutine(CheckToDeadTimer());
+            bossDeadTimer = StartCoroutine(CheckToDeadTimer());
         }
     }
 
@@ -155,15 +155,15 @@ public class EnemyController : MonoBehaviour
 
         if (GameManager.Instance.ac && GameManager.Instance.ac.angelHp > 0f)
         {
-            GameManager.Instance.ac.TakeDamage(enemyPower);
+            GameManager.Instance.ac.TakeDamage(bossPower);
         }
         else if (GameManager.Instance.dc && GameManager.Instance.dc.demonicHp > 0f)
         {
-            GameManager.Instance.dc.TakeDamage(enemyPower);
+            GameManager.Instance.dc.TakeDamage(bossPower);
         }
         else if (GameManager.Instance.fc && GameManager.Instance.fc.fairyHp > 0f)
         {
-            GameManager.Instance.fc.TakeDamage(enemyPower);
+            GameManager.Instance.fc.TakeDamage(bossPower);
         }
     }
 
@@ -179,30 +179,25 @@ public class EnemyController : MonoBehaviour
         hpBar.offset = hpBarOffset;
     }
 
-    IEnumerator EnemyAttackTimer()
+    IEnumerator BossAttackTimer()
     {
         while (true)
         {
-            if (enemyHp > 0f)
+            if (bossHp > 0f)
             {
-                if (transform.name == "Enemy01")
+                if (transform.name == "FirstBoss")
                 {
-                    animator.Play("Melee Left Attack 01");
+                    animator.Play("Cast Spell 01");
                     DamageDistribution();
                 }
-                else if (transform.name == "Enemy02")
+                else if (transform.name == "MidBoss")
                 {
-                    animator.Play("Melee Right Attack 02");
+                    animator.Play("Cast Spell 01");
                     DamageDistribution();
                 }
-                else if (transform.name == "Enemy03")
+                else if (transform.name == "FinalBoss")
                 {
                     animator.Play("Melee Right Attack 03");
-                    DamageDistribution();
-                }
-                else if (transform.name == "Enemy04")
-                {
-                    animator.Play("Melee Right Attack 01");
                     DamageDistribution();
                 }
             }
