@@ -24,6 +24,8 @@ public class GameManager : Singleton<GameManager>
     public bool onceForCoroutine;
     public Coroutine SearchCoroutine;
 
+    public int gameLevel;
+
     private Vector3 baseDirection;
 
     private void Awake()
@@ -55,6 +57,8 @@ public class GameManager : Singleton<GameManager>
 
         baseDirection = new Vector3(0f, 0f, 1f) - new Vector3(0f, 0f, 0f);
         baseDirection.Normalize();
+
+        gameLevel = 2;
     }
 
     private void OnEnable()
@@ -68,6 +72,7 @@ public class GameManager : Singleton<GameManager>
     {
         onceForCoroutine = false;
         meetEnemy = false;
+        gameLevel = 0;
 
         if (SearchCoroutine != null)
         {
@@ -96,9 +101,10 @@ public class GameManager : Singleton<GameManager>
             StopCoroutine(SearchCoroutine);
             meetEnemy = false;
             onceForCoroutine = false;
+            ++gameLevel;
 
-            SpawnManager.Instance.treeSpawningCoroutine = StartCoroutine(SpawnManager.Instance.StartTreeSpawning());
-            SpawnManager.Instance.monsterSpawningCoroutine = StartCoroutine(SpawnManager.Instance.StartMonsterSpawning());
+            SpawnManager.Instance.MethodForStartingTreeSpawn();
+            SpawnManager.Instance.MethodForStartingMonsterSpawn();
             SpawnManager.Instance.treeSpawnFlag = true;
 
             InitializeCharacter();

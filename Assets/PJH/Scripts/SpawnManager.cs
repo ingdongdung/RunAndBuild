@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnManager : Singleton<SpawnManager>
 {
@@ -9,6 +10,8 @@ public class SpawnManager : Singleton<SpawnManager>
     private string bossName = "Boss";
     private int treeCount = 3;
     private int enemyCount = 4;
+    private Vector3 treeSpawnOffSet;
+    private Vector3 enemySpawnOffSet;
 
     public float _elapsedTimeForTree = 0f;
     public float _elapsedTimeForEnemy = 0f;
@@ -19,17 +22,20 @@ public class SpawnManager : Singleton<SpawnManager>
     public bool treeSpawnFlag;
 
     // 오브젝트가 출현할 위치를 담을 배열
-    public Transform[] points;
+    public Transform[] spawnPoints;
 
     // Start is called before the first frame update
     void Start()
     {
         // Hierarchy View의 Spawn Point를 찾아 하위에 있는 모든 Transform 컴포넌트를 찾아옴
-        points = GameObject.Find("SpawnPoint").GetComponentsInChildren<Transform>();
+        spawnPoints = GameObject.Find("SpawnPoint").GetComponentsInChildren<Transform>();
         treeSpawningCoroutine = StartCoroutine(StartTreeSpawning());
         monsterSpawningCoroutine = StartCoroutine(StartMonsterSpawning());
 
         treeSpawnFlag = true;
+
+        treeSpawnOffSet = new Vector3(0f, 1f, 0f);
+        enemySpawnOffSet = new Vector3(0f, 1.21f, 0f);
     }
 
     // Update is called once per frame
@@ -48,11 +54,21 @@ public class SpawnManager : Singleton<SpawnManager>
         return treeSpawnFlag;
     }
 
+    public void MethodForStartingTreeSpawn()
+    {
+        treeSpawningCoroutine = StartCoroutine(StartTreeSpawning());
+    }
+
+    public void MethodForStartingMonsterSpawn()
+    {
+        monsterSpawningCoroutine = StartCoroutine(StartMonsterSpawning());
+    }
+
     public IEnumerator StartTreeSpawning()
     {
         while (true)
         {
-            foreach (var point in points)
+            foreach (var point in spawnPoints)
             {
                 if (point.name.Substring(0, 4) == "tree")
                 {
@@ -70,7 +86,7 @@ public class SpawnManager : Singleton<SpawnManager>
                             break;
                     }
                     GameObject tree = ObjectPool.Instance.PopFromPool(treeName);
-                    tree.transform.position = point.position + new Vector3(0f, 1f, 0f);
+                    tree.transform.position = point.position + treeSpawnOffSet;
                     treeName = "Tree";
                 }
             }
@@ -81,12 +97,11 @@ public class SpawnManager : Singleton<SpawnManager>
     public IEnumerator StartMonsterSpawning()
     {
         yield return new WaitForSeconds(2f);
-        foreach (var point in points)
+        foreach (var point in spawnPoints)
         {
             if (point.name.Substring(0, 6) == "enemyP")    // 몹
             {
-                int randNum = Random.Range(0, enemyCount);
-                switch (randNum)
+                switch (Random.Range(0, enemyCount))
                 {
                     case 0:
                         enemyName += "01";
@@ -102,13 +117,33 @@ public class SpawnManager : Singleton<SpawnManager>
                         break;
                 }
                 GameObject enemy = ObjectPool.Instance.PopFromPool(enemyName);
-                enemy.transform.position = point.position + new Vector3(0f, 1.21f, 0f);
+                enemy.transform.position = point.position + enemySpawnOffSet;
                 enemyName = "Enemy";
             }
-            //else if (point.name.Substring(0, 6) == "enemyB")    // 보스
-            //{
-
-            //}
+            else if (GameManager.Instance.gameLevel == 3 && point.name.Substring(0, 6) == "enemyB")    // 보스
+            {
+                switch(SceneManager.GetActiveScene().name)
+                {
+                    case "firstStage":
+                        {
+                            GameObject boss = ObjectPool.Instance.PopFromPool("FirstBoss");
+                            boss.transform.position = point.position + enemySpawnOffSet;
+                            break;
+                        }
+                    case "middleStage":
+                        {
+                            GameObject boss = ObjectPool.Instance.PopFromPool("MidBoss");
+                            boss.transform.position = point.position + enemySpawnOffSet;
+                            break;
+                        }
+                    case "finalStage":
+                        {
+                            GameObject boss = ObjectPool.Instance.PopFromPool("FinalBoss");
+                            boss.transform.position = point.position + enemySpawnOffSet;
+                            break;
+                        }
+                }
+            }
         }
     }
 }
