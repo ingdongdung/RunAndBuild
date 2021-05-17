@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PurchaseItemData
 {
+    public ShopCategory Category => this.category;
+    public string Name => this.name;
+    public int Price => this.price;
     public PurchaseItemData(ShopCategory category, int id, string name, int price){
         this.category = category;
         this.id = id;
@@ -11,8 +14,8 @@ public class PurchaseItemData
         this.name = name;
         this.category = category;
     }
-    public int id;
-    public string name;
-    public int price;
-    public ShopCategory category;
+    private int id;
+    private string name;
+    private int price;
+    private ShopCategory category;
 }

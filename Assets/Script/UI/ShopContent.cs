@@ -52,9 +52,9 @@ public class ShopContent : MonoBehaviour
         this.SetItem(this.tab);
     }
 
-    private void SetItem(ShopCategory cat)
+    private void SetItem(ShopCategory category)
     {
-        List<PurchaseItemData> list = this.itemDataList.FindAll(l => l.category == cat);
+        List<PurchaseItemData> list = this.itemDataList.FindAll(l => l.Category == category);
         if (list != null && list.Count != 0)
         {
             foreach (PurchaseItemData data in list)
