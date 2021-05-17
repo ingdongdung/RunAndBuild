@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7220438381965775029}
   - component: {fileID: 7345532038938571403}
   m_Layer: 0
-  m_Name: SphereGemSmall
+  m_Name: purple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,4 +97,4 @@ MonoBehaviour:
   isAnimated: 1
   isRotating: 1
   rotationAngle: {x: 0, y: 0, z: 10}
-  rotationSpeed: 10
+  rotationSpeed: 2
