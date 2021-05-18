@@ -69,13 +69,30 @@ public class DemonicButtonController : MonoBehaviour, IPointerDownHandler, IPoin
         enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
 
         int saveNumber = 0;
-        float maxHp = enemyArray[0].GetComponent<EnemyController>().enemyHp;
+        float maxHp = 0f;
+
+        if (enemyArray[0].name.Substring(0, 4) == "Enem")
+            maxHp = enemyArray[0].GetComponent<EnemyController>().enemyHp;
+        else
+            maxHp = enemyArray[0].GetComponent<BossController>().bossHp;
+
         for (int i = 1; i < enemyArray.Length; ++i)
         {
-            if (maxHp < enemyArray[i].GetComponent<EnemyController>().enemyHp)
+            if (enemyArray[i].name.Substring(0, 4) == "Enem")
             {
-                maxHp = enemyArray[i].GetComponent<EnemyController>().enemyHp;
-                saveNumber = i;
+                if (maxHp < enemyArray[i].GetComponent<EnemyController>().enemyHp)
+                {
+                    maxHp = enemyArray[i].GetComponent<EnemyController>().enemyHp;
+                    saveNumber = i;
+                }
+            }
+            else
+            {
+                if (maxHp < enemyArray[i].GetComponent<BossController>().bossHp)
+                {
+                    maxHp = enemyArray[i].GetComponent<BossController>().bossHp;
+                    saveNumber = i;
+                }
             }
         }
 
@@ -111,6 +128,9 @@ public class DemonicButtonController : MonoBehaviour, IPointerDownHandler, IPoin
 
     private void SkillEffect(int idx)
     {
-        enemyArray[idx].GetComponent<EnemyController>().TakeDamage(demonicSkillDamage);
+        if (enemyArray[idx].name.Substring(0, 4) == "Enem")
+            enemyArray[idx].GetComponent<EnemyController>().TakeDamage(demonicSkillDamage);
+        else
+            enemyArray[idx].GetComponent<BossController>().TakeDamage(demonicSkillDamage);
     }
 }

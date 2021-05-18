@@ -7,15 +7,10 @@ public class SpawnManager : Singleton<SpawnManager>
 {
     private string treeName = "Tree";
     private string enemyName = "Enemy";
-    private string bossName = "Boss";
     private int treeCount = 3;
     private int enemyCount = 4;
     private Vector3 treeSpawnOffSet;
     private Vector3 enemySpawnOffSet;
-
-    public float _elapsedTimeForTree = 0f;
-    public float _elapsedTimeForEnemy = 0f;
-    public float _elapsedTimeForBoss = 0f;
 
     public Coroutine treeSpawningCoroutine;
     public Coroutine monsterSpawningCoroutine;
@@ -126,19 +121,19 @@ public class SpawnManager : Singleton<SpawnManager>
                 {
                     case "firstStage":
                         {
-                            GameObject boss = ObjectPool.Instance.PopFromPool("FirstBoss");
+                            GameObject boss = ObjectPool.Instance.PopFromPool("Boss01");
                             boss.transform.position = point.position + enemySpawnOffSet;
                             break;
                         }
                     case "middleStage":
                         {
-                            GameObject boss = ObjectPool.Instance.PopFromPool("MidBoss");
+                            GameObject boss = ObjectPool.Instance.PopFromPool("Boss02");
                             boss.transform.position = point.position + enemySpawnOffSet;
                             break;
                         }
                     case "finalStage":
                         {
-                            GameObject boss = ObjectPool.Instance.PopFromPool("FinalBoss");
+                            GameObject boss = ObjectPool.Instance.PopFromPool("Boss03");
                             boss.transform.position = point.position + enemySpawnOffSet;
                             break;
                         }

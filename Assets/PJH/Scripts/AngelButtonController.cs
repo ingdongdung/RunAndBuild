@@ -78,6 +78,9 @@ public class AngelButtonController : MonoBehaviour, IPointerDownHandler, IPointe
 
     private void SkillEffect(int idx)
     {
-        enemyArray[idx].GetComponent<EnemyController>().TakeDamage(angelSkillDamage);
+        if (enemyArray[idx].name.Substring(0, 4) == "Enem")
+            enemyArray[idx].GetComponent<EnemyController>().TakeDamage(angelSkillDamage);
+        else
+            enemyArray[idx].GetComponent<BossController>().TakeDamage(angelSkillDamage);
     }
 }

@@ -2491,6 +2491,7 @@ MonoBehaviour:
   enemyArray: []
   meetEnemy: 0
   onceForCoroutine: 0
+  gameLevel: 0
 --- !u!4 &1252562191
 Transform:
   m_ObjectHideFlags: 0
@@ -2791,11 +2792,11 @@ MonoBehaviour:
     poolCount: 1
   - poolList: []
     poolItemName: Boss02
-    prefab: {fileID: 113730, guid: f14436b37d7130d4b87425d39ee5d50c, type: 3}
+    prefab: {fileID: 128828, guid: 3275cd13660af874abbe46e30c35ddaf, type: 3}
     poolCount: 1
   - poolList: []
     poolItemName: Boss03
-    prefab: {fileID: 128828, guid: 3275cd13660af874abbe46e30c35ddaf, type: 3}
+    prefab: {fileID: 113730, guid: f14436b37d7130d4b87425d39ee5d50c, type: 3}
     poolCount: 1
   - poolList: []
     poolItemName: FairyBullet
@@ -2832,18 +2833,6 @@ MonoBehaviour:
   - poolList: []
     poolItemName: DemonicSkillForHit
     prefab: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
-    poolCount: 1
-  - poolList: []
-    poolItemName: FirstBoss
-    prefab: {fileID: 159980, guid: 4ca91ae9a93358e4386570ca97abfd00, type: 3}
-    poolCount: 1
-  - poolList: []
-    poolItemName: MidBoss
-    prefab: {fileID: 128828, guid: 3275cd13660af874abbe46e30c35ddaf, type: 3}
-    poolCount: 1
-  - poolList: []
-    poolItemName: FinalBoss
-    prefab: {fileID: 113730, guid: f14436b37d7130d4b87425d39ee5d50c, type: 3}
     poolCount: 1
 --- !u!4 &1413872609
 Transform:
@@ -2955,11 +2944,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa1515bbfe369a4a9a047973cb2046e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _elapsedTimeForTree: 0
-  _elapsedTimeForEnemy: 0
-  _elapsedTimeForBoss: 0
   treeSpawnFlag: 0
-  points: []
+  spawnPoints: []
 --- !u!1001 &1750083137
 PrefabInstance:
   m_ObjectHideFlags: 0

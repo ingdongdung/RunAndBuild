@@ -113,21 +113,21 @@ public class GameManager : Singleton<GameManager>
 
     private void InitializeCharacter()
     {
-        if (fc.enabled)
+        if (fc)
         {
             fc.Initialize();
             fc.transform.rotation = Quaternion.Euler(baseDirection);
             fc.animator.SetBool("Fly Forward", true);
         }
 
-        if (ac.enabled)
+        if (ac)
         {
             ac.Initialize();
             ac.transform.rotation = Quaternion.Euler(baseDirection);
             ac.animator.SetBool("Run", true);
         }
 
-        if (dc.enabled)
+        if (dc)
         {
             dc.Initialize();
             dc.transform.rotation = Quaternion.Euler(baseDirection);

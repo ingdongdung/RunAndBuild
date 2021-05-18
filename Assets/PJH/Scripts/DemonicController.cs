@@ -101,7 +101,11 @@ public class DemonicController : MonoBehaviour
         if (Physics.Raycast(transform.position + new Vector3(0f, 0.75f, 0f), transform.forward, out hit, 10f, layerMask))
         {
             Debug.DrawRay(transform.position + new Vector3(0f, 0.75f, 0f), transform.forward * 10f, Color.red, 10f);
-            hit.collider.gameObject.GetComponent<EnemyController>().TakeDamage(demonicPower);
+
+            if (hit.collider.gameObject.name.Substring(0, 4) == "Enem")
+                hit.collider.gameObject.GetComponent<EnemyController>().TakeDamage(demonicPower);
+            else
+                hit.collider.gameObject.GetComponent<BossController>().TakeDamage(demonicPower);
         }
     }
 

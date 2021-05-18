@@ -59,9 +59,20 @@ public class FairyButtonController : MonoBehaviour, IPointerDownHandler, IPointe
     IEnumerator FairySkill()
     {
         yield return new WaitForSeconds(0.5f);
-        ObjectPool.Instance.PopFromPool("FairySkill").transform.position = GameManager.Instance.fc.transform.position;
-        ObjectPool.Instance.PopFromPool("FairySkill").transform.position = GameManager.Instance.ac.transform.position;
-        ObjectPool.Instance.PopFromPool("FairySkill").transform.position = GameManager.Instance.dc.transform.position;
+
+        if (GameManager.Instance.ac.angelHp > 0f)
+        {
+            ObjectPool.Instance.PopFromPool("FairySkill").transform.position = GameManager.Instance.ac.transform.position;
+        }
+        if (GameManager.Instance.dc.demonicHp > 0f)
+        {
+            ObjectPool.Instance.PopFromPool("FairySkill").transform.position = GameManager.Instance.dc.transform.position;
+        }
+        if (GameManager.Instance.fc.fairyHp > 0f)
+        {
+            ObjectPool.Instance.PopFromPool("FairySkill").transform.position = GameManager.Instance.fc.transform.position;
+        }
+
         SkillEffect();
     }
 

@@ -132,21 +132,7 @@ public class FairyController : MonoBehaviour
     {
         if (fairyHp <= 0f)
         {
-            //if (animator.GetCurrentAnimatorStateInfo(0).IsName("Fly Cast Spell 01"))
-            //{
-            //    animator.SetBool("Fly Cast Spell 01", false);
-            //}
-            //else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Fly Cast Spell 02"))
-            //{
-            //    animator.SetBool("Fly Cast Spell 02", false);
-            //}
-
-            //animator.SetBool("Fly Idle", false);
-            //animator.SetBool("Idle", true);
             animator.Play("Fly Die");
-            //animator.SetBool("Fly Die", true);
-
-
             fairyDeadTimer = StartCoroutine(CheckToDeadTimer());
         }
     }
