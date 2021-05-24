@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager>
     public Button dBtn;
     public Button fBtn;
     public Canvas uiCanvas;
+    public Text gameTimerText;
 
     public GameObject[] enemyArray;
     public bool meetEnemy;
@@ -25,6 +26,8 @@ public class GameManager : Singleton<GameManager>
     public Coroutine SearchCoroutine;
 
     public int gameLevel;
+    public float gameTimerSec;
+    public int gameTimerMin;
 
     private Vector3 baseDirection;
 
@@ -51,6 +54,8 @@ public class GameManager : Singleton<GameManager>
 
         uiCanvas = GameObject.Find("UI Canvas for enemy").GetComponent<Canvas>();
 
+        gameTimerText = GameObject.Find("GameTimerText").GetComponent<Text>();
+
         meetEnemy = false;
         onceForCoroutine = false;
         SearchCoroutine = null;
@@ -59,6 +64,9 @@ public class GameManager : Singleton<GameManager>
         baseDirection.Normalize();
 
         gameLevel = 2;
+
+        gameTimerSec = 60f;
+        gameTimerMin = 2;
     }
 
     private void OnEnable()
@@ -89,6 +97,8 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
+        GameTimerUpdate();
+
         if (meetEnemy && !onceForCoroutine)
         {
             SearchCoroutine = StartCoroutine(DistanceToEnemyTimer());
@@ -108,6 +118,19 @@ public class GameManager : Singleton<GameManager>
             SpawnManager.Instance.treeSpawnFlag = true;
 
             InitializeCharacter();
+        }
+    }
+
+    private void GameTimerUpdate()
+    {
+        gameTimerSec -= Time.deltaTime;
+
+        gameTimerText.text = string.Format("{0:D2}:{1:D2}", gameTimerMin, (int)gameTimerSec);
+
+        if (gameTimerSec <= 0f)
+        {
+            gameTimerSec = 60f;
+            --gameTimerMin;
         }
     }
 
