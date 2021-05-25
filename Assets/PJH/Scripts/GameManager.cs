@@ -29,6 +29,10 @@ public class GameManager : Singleton<GameManager>
     public float gameTimerSec;
     public int gameTimerMin;
 
+    public Vector3 bossDir;
+    public Transform bossTra;
+    public float boss0102Power;
+
     private Vector3 baseDirection;
 
     private void Awake()
@@ -67,6 +71,10 @@ public class GameManager : Singleton<GameManager>
 
         gameTimerSec = 60f;
         gameTimerMin = 2;
+
+        bossDir = new Vector3(0f, 0f, 0f);
+        bossTra = transform;
+        boss0102Power = 50f;
     }
 
     private void OnEnable()

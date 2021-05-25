@@ -788,6 +788,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 156846, guid: 37051fd28a93f274fbe34d9a48966a12, type: 3}
   m_PrefabInstance: {fileID: 730842247}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &414881245
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414881244}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 1.5, z: 0.6}
+  m_Center: {x: 0, y: 0.75, z: 0}
+--- !u!54 &414881246
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414881244}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
 --- !u!114 &414881247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2307,6 +2336,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100288, guid: 20b7208fcb17e504b913a59a09391dfd, type: 3}
   m_PrefabInstance: {fileID: 205401422}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1192138574
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192138573}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 1.5, z: 0.6}
+  m_Center: {x: 0, y: 0.75, z: 0}
+--- !u!54 &1192138575
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192138573}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
 --- !u!114 &1192138576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2496,6 +2554,9 @@ MonoBehaviour:
   gameLevel: 0
   gameTimerSec: 0
   gameTimerMin: 0
+  bossDir: {x: 0, y: 0, z: 0}
+  bossTra: {fileID: 0}
+  boss0102Power: 0
 --- !u!4 &1252562191
 Transform:
   m_ObjectHideFlags: 0
@@ -2807,9 +2868,9 @@ MonoBehaviour:
     prefab: {fileID: 5771625271411428467, guid: 76d923b60329f4e469ef749d9a8ce6dd, type: 3}
     poolCount: 3
   - poolList: []
-    poolItemName: FairyBulletEffect
+    poolItemName: BulletEffect
     prefab: {fileID: 100002, guid: e9391f622091e1449bdef4ef15af4948, type: 3}
-    poolCount: 3
+    poolCount: 6
   - poolList: []
     poolItemName: EnemyHpBar
     prefab: {fileID: 1493463027569657271, guid: c24f92c543deab14d879365927537d64, type: 3}
@@ -2838,6 +2899,10 @@ MonoBehaviour:
     poolItemName: DemonicSkillForHit
     prefab: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
     poolCount: 1
+  - poolList: []
+    poolItemName: BossBullet
+    prefab: {fileID: 3679980399200195937, guid: ba8877f6a8d34a542b28971d4933c80e, type: 3}
+    poolCount: 3
 --- !u!4 &1413872609
 Transform:
   m_ObjectHideFlags: 0
@@ -2857,6 +2922,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 197042, guid: a1fe740b8976f464fabd5f938548c13e, type: 3}
   m_PrefabInstance: {fileID: 883676710}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1426577836
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426577835}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 1.5, z: 0.6}
+  m_Center: {x: 0, y: 0.75, z: 0}
+--- !u!54 &1426577837
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426577835}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
 --- !u!114 &1426577838
 MonoBehaviour:
   m_ObjectHideFlags: 0

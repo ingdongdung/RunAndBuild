@@ -15,7 +15,7 @@ public class BossController : MonoBehaviour
     public const float SPEED = 25f;
     public float bossSpeed;
     public float bossHp;
-    public float bossPower;
+    public float boss03Power;
 
     public Animator animator;
     public bool meetPlayer;
@@ -35,7 +35,7 @@ public class BossController : MonoBehaviour
     {
         bossSpeed = SPEED;
         bossHp = MAXHP;
-        bossPower = 50f;
+        boss03Power = 50f;
 
         bossAttackTimer = null;
     }
@@ -149,22 +149,47 @@ public class BossController : MonoBehaviour
         ObjectPool.Instance.PushToPool(gameObject.name, gameObject);
     }
 
+    private void LookAtPlayer()
+    {
+        // angel - demonic - fairy
+
+        if (GameManager.Instance.ac && GameManager.Instance.ac.angelHp > 0f)
+        {
+            transform.LookAt(GameManager.Instance.ac.transform);
+        }
+        else if (GameManager.Instance.dc && GameManager.Instance.dc.demonicHp > 0f)
+        {
+            transform.LookAt(GameManager.Instance.dc.transform);
+        }
+        else if (GameManager.Instance.fc && GameManager.Instance.fc.fairyHp > 0f)
+        {
+            transform.LookAt(GameManager.Instance.fc.transform);
+        }
+        GameManager.Instance.bossDir = transform.forward;
+        GameManager.Instance.bossTra = transform;
+    }
+
     private void DamageDistribution()
     {
         // angel - demonic - fairy
 
         if (GameManager.Instance.ac && GameManager.Instance.ac.angelHp > 0f)
         {
-            GameManager.Instance.ac.TakeDamage(bossPower);
+            transform.LookAt(GameManager.Instance.ac.transform);
+            GameManager.Instance.ac.TakeDamage(boss03Power);
         }
         else if (GameManager.Instance.dc && GameManager.Instance.dc.demonicHp > 0f)
         {
-            GameManager.Instance.dc.TakeDamage(bossPower);
+            transform.LookAt(GameManager.Instance.dc.transform);
+            GameManager.Instance.dc.TakeDamage(boss03Power);
         }
         else if (GameManager.Instance.fc && GameManager.Instance.fc.fairyHp > 0f)
         {
-            GameManager.Instance.fc.TakeDamage(bossPower);
+            transform.LookAt(GameManager.Instance.fc.transform);
+            GameManager.Instance.fc.TakeDamage(boss03Power);
         }
+        GameManager.Instance.bossDir = transform.forward;
+        GameManager.Instance.bossTra = transform;
     }
 
     private void SetHpBar()
@@ -179,25 +204,33 @@ public class BossController : MonoBehaviour
         hpBar.offset = hpBarOffset;
     }
 
+    private void ShootTheBullet()
+    {
+        ObjectPool.Instance.PopFromPool("BossBullet");
+    }
+
     IEnumerator BossAttackTimer()
     {
         while (true)
         {
             if (bossHp > 0f)
             {
-                if (transform.name == "FirstBoss")
+                if (transform.name == "Boss01")
                 {
                     animator.Play("Cast Spell 01");
-                    DamageDistribution();
+                    Invoke("ShootTheBullet", 0.5f);
+                    LookAtPlayer();
                 }
-                else if (transform.name == "MidBoss")
+                else if (transform.name == "Boss02")
                 {
                     animator.Play("Cast Spell 01");
-                    DamageDistribution();
+                    Invoke("ShootTheBullet", 0.5f);
+                    LookAtPlayer();
                 }
-                else if (transform.name == "FinalBoss")
+                else if (transform.name == "Boss03")
                 {
                     animator.Play("Melee Right Attack 03");
+                    Invoke("ShootTheBullet", 0.5f);
                     DamageDistribution();
                 }
             }

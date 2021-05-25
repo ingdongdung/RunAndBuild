@@ -43,7 +43,7 @@ public class FairyNormalAttackBullet : MonoBehaviour
             else
                 other.gameObject.GetComponent<BossController>().TakeDamage(GameManager.Instance.fc.fairyPower);
 
-            GameObject obj = ObjectPool.Instance.PopFromPool("FairyBulletEffect");
+            GameObject obj = ObjectPool.Instance.PopFromPool("BulletEffect");
             obj.transform.position = gameObject.transform.position;
             ObjectPool.Instance.PushToPool(gameObject.name, gameObject);
         }
