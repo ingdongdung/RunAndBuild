@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossNormalAttackBullet : MonoBehaviour
+public class FirstBossSkillAttackBullet : MonoBehaviour
 {
     private float bulletSpeed;
-    private Vector3 bulletDir;
+    public Vector3 bulletDir;
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class BossNormalAttackBullet : MonoBehaviour
 
     private void OnEnable()
     {
-        bulletDir = GameManager.Instance.bossDir;
+        bulletDir = GameManager.Instance.firstBossSkillDir;
         transform.position = GameManager.Instance.bossTra.position + new Vector3(0f, 1f, 0f);
     }
 
@@ -35,13 +35,13 @@ public class BossNormalAttackBullet : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             if (other.gameObject.name.Substring(0, 5) == "Angel")
-                GameManager.Instance.ac.TakeDamage(GameManager.Instance.rangedBossNormalAttackDamage);
+                GameManager.Instance.ac.TakeDamage(GameManager.Instance.firstBossSkillAttackDamage);
             else if (other.gameObject.name.Substring(0, 5) == "Demon")
-                GameManager.Instance.dc.TakeDamage(GameManager.Instance.rangedBossNormalAttackDamage);
+                GameManager.Instance.dc.TakeDamage(GameManager.Instance.firstBossSkillAttackDamage);
             else if (other.gameObject.name.Substring(0, 5) == "Fairy")
-                GameManager.Instance.fc.TakeDamage(GameManager.Instance.rangedBossNormalAttackDamage);
+                GameManager.Instance.fc.TakeDamage(GameManager.Instance.firstBossSkillAttackDamage);
 
-            GameObject obj = ObjectPool.Instance.PopFromPool("BulletEffect");
+            GameObject obj = ObjectPool.Instance.PopFromPool("FirstBossSkillEffect");
             obj.transform.position = gameObject.transform.position;
             ObjectPool.Instance.PushToPool(gameObject.name, gameObject);
         }

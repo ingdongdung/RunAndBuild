@@ -2556,7 +2556,9 @@ MonoBehaviour:
   gameTimerMin: 0
   bossDir: {x: 0, y: 0, z: 0}
   bossTra: {fileID: 0}
-  boss0102Power: 0
+  rangedBossNormalAttackDamage: 0
+  firstBossSkillAttackDamage: 0
+  firstBossSkillDir: {x: 0, y: 0, z: 0}
 --- !u!4 &1252562191
 Transform:
   m_ObjectHideFlags: 0
@@ -2852,15 +2854,15 @@ MonoBehaviour:
     prefab: {fileID: 144316, guid: 79fc96a43d552e14393fe3453d31ff3a, type: 3}
     poolCount: 5
   - poolList: []
-    poolItemName: Boss01
+    poolItemName: FirstBoss
     prefab: {fileID: 159980, guid: 4ca91ae9a93358e4386570ca97abfd00, type: 3}
     poolCount: 1
   - poolList: []
-    poolItemName: Boss02
+    poolItemName: MiddleBoss
     prefab: {fileID: 128828, guid: 3275cd13660af874abbe46e30c35ddaf, type: 3}
     poolCount: 1
   - poolList: []
-    poolItemName: Boss03
+    poolItemName: FinalBoss
     prefab: {fileID: 113730, guid: f14436b37d7130d4b87425d39ee5d50c, type: 3}
     poolCount: 1
   - poolList: []
@@ -2902,6 +2904,14 @@ MonoBehaviour:
   - poolList: []
     poolItemName: BossBullet
     prefab: {fileID: 3679980399200195937, guid: ba8877f6a8d34a542b28971d4933c80e, type: 3}
+    poolCount: 3
+  - poolList: []
+    poolItemName: FirstBossSkill
+    prefab: {fileID: 1844852592331452861, guid: bd45cc1b701d7d446b0b9ca9998e5a61, type: 3}
+    poolCount: 3
+  - poolList: []
+    poolItemName: FirstBossSkillEffect
+    prefab: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
     poolCount: 3
 --- !u!4 &1413872609
 Transform:

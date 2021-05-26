@@ -119,21 +119,21 @@ public class SpawnManager : Singleton<SpawnManager>
             {
                 switch(SceneManager.GetActiveScene().name)
                 {
-                    case "firstStage":
+                    case "FirstStage":
                         {
-                            GameObject boss = ObjectPool.Instance.PopFromPool("Boss01");
+                            GameObject boss = ObjectPool.Instance.PopFromPool("FirstBoss");
                             boss.transform.position = point.position + enemySpawnOffSet;
                             break;
                         }
-                    case "middleStage":
+                    case "MiddleStage":
                         {
-                            GameObject boss = ObjectPool.Instance.PopFromPool("Boss02");
+                            GameObject boss = ObjectPool.Instance.PopFromPool("MiddleBoss");
                             boss.transform.position = point.position + enemySpawnOffSet;
                             break;
                         }
-                    case "finalStage":
+                    case "FinalStage":
                         {
-                            GameObject boss = ObjectPool.Instance.PopFromPool("Boss03");
+                            GameObject boss = ObjectPool.Instance.PopFromPool("FinalBoss");
                             boss.transform.position = point.position + enemySpawnOffSet;
                             break;
                         }

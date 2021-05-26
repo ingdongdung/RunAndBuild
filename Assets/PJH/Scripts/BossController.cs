@@ -215,19 +215,25 @@ public class BossController : MonoBehaviour
         {
             if (bossHp > 0f)
             {
-                if (transform.name == "Boss01")
+                if (transform.name == "FirstBoss")
                 {
-                    animator.Play("Cast Spell 01");
-                    Invoke("ShootTheBullet", 0.5f);
-                    LookAtPlayer();
+                    if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Cast Spell 02"))
+                    {
+                        animator.Play("Cast Spell 01");
+                        Invoke("ShootTheBullet", 0.5f);
+                        LookAtPlayer();
+                    }
                 }
-                else if (transform.name == "Boss02")
+                else if (transform.name == "MiddleBoss")
                 {
-                    animator.Play("Cast Spell 01");
-                    Invoke("ShootTheBullet", 0.5f);
-                    LookAtPlayer();
+                    if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Cast Spell 02"))
+                    {
+                        animator.Play("Cast Spell 01");
+                        Invoke("ShootTheBullet", 0.5f);
+                        LookAtPlayer();
+                    }
                 }
-                else if (transform.name == "Boss03")
+                else if (transform.name == "FinalBoss")
                 {
                     animator.Play("Melee Right Attack 03");
                     Invoke("ShootTheBullet", 0.5f);
