@@ -2913,6 +2913,30 @@ MonoBehaviour:
     poolItemName: FirstBossSkillEffect
     prefab: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
     poolCount: 3
+  - poolList: []
+    poolItemName: MiddleBossSkillEffect01
+    prefab: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
+    poolCount: 3
+  - poolList: []
+    poolItemName: MiddleBossSkillEffect02
+    prefab: {fileID: 1280141305896002, guid: e473029e4c70ad543a6879b82a732f4f, type: 3}
+    poolCount: 3
+  - poolList: []
+    poolItemName: MiddleBossSkillEffect03
+    prefab: {fileID: 100008, guid: e3d819d8722fa1f47a3f68574b56dfb3, type: 3}
+    poolCount: 3
+  - poolList: []
+    poolItemName: FinalBossSkillEffect01
+    prefab: {fileID: 100000, guid: 352304b7fbe11f445970df6ae36e6227, type: 3}
+    poolCount: 3
+  - poolList: []
+    poolItemName: FinalBossSkillEffect02
+    prefab: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
+    poolCount: 9
+  - poolList: []
+    poolItemName: FinalBossSkillEffect03
+    prefab: {fileID: 100004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
+    poolCount: 9
 --- !u!4 &1413872609
 Transform:
   m_ObjectHideFlags: 0
