@@ -32,10 +32,10 @@ public class ShopContent : MonoBehaviour
     // Update is called once per frame
 
     [SerializeField] private ShopPurchaseItem shopItemPrefab;
+    [SerializeField] private SelectedUI selectedUI;
     [SerializeField] private GameObject content;
     [SerializeField] private List<ShopCategoryItem> categories;
     [SerializeField] private List<PurchaseItemData> itemDataList = new List<PurchaseItemData>();
-    [SerializeField] private List<Sprite> sprites;
     private ShopCategory tab;
 
     private void Init()
@@ -60,23 +60,27 @@ public class ShopContent : MonoBehaviour
             foreach (PurchaseItemData data in list)
             {
                 ShopPurchaseItem item = Instantiate<ShopPurchaseItem>(this.shopItemPrefab, this.content.transform);
-                item.SetItem(data, sprites.Find(s => s.name == name));
+                item.SetItem(data, (isBuy) =>
+                {
+                    this.selectedUI.Init(data);
+                    this.selectedUI.gameObject.SetActive(true);
+                });
             }
         }
     }
 
     private void LoadData()
     {
-        this.itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 1, "베이커리", 100));
-        this.itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 2, "목공소", 200));
-        this.itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 3, "풍력발전소", 300));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 1, "베이커리", 100, "설명설명설명설명1"));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 2, "목공소", 200, "설명설명설명설명1"));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 3, "풍력발전소", 300, "설명설명설명설명1"));
 
-        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 4, "임시아이템1", 100));
-        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 5, "임시아이템2", 200));
-        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 6, "임시아이템3", 300));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 4, "임시아이템1", 100, "설명설명설명설명2"));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 5, "임시아이템2", 200, "설명설명설명설명2"));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Interior, 6, "임시아이템3", 300, "설명설명설명설명2"));
 
-        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 7, "임시아이템4", 100));
-        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 8, "임시아이템5", 200));
-        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 9, "임시아이템6", 300));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 7, "임시아이템4", 100, "설명설명설명설명3"));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 8, "임시아이템5", 200, "설명설명설명설명3"));
+        this.itemDataList.Add(new PurchaseItemData(ShopCategory.Environment, 9, "임시아이템6", 300, "설명설명설명설명3"));
     }
 }
