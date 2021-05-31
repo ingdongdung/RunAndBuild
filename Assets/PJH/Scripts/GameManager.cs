@@ -33,7 +33,9 @@ public class GameManager : Singleton<GameManager>
     public Transform bossTra;
     public float rangedBossNormalAttackDamage;
     public float firstBossSkillAttackDamage;
-    public Vector3 firstBossSkillDir;
+    public float middleBossSkillAttackDamage;
+    public float finalBossSkillAttackDamage;
+    public Vector3 BossSkillDir;
 
     private Vector3 baseDirection;
 
@@ -78,7 +80,9 @@ public class GameManager : Singleton<GameManager>
         bossTra = transform;
         rangedBossNormalAttackDamage = 40f;
         firstBossSkillAttackDamage = 50f;
-        firstBossSkillDir = new Vector3(0f, 0f, 0f);
+        middleBossSkillAttackDamage = 65f;
+        finalBossSkillAttackDamage = 25f;
+        BossSkillDir = new Vector3(0f, 0f, 0f);
     }
 
     private void OnEnable()

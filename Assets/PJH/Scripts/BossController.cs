@@ -235,9 +235,11 @@ public class BossController : MonoBehaviour
                 }
                 else if (transform.name == "FinalBoss")
                 {
-                    animator.Play("Melee Right Attack 03");
-                    Invoke("ShootTheBullet", 0.5f);
-                    DamageDistribution();
+                    if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Spin Attack"))
+                    {
+                        animator.Play("Melee Right Attack 03");
+                        DamageDistribution();
+                    }
                 }
             }
             yield return new WaitForSeconds(2);

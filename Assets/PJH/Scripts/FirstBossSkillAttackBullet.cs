@@ -20,7 +20,7 @@ public class FirstBossSkillAttackBullet : MonoBehaviour
 
     private void OnEnable()
     {
-        bulletDir = GameManager.Instance.firstBossSkillDir;
+        bulletDir = GameManager.Instance.BossSkillDir;
         transform.position = GameManager.Instance.bossTra.position + new Vector3(0f, 1f, 0f);
     }
 
