@@ -38,6 +38,12 @@ public class DataManager : Singleton<DataManager>
         }
     }
 
+    public void AddCoin(int money)
+    {
+        this.userData.money += money;
+        this.SaveJsonData(this.userData);
+    }
+
     public void PurchaseItem(string itemName, int count = 1)
     {
         PurchaseData pData = this.userData.itemList.Find(l => l.name.CompareTo(itemName) == 0);
