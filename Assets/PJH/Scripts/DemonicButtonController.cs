@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class DemonicButtonController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    public Button btn;
+
     private GameObject[] enemyArray;
     private Coroutine demonicSkillCoroutine;
     private float demonicSkillDamage;
@@ -17,6 +20,8 @@ public class DemonicButtonController : MonoBehaviour, IPointerDownHandler, IPoin
     // Start is called before the first frame update
     void Start()
     {
+        btn = gameObject.GetComponent<Button>();
+
         demonicSkillCoroutine = null;
     }
 
@@ -35,17 +40,20 @@ public class DemonicButtonController : MonoBehaviour, IPointerDownHandler, IPoin
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (!GameManager.Instance.meetEnemy)
+        if (btn.enabled)
         {
-            GameManager.Instance.dc.animator.SetBool("Run", false);
-            GameManager.Instance.dc.animator.Play("Melee Left Attack 01");
-            demonicSkillCoroutine = StartCoroutine(DemonicSkill());
-            GameManager.Instance.dc.animator.SetBool("Run", true);
-        }
-        else
-        {
-            GameManager.Instance.dc.animator.Play("Melee Left Attack 01");
-            demonicSkillCoroutine = StartCoroutine(DemonicSkill());
+            if (!GameManager.Instance.meetEnemy)
+            {
+                GameManager.Instance.dc.animator.SetBool("Run", false);
+                GameManager.Instance.dc.animator.Play("Melee Left Attack 01");
+                demonicSkillCoroutine = StartCoroutine(DemonicSkill());
+                GameManager.Instance.dc.animator.SetBool("Run", true);
+            }
+            else
+            {
+                GameManager.Instance.dc.animator.Play("Melee Left Attack 01");
+                demonicSkillCoroutine = StartCoroutine(DemonicSkill());
+            }
         }
     }
 
@@ -61,13 +69,30 @@ public class DemonicButtonController : MonoBehaviour, IPointerDownHandler, IPoin
         enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
 
         int saveNumber = 0;
-        float maxHp = enemyArray[0].GetComponent<EnemyController>().enemyHp;
+        float maxHp = 0f;
+
+        if (enemyArray[0].name.Substring(0, 4) == "Enem")
+            maxHp = enemyArray[0].GetComponent<EnemyController>().enemyHp;
+        else
+            maxHp = enemyArray[0].GetComponent<BossController>().bossHp;
+
         for (int i = 1; i < enemyArray.Length; ++i)
         {
-            if (maxHp < enemyArray[i].GetComponent<EnemyController>().enemyHp)
+            if (enemyArray[i].name.Substring(0, 4) == "Enem")
             {
-                maxHp = enemyArray[i].GetComponent<EnemyController>().enemyHp;
-                saveNumber = i;
+                if (maxHp < enemyArray[i].GetComponent<EnemyController>().enemyHp)
+                {
+                    maxHp = enemyArray[i].GetComponent<EnemyController>().enemyHp;
+                    saveNumber = i;
+                }
+            }
+            else
+            {
+                if (maxHp < enemyArray[i].GetComponent<BossController>().bossHp)
+                {
+                    maxHp = enemyArray[i].GetComponent<BossController>().bossHp;
+                    saveNumber = i;
+                }
             }
         }
 
@@ -103,6 +128,9 @@ public class DemonicButtonController : MonoBehaviour, IPointerDownHandler, IPoin
 
     private void SkillEffect(int idx)
     {
-        enemyArray[idx].GetComponent<EnemyController>().TakeDamage(demonicSkillDamage);
+        if (enemyArray[idx].name.Substring(0, 4) == "Enem")
+            enemyArray[idx].GetComponent<EnemyController>().TakeDamage(demonicSkillDamage);
+        else
+            enemyArray[idx].GetComponent<BossController>().TakeDamage(demonicSkillDamage);
     }
 }

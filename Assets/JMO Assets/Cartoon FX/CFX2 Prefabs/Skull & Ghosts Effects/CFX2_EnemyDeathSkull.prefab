@@ -9489,7 +9489,7 @@ GameObject:
   - component: {fileID: 400004}
   - component: {fileID: 19800004}
   - component: {fileID: 19900004}
-  - component: {fileID: 11400004}
+  - component: {fileID: 1251878179598926191}
   m_Layer: 0
   m_Name: CFX2_EnemyDeathSkull
   m_TagString: Untagged
@@ -14267,7 +14267,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &11400004
+--- !u!114 &1251878179598926191
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14276,10 +14276,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fd2e8874f60266498a388d7229a1bac, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cd2770e31ae0504ca04b5b6cd4d200b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnlyDeactivate: 0
 --- !u!1 &100006
 GameObject:
   m_ObjectHideFlags: 0

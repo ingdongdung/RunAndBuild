@@ -8,6 +8,7 @@ public class DemonicController : MonoBehaviour
     private int layerMask;
 
     public Coroutine demonicAttackTimer;
+    public Coroutine demonicDeadTimer;
     public Animator animator;
     public float MAXHP = 300f;
     public float demonicHp = 300f;
@@ -40,6 +41,10 @@ public class DemonicController : MonoBehaviour
         if (demonicAttackTimer != null)
         {
             StopCoroutine(demonicAttackTimer);
+        }
+        if (demonicDeadTimer != null)
+        {
+            StopCoroutine(demonicDeadTimer);
         }
     }
 
@@ -85,7 +90,8 @@ public class DemonicController : MonoBehaviour
 
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Melee Left Attack 01"))
         {
-            animator.Play("Right Punch Attack");
+            if (demonicHp > 0f)
+                animator.Play("Right Punch Attack");
         }
     }
 
@@ -95,7 +101,11 @@ public class DemonicController : MonoBehaviour
         if (Physics.Raycast(transform.position + new Vector3(0f, 0.75f, 0f), transform.forward, out hit, 10f, layerMask))
         {
             Debug.DrawRay(transform.position + new Vector3(0f, 0.75f, 0f), transform.forward * 10f, Color.red, 10f);
-            hit.collider.gameObject.GetComponent<EnemyController>().TakeDamage(demonicPower);
+
+            if (hit.collider.gameObject.name.Substring(0, 4) == "Enem")
+                hit.collider.gameObject.GetComponent<EnemyController>().TakeDamage(demonicPower);
+            else
+                hit.collider.gameObject.GetComponent<BossController>().TakeDamage(demonicPower);
         }
     }
 
@@ -107,6 +117,27 @@ public class DemonicController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         demonicHp -= damage;
+
+        GameManager.Instance.dHpBarImage.fillAmount = demonicHp / MAXHP;
+
+        CheckToDead();
+    }
+
+    private void CheckToDead()
+    {
+        if (demonicHp <= 0f)
+        {
+            animator.Play("Die");
+            demonicDeadTimer = StartCoroutine(CheckToDeadTimer());
+        }
+    }
+
+    IEnumerator CheckToDeadTimer()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        GameManager.Instance.dBtn.gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     public void Initialize()        // 플레이어 앞 적이 다 죽으면 실행할 메소드
