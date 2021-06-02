@@ -1,79 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System;
 using System.IO;
+using UnityEngine;
 
-public class DataController : MonoBehaviour
+[Serializable]
+public class GameData
 {
-    static GameObject _container;
-    static GameObject Container
-    {
-        get
-        {
-            return _container;
-        }
-    }
-    static DataController _instance;
-    public static DataController Instance
-    {
-        get
-        {
-            if (!_instance)
-            {
-                _container = new GameObject();
-                _container.name = "DataController";
-                _instance = _container.AddComponent(typeof(DataController)) as DataController;
-                DontDestroyOnLoad(_container);
-            }
-            return _instance;
-        }
-    }
+    public int gold = 0;
+    public bool firstStageClear = false;
+    public bool middleStageClear = false;
+    public bool finalStageClear = false;
+}
 
-    public string gameDataFileName = "RunAndBuildData.json";
+public class DataController : Singleton<DataController>
+{
+    private string gameDataFileName = "/RunAndBuildSaveData.json";
     public GameData gameData;
-    public GameData _gameData
-    {
-        get
-        {
-            if (_gameData == null)
-            {
-                LoadGameData();
-                SaveGameData();
-            }
-            return _gameData;
-        }
-    }
 
-    private void Awake()
+    // Start is called before the first frame update 
+    void Start()
     {
-        //DontDestroyOnLoad(gameObject);
+        LoadGameData();
     }
 
     public void LoadGameData()
     {
-        string filePath = Application.persistentDataPath + gameDataFileName;
+        string filePath = Application.dataPath + gameDataFileName;
 
         if (File.Exists(filePath))
         {
             Debug.Log("불러오기 성공");
-            string fromJsonData = File.ReadAllText(filePath);
-            gameData = JsonUtility.FromJson<GameData>(fromJsonData);
+            string FromJsonData = File.ReadAllText(filePath);
+            gameData = JsonUtility.FromJson<GameData>(FromJsonData);
         }
         else
         {
             Debug.Log("새로운 파일 생성");
-
             gameData = new GameData();
         }
     }
 
     public void SaveGameData()
     {
-        string toJsonData = JsonUtility.ToJson(gameData);
-        string filePath = Application.persistentDataPath + gameDataFileName;
-        File.WriteAllText(filePath, toJsonData);
+        string ToJsonData = JsonUtility.ToJson(gameData);
+        string filePath = Application.dataPath + gameDataFileName;
+        File.WriteAllText(filePath, ToJsonData);
         Debug.Log("저장 성공");
+    }
+
+    // Update is called once per frame 
+    void Update()
+    {
+
     }
 
     private void OnApplicationQuit()
