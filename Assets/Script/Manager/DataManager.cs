@@ -93,4 +93,8 @@ public class DataManager : Singleton<DataManager>
 
     private UserData userData;
 
+    private void OnApplicationQuit()
+    {
+        SaveJsonData(UserData);
+    }
 }

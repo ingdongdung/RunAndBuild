@@ -146,7 +146,7 @@ public class BossController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
 
-        DataController.Instance.gameData.gold += 500;
+        DataManager.Instance.UserData.money += 500;
         ObjectPool.Instance.PushToPool(gameObject.name, gameObject);
     }
 

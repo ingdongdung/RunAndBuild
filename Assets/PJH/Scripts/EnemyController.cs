@@ -146,7 +146,7 @@ public class EnemyController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
 
-        DataController.Instance.gameData.gold += 100;
+        DataManager.Instance.UserData.money += 100;
         ObjectPool.Instance.PushToPool(gameObject.name, gameObject);
     }
 
