@@ -86,7 +86,8 @@ public class EnemyController : MonoBehaviour
     {
         if (DistanceToPlayer() <= 20f && !meetPlayer && !attackPlayer)
         {
-            enemySpeed -= 0.04f;
+            if (Time.timeScale != 0)
+                enemySpeed -= 0.04f;
         }
 
         if (DistanceToPlayer() <= 5f && !meetPlayer && !attackPlayer)
@@ -147,6 +148,8 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         DataManager.Instance.UserData.money += 100;
+        GameManager.Instance.gameMoney += 100;
+        GameManager.Instance.moneyText.text = GameManager.Instance.gameMoney.ToString();
         ObjectPool.Instance.PushToPool(gameObject.name, gameObject);
     }
 

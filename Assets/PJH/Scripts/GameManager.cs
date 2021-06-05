@@ -19,6 +19,7 @@ public class GameManager : Singleton<GameManager>
     public Button fBtn;
     public Canvas uiCanvas;
     public Text gameTimerText;
+    public Text moneyText;
 
     public GameObject[] enemyArray;
     public bool meetEnemy;
@@ -28,6 +29,7 @@ public class GameManager : Singleton<GameManager>
     public int gameLevel;
     public float gameTimerSec;
     public int gameTimerMin;
+    public int gameMoney;
 
     public Vector3 bossDir;
     public Transform bossTra;
@@ -63,6 +65,7 @@ public class GameManager : Singleton<GameManager>
         uiCanvas = GameObject.Find("UI Canvas for enemy").GetComponent<Canvas>();
 
         gameTimerText = GameObject.Find("GameTimerText").GetComponent<Text>();
+        moneyText = GameObject.Find("MoneyText").GetComponent<Text>();
 
         meetEnemy = false;
         onceForCoroutine = false;
@@ -75,6 +78,7 @@ public class GameManager : Singleton<GameManager>
 
         gameTimerSec = 60f;
         gameTimerMin = 2;
+        gameMoney = 0;
 
         bossDir = new Vector3(0f, 0f, 0f);
         bossTra = transform;
