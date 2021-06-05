@@ -20,6 +20,7 @@ public class GameManager : Singleton<GameManager>
     public Canvas uiCanvas;
     public Text gameTimerText;
     public Text moneyText;
+    public Slider gameProgressBar;
 
     public GameObject[] enemyArray;
     public bool meetEnemy;
@@ -67,6 +68,8 @@ public class GameManager : Singleton<GameManager>
         gameTimerText = GameObject.Find("GameTimerText").GetComponent<Text>();
         moneyText = GameObject.Find("MoneyText").GetComponent<Text>();
 
+        gameProgressBar = GameObject.Find("GameProgressBar").GetComponent<Slider>();
+
         meetEnemy = false;
         onceForCoroutine = false;
         SearchCoroutine = null;
@@ -111,7 +114,7 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameProgressBar.value = gameLevel * 0.33f;
     }
 
     // Update is called once per frame
@@ -132,6 +135,7 @@ public class GameManager : Singleton<GameManager>
             meetEnemy = false;
             onceForCoroutine = false;
             ++gameLevel;
+            gameProgressBar.value = gameLevel * 0.33f;
 
             SpawnManager.Instance.MethodForStartingTreeSpawn();
             SpawnManager.Instance.MethodForStartingMonsterSpawn();
