@@ -10,12 +10,9 @@ public class FollowPlayerCamera : MonoBehaviour
 
     int order;
 
-    public bool isBuilding;
-
     // Start is called before the first frame update
     void Start()
     {
-        isBuilding = false;
         cameraTrasnform = GetComponent<Transform>();
         order = 1;
         target = targets[order];
@@ -24,32 +21,22 @@ public class FollowPlayerCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab) && !isBuilding)
+        if(Input.GetKeyDown(KeyCode.Tab))
         {
             ++order;
             if (order > 2)
                 order = 0;
             target = targets[order];
         }
-
-        if(isBuilding)
-        {
-            cameraTrasnform.position = new Vector3(9.29f, 9.5f, -9.96f);
-            cameraTrasnform.rotation = Quaternion.Euler(29.422f, 0f, 0f);
-        }
      
     }
 
     void LateUpdate()
     {
-        if (!isBuilding)
-        {
-            cameraTrasnform.position = new Vector3(target.position.x,
-
-              5f, target.position.z - 6.56f);
+        cameraTrasnform.position = new Vector3(target.position.x,
+            5f, target.position.z - 6.56f);
 
 
-            cameraTrasnform.LookAt(target);
-        }
+        cameraTrasnform.LookAt(target);
     }
 }
