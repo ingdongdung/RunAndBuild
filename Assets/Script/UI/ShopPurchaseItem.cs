@@ -7,7 +7,7 @@ using System;
 
 public class ShopPurchaseItem : MonoBehaviour
 {
-    public void SetItem(PurchaseItemData data, Action<bool> isBuy)
+    public void SetItem(PurchaseItemData data, Sprite sprite, Action<bool> isBuy)
     {
         this.isBuy = isBuy;
         this.data = data;
@@ -15,7 +15,7 @@ public class ShopPurchaseItem : MonoBehaviour
         this.price.text = data.Price.ToString();
         // this.image.sprite = sprite;
         // this.image.sprite = Instantiate(Resources.Load("ShopImg/shop_" + data.ID.ToString()), Vector3.zero, Quaternion.identity) as Sprite;
-        // this.image.sprite = ImageManager.Instance.GetShopImage(data.ID);
+        this.image.sprite = sprite;
     }
 
     public void OnClickBuy()
