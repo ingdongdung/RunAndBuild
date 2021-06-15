@@ -5,27 +5,33 @@ using UnityEngine;
 public class BuildingObjPool : MonoBehaviour
 {
     // Start is called before the first frame update
-
-    public static BuildingObjPool Instance;
-
-    [SerializeField]
-    private GameObject poolingObjPrefab;
-
-    Queue<Building> poolingObjQueue = new Queue<Building>();
+    Queue<GameObject> poolingObjQueue = new Queue<GameObject>();
 
     
     void Start()
-    {
-        Instance = this;
-        CreateObject();
+    {    
     }
 
-    public Building CreateObject()
+    public GameObject CreateObject(string findTag)
     {
-        var newObj = Instantiate(poolingObjPrefab).GetComponent<Building>();
-        poolingObjQueue.Enqueue(newObj);
+        //Debug.Log("Building Update");
+        Vector3 position = Input.mousePosition;
+        Ray ray = Camera.main.ScreenPointToRay(position);
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit))
+        {
+            position = hit.transform.position;
+        }
+        Quaternion rotation = new Quaternion(0f, 0f, 0f, 1f);
+        GameObject target = GameObject.Find("KingdomBuilding").transform.Find(findTag).gameObject;
+        GameObject obj = Instantiate(target, position, rotation);
+        obj.SetActive(true);
+        poolingObjQueue.Enqueue(obj);
 
-        return newObj;
+        FollowPlayerCamera camera = FindObjectOfType<FollowPlayerCamera>();
+        camera.isBuilding = true;
+
+        return obj;
     
     }
 
@@ -33,5 +39,17 @@ public class BuildingObjPool : MonoBehaviour
     void Update()
     {
         
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            CreateObject("WaterTower");
+        }
+        else if (Input.GetKeyDown(KeyCode.F2))
+        {
+            CreateObject("House_1");
+        }
+        else if (Input.GetKeyDown(KeyCode.F3))
+        {
+            CreateObject("House_2");
+        }
     }
 }
