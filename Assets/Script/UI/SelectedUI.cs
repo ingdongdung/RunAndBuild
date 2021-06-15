@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class SelectedUI : MonoBehaviour
 {
@@ -18,15 +19,18 @@ public class SelectedUI : MonoBehaviour
             Debug.Log(this.data.Name);
             DataManager.Instance.PurchaseItem(this.data.Name);
             KingdomScene.Instance.Refresh();
+            this.isClose(true);
         }
     }
 
-    public void Init(PurchaseItemData item)
+    public void Init(PurchaseItemData item, Sprite sprite, Action<bool> isClose)
     {
         this.data = item;
         this.titleText.text = item.Name;
         this.descText.text = item.Desc;
         this.priceText.text = item.Price.ToString();
+        this.image.sprite = sprite;
+        this.isClose = isClose;
         // this.image.sprite = ImageManager.Instance.GetShopImage(item.ID);
     }
 
@@ -35,6 +39,7 @@ public class SelectedUI : MonoBehaviour
     [SerializeField] private Text priceText;
     [SerializeField] private Image image;
     private PurchaseItemData data;
+    private Action<bool> isClose;
 
     private void UpdateData()
     {

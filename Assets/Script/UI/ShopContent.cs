@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public enum ShopCategory
 {
@@ -17,6 +18,11 @@ public class ShopContent : MonoBehaviour
         this.Init();
     }
 
+    public Sprite GetShopImage(int id)
+    {
+        return this.atlas.GetSprite("shop_" + id);
+    }
+
     public void OnClickClose()
     {
         this.gameObject.SetActive(false);
@@ -30,7 +36,7 @@ public class ShopContent : MonoBehaviour
     }
 
     // Update is called once per frame
-
+    [SerializeField] private SpriteAtlas atlas;
     [SerializeField] private ShopPurchaseItem shopItemPrefab;
     [SerializeField] private SelectedUI selectedUI;
     [SerializeField] private GameObject content;
@@ -60,9 +66,13 @@ public class ShopContent : MonoBehaviour
             foreach (PurchaseItemData data in list)
             {
                 ShopPurchaseItem item = Instantiate<ShopPurchaseItem>(this.shopItemPrefab, this.content.transform);
-                item.SetItem(data, (isBuy) =>
+                item.SetItem(data, this.GetShopImage(data.ID), (isBuy) =>
                 {
-                    this.selectedUI.Init(data);
+                    this.selectedUI.Init(data, this.GetShopImage(data.ID), (isClose) =>
+                    {
+                        this.selectedUI.gameObject.SetActive(false);
+                        this.gameObject.SetActive(false);
+                    });
                     this.selectedUI.gameObject.SetActive(true);
                 });
             }
