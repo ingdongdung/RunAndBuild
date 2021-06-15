@@ -6,7 +6,8 @@ public class KingdomScene : Singleton<KingdomScene>
 {
     public void OnClickInGameScene()
     {
-        SceneLoadManager.Instance.MoveScene(Scene.InGame);
+        // SceneLoadManager.Instance.MoveScene(Scene.InGame);
+        this.selectStage.gameObject.SetActive(true);
     }
 
     public void OnClickShop()
@@ -24,6 +25,7 @@ public class KingdomScene : Singleton<KingdomScene>
         this.Refresh();
     }
 
+    [SerializeField] SelectStage selectStage;
     [SerializeField] ShopContent shopContent;
     [SerializeField] TopUI topUI;
 }

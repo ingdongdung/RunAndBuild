@@ -7,7 +7,9 @@ public enum Scene
 {
     TitleScene,
     KingdomScene,
-    InGame,
+    FirstStage,
+    MiddleStage,
+    FinalStage,
 }
 
 public class SceneLoadManager : SingleTonObject<SceneLoadManager>
