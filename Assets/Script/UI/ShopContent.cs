@@ -81,7 +81,6 @@ public class ShopContent : MonoBehaviour
 
     private void LoadData()
     {
-        this.itemDataList.Clear();
         this.itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 1, "베이커리", 100, "설명설명설명설명1"));
         this.itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 2, "목공소", 200, "설명설명설명설명1"));
         this.itemDataList.Add(new PurchaseItemData(ShopCategory.BUILDING, 3, "풍력발전소", 300, "설명설명설명설명1"));
