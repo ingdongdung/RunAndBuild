@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -136,6 +137,30 @@ public class GameManager : Singleton<GameManager>
             onceForCoroutine = false;
             ++gameLevel;
             gameProgressBar.value = gameLevel * 0.33f;
+
+            if (gameLevel == 4)
+            {
+                switch (SceneManager.GetActiveScene().name)
+                {
+                    case "firstStage":
+                        {
+                            DataManager.Instance.UserData.isFirstStage = true;
+                            break;
+                        }
+                    case "MiddleStage":
+                        {
+                            DataManager.Instance.UserData.isMiddleStage = true;
+                            break;
+                        }
+                    case "FinalStage":
+                        {
+                            DataManager.Instance.UserData.isFinalStage = true;
+                            break;
+                        }
+                }
+                DataManager.Instance.SaveJsonData(DataManager.Instance.UserData);
+                SceneLoadManager.Instance.MoveScene((Scene)1);
+            }
 
             SpawnManager.Instance.MethodForStartingTreeSpawn();
             SpawnManager.Instance.MethodForStartingMonsterSpawn();

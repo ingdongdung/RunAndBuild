@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/KingdomScene.unity
     guid: 63c8ca4ecdd879c4ebe262272119a71e
   - enabled: 1
-    path: Assets/PJH/Scenes/FirstStage.unity
+    path: Assets/PJH/Scenes/firstStage.unity
     guid: 55afabaad90272e40beb722c017fabd4
+  - enabled: 1
+    path: Assets/PJH/Scenes/MiddleStage.unity
+    guid: 1cd21d7300ff70145a36cd5081fc452e
+  - enabled: 1
+    path: Assets/PJH/Scenes/FinalStage.unity
+    guid: 2788a910b1535234ca61b1dfd37e7cf9
   m_configObjects: {}

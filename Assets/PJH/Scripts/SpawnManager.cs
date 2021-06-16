@@ -44,6 +44,15 @@ public class SpawnManager : Singleton<SpawnManager>
         }
     }
 
+    private void OnDisable()
+    {
+        if (treeSpawningCoroutine != null)
+            StopCoroutine(treeSpawningCoroutine);
+
+        if (monsterSpawningCoroutine != null)
+            StopCoroutine(monsterSpawningCoroutine);
+    }
+
     public bool GetTreeSpawnFlag()
     {
         return treeSpawnFlag;
@@ -119,7 +128,7 @@ public class SpawnManager : Singleton<SpawnManager>
             {
                 switch(SceneManager.GetActiveScene().name)
                 {
-                    case "FirstStage":
+                    case "firstStage":
                         {
                             GameObject boss = ObjectPool.Instance.PopFromPool("FirstBoss");
                             boss.transform.position = point.position + enemySpawnOffSet;
