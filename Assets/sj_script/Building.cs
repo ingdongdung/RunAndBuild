@@ -6,11 +6,32 @@ public class Building : KingdomBuilding
 {
     public GameObject target;
     public bool isClick;
+    private KingdomEffect kingdomEffect;
+    float coroutineTime;
+    float coroutineTime2;
+    float fTimer;
+    Material[] material;
+    int length;
+
+    Color[] colors;
 
     // Start is called before the first frame update
     void Start()
     {
         isClick = false;
+        kingdomEffect = FindObjectOfType<KingdomEffect>();
+        coroutineTime = 1.4f;
+        coroutineTime2 = 0.2f;
+        fTimer = 1f;
+        material = target.GetComponent<MeshRenderer>().materials;
+        length = material.Length;
+
+        colors = new Color[length];
+        for (int i = 0;i<length;i++)
+        {
+            colors[i] = material[i].color;
+            material[i].color = new Color(material[i].color.r*-0.5f, material[i].color.g*1.2f, material[i].color.b*1.8f);
+        }
     }
 
     // Update is called once per frame
@@ -30,9 +51,12 @@ public class Building : KingdomBuilding
                 if(Input.GetMouseButtonDown(0))
                 {
                     target.GetComponent<BoxCollider>().enabled = true;
+                    target.GetComponent<Renderer>().enabled = false;
                     isClick = true;
-                    FollowPlayerCamera camera = FindObjectOfType<FollowPlayerCamera>();
-                    camera.isBuilding = false;
+                    kingdomEffect.effect.transform.position = target.transform.position;
+                    kingdomEffect.particleSystem.Play();
+                    StartCoroutine("TimerBuilding");
+                    StartCoroutine("TimerRenderer");
                 }
 
                 if(Input.mouseScrollDelta.y > 0)
@@ -45,6 +69,23 @@ public class Building : KingdomBuilding
                 }
 
             }
+        }
+    }
+
+    IEnumerator TimerBuilding()
+    {
+        yield return new WaitForSeconds(coroutineTime);
+        FollowPlayerCamera camera = FindObjectOfType<FollowPlayerCamera>();
+        camera.isBuilding = false;
+    }
+
+    IEnumerator TimerRenderer()
+    {
+        yield return new WaitForSeconds(coroutineTime2);
+        target.GetComponent<Renderer>().enabled = true;
+        for (int i = 0; i < length; i++)
+        {
+            material[i].color = colors[i];
         }
     }
 }

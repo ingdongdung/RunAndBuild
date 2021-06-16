@@ -7,6 +7,11 @@ using System;
 
 public class SelectedUI : MonoBehaviour
 {
+    private BuildingObjPool buildingObjPool;
+    void Start()
+    {
+        buildingObjPool = FindObjectOfType<BuildingObjPool>();
+    }
     public void OnClickClose()
     {
         this.gameObject.SetActive(false);
@@ -21,7 +26,7 @@ public class SelectedUI : MonoBehaviour
             KingdomScene.Instance.Refresh();
             this.isClose(true);
 
-            this.BuildingAction();
+            this.BuildingBuy(this.data.Name);
         }
     }
     public void OnClickBuilding()
@@ -65,5 +70,25 @@ public class SelectedUI : MonoBehaviour
     private void BuildingAction()
     {
         // [TODO] 여기에 설치 행동 추가해주세요
+
+    }
+
+    private void BuildingBuy(string buildingName)
+    {
+        // [TODO] 여기에 설치 행동 추가해주세요
+
+        if(buildingName == "베이커리")
+        {
+            buildingObjPool.CreateObject("House_2");
+        }
+        else if(buildingName == "목공소")
+        {
+            buildingObjPool.CreateObject("House_1");
+        }
+        else if(buildingName == "풍력발전소")
+        {
+            buildingObjPool.CreateObject("Windmill");
+        }
+
     }
 }

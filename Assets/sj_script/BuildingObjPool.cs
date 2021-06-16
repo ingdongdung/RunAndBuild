@@ -39,17 +39,17 @@ public class BuildingObjPool : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            CreateObject("WaterTower");
-        }
-        else if (Input.GetKeyDown(KeyCode.F2))
-        {
-            CreateObject("House_1");
-        }
-        else if (Input.GetKeyDown(KeyCode.F3))
-        {
-            CreateObject("House_2");
-        }
+        //if (Input.GetKeyDown(KeyCode.F1))
+        //{
+        //    CreateObject("WaterTower");
+        //}
+        //else if (Input.GetKeyDown(KeyCode.F2))
+        //{
+        //    CreateObject("House_1");
+        //}
+        //else if (Input.GetKeyDown(KeyCode.F3))
+        //{
+        //    CreateObject("House_2");
+        //}
     }
 }
