@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 23fdc34aacf89f244b1b050108218a20
+=======
+guid: b7246913c05bec64b92771b0cbe5d681
+>>>>>>> parent of 419577f8 (Merge branch 'jangho_after_0602' of https://github.com/ingdongdung/RunAndBuild into jangho_after_0602)
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
