@@ -18,7 +18,7 @@ public class InputNamePop : MonoBehaviour
         }
         else
         {
-            DataManager.Instance.SaveJsonData(new UserData(inputText.text, 100000, 5));
+            DataManager.Instance.SaveJsonData(new UserData(inputText.text, 1000, 5));
         }
 
         SceneLoadManager.Instance.MoveScene(Scene.KingdomScene);
