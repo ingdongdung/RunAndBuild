@@ -7,7 +7,7 @@ public class CharacterUI : MonoBehaviour
     // Start is called before the first frame update
     public void ActionClear()
     {
-        this.animator.SetBool("Jump", true);
+        this.animator.SetBool("Victory", true);
     }
 
     public void ActionFail()

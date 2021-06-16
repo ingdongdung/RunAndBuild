@@ -73,6 +73,11 @@ public class ClearUI : MonoBehaviour
         SceneLoadManager.Instance.MoveScene(currentScene);
     }
 
+    protected void Start()
+    {
+        // this.SetClearUI(true, 1);
+    }
+
     [SerializeField] Text stageText;
     [SerializeField] GameObject clearObj;
     [SerializeField] GameObject failObj;
