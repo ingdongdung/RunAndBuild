@@ -78,7 +78,7 @@ public class GameManager : Singleton<GameManager>
         baseDirection = new Vector3(0f, 0f, 1f) - new Vector3(0f, 0f, 0f);
         baseDirection.Normalize();
 
-        gameLevel = 2;
+        gameLevel = 0;
 
         gameTimerSec = 60f;
         gameTimerMin = 2;
