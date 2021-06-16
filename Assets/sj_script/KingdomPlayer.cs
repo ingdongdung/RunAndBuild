@@ -107,7 +107,7 @@ public class KingdomPlayer : MonoBehaviour
     IEnumerator PlayerAnimationBehavior(string animationTag)
     {
         beforeAnim = currentAnim;
-        Debug.Log(animationTag);
+        //Debug.Log(animationTag);
         if (animationTag == "Walk")
         {
             currentAnim = "Walk";
@@ -183,7 +183,7 @@ public class KingdomPlayer : MonoBehaviour
     {
         if(other.tag != "Tile")
         {
-            Debug.Log(other.tag);
+            //Debug.Log(other.tag);
             isStartCoroutine = true;
             randomTag = 3;
             isCollision = true;
