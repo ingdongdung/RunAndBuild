@@ -27,6 +27,7 @@ public class UserData
     public Scene currentScene;
     public bool isClear;
     public List<PurchaseData> itemList = new List<PurchaseData>();
+    public List<BuildingData> buildingList = new List<BuildingData>();
 }
 
 [System.Serializable]
@@ -39,4 +40,20 @@ public class PurchaseData
     }
     public string name;
     public int count;
+}
+
+[System.Serializable]
+public class BuildingData
+{
+    public BuildingData(string name, float x, float y, float z)
+    {
+        this.name = name;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+    public string name;
+    public float x;
+    public float y;
+    public float z;
 }
