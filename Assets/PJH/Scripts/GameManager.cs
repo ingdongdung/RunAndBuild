@@ -206,16 +206,7 @@ public class GameManager : Singleton<GameManager>
 
     private void CheckGameOver()
     {
-        int count = 0;
-
-        if (!fc)
-            ++count;
-        if (!dc)
-            ++count;
-        if (!ac)
-            ++count;
-
-        if (count == 3)
+        if (!fc && !dc && !ac)
         {
             DataManager.Instance.UserData.isClear = false;
             SceneLoadManager.Instance.MoveScene(Scene.StageEnd);
