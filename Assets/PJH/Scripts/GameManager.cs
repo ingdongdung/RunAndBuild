@@ -78,7 +78,7 @@ public class GameManager : Singleton<GameManager>
         baseDirection = new Vector3(0f, 0f, 1f) - new Vector3(0f, 0f, 0f);
         baseDirection.Normalize();
 
-        gameLevel = 0;
+        gameLevel = 2;
 
         gameTimerSec = 60f;
         gameTimerMin = 2;
@@ -91,6 +91,25 @@ public class GameManager : Singleton<GameManager>
         middleBossSkillAttackDamage = 65f;
         finalBossSkillAttackDamage = 25f;
         BossSkillDir = new Vector3(0f, 0f, 0f);
+
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "firstStage":
+                {
+                    DataManager.Instance.UserData.currentScene = Scene.FirstStage;
+                    break;
+                }
+            case "MiddleStage":
+                {
+                    DataManager.Instance.UserData.currentScene = Scene.MiddleStage;
+                    break;
+                }
+            case "FinalStage":
+                {
+                    DataManager.Instance.UserData.currentScene = Scene.FinalStage;
+                    break;
+                }
+        }
     }
 
     private void OnEnable()
@@ -158,8 +177,9 @@ public class GameManager : Singleton<GameManager>
                             break;
                         }
                 }
+                DataManager.Instance.UserData.isClear = true;
                 DataManager.Instance.SaveJsonData(DataManager.Instance.UserData);
-                SceneLoadManager.Instance.MoveScene((Scene)1);
+                SceneLoadManager.Instance.MoveScene(Scene.StageEnd);
             }
 
             SpawnManager.Instance.MethodForStartingTreeSpawn();

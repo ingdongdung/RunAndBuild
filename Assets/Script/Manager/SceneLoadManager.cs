@@ -10,6 +10,7 @@ public enum Scene
     FirstStage,
     MiddleStage,
     FinalStage,
+    StageEnd,
 }
 
 public class SceneLoadManager : SingleTonObject<SceneLoadManager>
