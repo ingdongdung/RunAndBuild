@@ -210,12 +210,7 @@ public class KingdomPlayer : KingdomPlayers
     }
     private void OnCollisonStay(Collider other)
     {
-        if (transform.position.y < -1.9f)
-        {
-            Vector3 pos = new Vector3(transform.position.x, -1.581483f, transform.position.z);
-            transform.position = pos;
-        }
-
+       
         //if (eBuilding == BUILDING.buildingEnd)
         {
             if (other.tag == "kingdomBuilding")
@@ -225,6 +220,12 @@ public class KingdomPlayer : KingdomPlayers
 
                 transform.position = pos;
 
+            }
+
+            if (transform.position.y < -1.9f)
+            {
+                Vector3 pos = new Vector3(transform.position.x, -1.581483f, transform.position.z);
+                transform.position = pos;
             }
 
             //if (other.tag == "Tile")

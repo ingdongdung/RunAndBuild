@@ -27,7 +27,7 @@ public class Building : KingdomBuilding
         coroutineTime = 1.4f;
         coroutineTime2 = 0.2f;
         fTimer = 1f;
-        material = target.GetComponent<MeshRenderer>().materials;
+        material = GetComponent<MeshRenderer>().materials;
         length = material.Length;
 
         colors = new Color[length];
@@ -56,12 +56,12 @@ public class Building : KingdomBuilding
             if (Physics.Raycast(ray, out hit))
             {
                 pos = hit.transform.position;
-                target.transform.position = pos;
+                transform.position = pos;
 
                 if (Input.GetMouseButtonDown(0) && !isModifying)
                 {
-                    target.GetComponent<BoxCollider>().enabled = true;
-                    target.GetComponent<Renderer>().enabled = false;
+                    GetComponent<BoxCollider>().enabled = true;
+                    GetComponent<Renderer>().enabled = false;
                     isClick = true;
 
                     StartCoroutine("TimerBuilding");
@@ -80,11 +80,11 @@ public class Building : KingdomBuilding
 
                 if (Input.mouseScrollDelta.y > 0)
                 {
-                    target.transform.Rotate(0f, 90f, 0f);
+                    transform.Rotate(0f, 90f, 0f);
                 }
                 else if (Input.mouseScrollDelta.y < 0)
                 {
-                    target.transform.Rotate(0f, -90f, 0f);
+                    transform.Rotate(0f, -90f, 0f);
                 }
 
 
@@ -103,13 +103,13 @@ public class Building : KingdomBuilding
     IEnumerator TimerRenderer()
     {
         yield return new WaitForSeconds(coroutineTime2);
-        target.GetComponent<Renderer>().enabled = true;
+        GetComponent<Renderer>().enabled = true;
         for (int i = 0; i < length; i++)
         {
             material[i].color = colors[i];
         }
 
-        kingdomEffect.effect.transform.position = target.transform.position;
+        kingdomEffect.effect.transform.position = transform.position;
         kingdomEffect.particleSystem.Play();
         kingdomEffect.particleSystem.time = 0f;
     }
