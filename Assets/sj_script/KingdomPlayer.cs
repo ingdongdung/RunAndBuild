@@ -198,52 +198,59 @@ public class KingdomPlayer : KingdomPlayers
        
         isStartCoroutine = true;
     }
-    private void OnCollisonEnter(Collider other)
-    {
-        if (other.tag != "Tile")
+
+    private void OnCollisionEnter(Collision collision)
+    {   
+        Debug.Log(collision.collider.tag);
+        if (collision.collider.tag != "Tile")
         {
             //Debug.Log(other.tag);
             isStartCoroutine = true;
             randomTag = 3;
             isCollision = true;
         }
-    }
-    private void OnCollisonStay(Collider other)
-    {
-       
-        //if (eBuilding == BUILDING.buildingEnd)
+
+        if (collision.collider.tag == "Tile" && transform.position.y < -2.2f)
         {
-            if (other.tag == "kingdomBuilding")
-            {
-                Vector3 pos = new Vector3(tiles[Random.Range(0, tiles.Length)].transform.position.x,
-                   transform.position.y, tiles[Random.Range(0, tiles.Length)].transform.position.z);
+            Debug.Log("Å¸ÀÏÀÌ¶û Ãæµ¹ÇÔ");
+            Vector3 pos = new Vector3(transform.position.x, -1.581483f, transform.position.z);
+            transform.position = pos;
+        }
+    }
 
-                transform.position = pos;
+    private void OnCollisionStay(Collision collision)
+    {
+        //Debug.Log(other.tag);
+        if (collision.collider.tag == "kingdomBuilding")
+        {
+            Debug.Log("ºôµùÀÌ¶û Ãæµ¹ÇÔ");
+            int randomIndex = Random.Range(0, tiles.Length);
+            Vector3 pos = new Vector3(tiles[randomIndex].transform.position.x,
+               -1.581483f, tiles[randomIndex].transform.position.z);
 
-            }
-
-            if (other.tag == "Tile" && transform.position.y < -1.9f)
-            {
-                Vector3 pos = new Vector3(transform.position.x, -1.581483f, transform.position.z);
-                transform.position = pos;
-            }
-
-            //if (other.tag == "Tile")
-            //    eBuilding = BUILDING.beforeBuild;
+            transform.position = pos;
 
         }
+        //Debug.Log(transform.position.y);
+        if (collision.collider.tag == "Tile" && transform.position.y < 0.9f)
+        {
+            Debug.Log("Å¸ÀÏÀÌ¶û Ãæµ¹ÇÔ");
+            Vector3 pos = new Vector3(transform.position.x, 1f, transform.position.z);
+            transform.position = pos;
+        }
+
 
     }
 
-
-    private void OnCollisonExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
         if (eBuilding == BUILDING.buildingEnd)
         {
-            if (other.tag == "kingdomBuilding")
+            if (collision.collider.tag == "kingdomBuilding")
             {
                 eBuilding = BUILDING.beforeBuild;
             }
         }
     }
+
 }

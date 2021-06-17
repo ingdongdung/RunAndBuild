@@ -42,8 +42,9 @@ public class KingdomPlayers : MonoBehaviour
             {
                 transform.GetChild(i).gameObject.SetActive(true);
 
-                Vector3 pos = new Vector3(tiles[Random.Range(0, tiles.Length)].transform.position.x, 
-                    beforeBuildPos[i].y, tiles[Random.Range(0, tiles.Length)].transform.position.z);
+                int randomIndex = Random.Range(0, tiles.Length);
+                Vector3 pos = new Vector3(tiles[randomIndex].transform.position.x, 
+                    beforeBuildPos[i].y, tiles[randomIndex].transform.position.z);
 
                 transform.GetChild(i).position = pos;
                 kingdomPlayers[i].eBuilding = KingdomPlayer.BUILDING.buildingEnd;
