@@ -25,7 +25,7 @@ public class DataManager : Singleton<DataManager>
     public bool UseCoin(int money)
     {
         int result = this.userData.money - money;
-        if (result > 0)
+        if (result >= 0)
         {
             this.userData.money = result;
             this.SaveJsonData(this.userData);
