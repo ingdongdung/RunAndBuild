@@ -76,16 +76,16 @@ public class SelectedUI : MonoBehaviour
     private void BuildingBuy(string buildingName)
     {
         // [TODO] 여기에 설치 행동 추가해주세요
-
-        if(buildingName == "베이커리")
+ 
+        if(buildingName == "빵집")
         {
             buildingObjPool.CreateObject("House_2");
         }
-        else if(buildingName == "목공소")
+        else if(buildingName == "대장간")
         {
             buildingObjPool.CreateObject("House_1");
         }
-        else if(buildingName == "풍력발전소")
+        else if(buildingName == "풍차")
         {
             buildingObjPool.CreateObject("Windmill");
         }

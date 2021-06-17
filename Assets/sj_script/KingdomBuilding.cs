@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KingdomBuilding : MonoBehaviour
 {
-    FollowPlayerCamera camera;
+    protected FollowPlayerCamera camera;
     bool bSelected;
     GameObject target;
 
