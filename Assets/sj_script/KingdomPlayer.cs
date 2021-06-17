@@ -222,7 +222,7 @@ public class KingdomPlayer : KingdomPlayers
 
             }
 
-            if (transform.position.y < -1.9f)
+            if (other.tag == "Tile" && transform.position.y < -1.9f)
             {
                 Vector3 pos = new Vector3(transform.position.x, -1.581483f, transform.position.z);
                 transform.position = pos;
