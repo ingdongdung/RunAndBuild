@@ -6,7 +6,7 @@ public class FollowPlayerCamera : MonoBehaviour
 {
     public Transform[] targets = new Transform[3];
     public Transform target;
-    private Transform cameraTrasnform;
+    public Transform cameraTrasnform;
 
     int order;
 
