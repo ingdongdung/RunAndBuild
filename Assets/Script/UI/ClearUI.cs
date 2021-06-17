@@ -7,21 +7,21 @@ using UnityEngine.UI;
 public class ClearUI : MonoBehaviour
 {
     // Start is called before the first frame update
-    public void SetClearUI(bool isClear, int stageNumber)
+    public void SetClearUI(bool isClear, Scene stageNumber)
     {
         this.isClear = isClear;
         Debug.Log("Start Clear UI");
         switch (stageNumber)
         {
-            case 1:
+            case Scene.FirstStage:
                 this.stageText.text = "FIRST STAGE";
                 currentScene = Scene.FirstStage;
                 break;
-            case 2:
+            case Scene.MiddleStage:
                 this.stageText.text = "MIDDLE STAGE";
                 currentScene = Scene.MiddleStage;
                 break;
-            case 3:
+            case Scene.FinalStage:
                 this.stageText.text = "FINAL STAGE";
                 currentScene = Scene.FinalStage;
                 break;
@@ -69,13 +69,12 @@ public class ClearUI : MonoBehaviour
 
     public void OnClickNextBtn()
     {
-
         SceneLoadManager.Instance.MoveScene(currentScene);
     }
 
     protected void Start()
     {
-        // this.SetClearUI(true, 1);
+        SetClearUI(DataManager.Instance.UserData.isClear, DataManager.Instance.UserData.currentScene);
     }
 
     [SerializeField] Text stageText;
@@ -89,4 +88,9 @@ public class ClearUI : MonoBehaviour
 
     private Scene currentScene;
     private bool isClear;
+
+    private void OnDisable()
+    {
+        DataManager.Instance.UserData.isClear = false;
+    }
 }
