@@ -38,6 +38,8 @@ public class KingdomPlayer : KingdomPlayers
         animTagArr[7] = "Clapping";
         animTagArr[8] = "Crying";
 
+        tiles = GameObject.FindGameObjectsWithTag("Tile"); // 0 ~ 659
+
     }
 
     // Update is called once per frame
@@ -210,10 +212,24 @@ public class KingdomPlayer : KingdomPlayers
             isCollision = true;
         }
 
+        if (collision.collider.tag == "kingdomBuilding" && eBuilding == BUILDING.buildingEnd)
+        {
+
+            int randomIndex = Random.Range(0, tiles.Length);
+            Debug.Log("건물이랑 충돌함");
+            Vector3 pos = new Vector3(tiles[randomIndex].transform.position.x,
+               0.9f, tiles[randomIndex].transform.position.z);
+
+            transform.position = pos;
+
+            eBuilding = BUILDING.beforeBuild;
+
+        }
+
         if (collision.collider.tag == "Tile" && transform.position.y < -2.2f)
         {
-            Debug.Log("타일이랑 충돌함");
-            Vector3 pos = new Vector3(transform.position.x, -1.581483f, transform.position.z);
+            //Debug.Log("타일이랑 충돌함");
+            Vector3 pos = new Vector3(transform.position.x, 0.9f, transform.position.z);
             transform.position = pos;
         }
     }
@@ -221,16 +237,7 @@ public class KingdomPlayer : KingdomPlayers
     private void OnCollisionStay(Collision collision)
     {
         //Debug.Log(other.tag);
-        if (collision.collider.tag == "kingdomBuilding")
-        {
-            Debug.Log("빌딩이랑 충돌함");
-            int randomIndex = Random.Range(0, tiles.Length);
-            Vector3 pos = new Vector3(tiles[randomIndex].transform.position.x,
-               -1.581483f, tiles[randomIndex].transform.position.z);
-
-            transform.position = pos;
-
-        }
+       
         //Debug.Log(transform.position.y);
         if (collision.collider.tag == "Tile" && transform.position.y < 0.9f)
         {

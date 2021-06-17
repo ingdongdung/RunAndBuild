@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Building : KingdomBuilding
 {
-    public GameObject target;
+
     public bool isClick;
     public bool isModifying;
     private KingdomEffect kingdomEffect;

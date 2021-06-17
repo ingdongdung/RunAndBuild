@@ -28,8 +28,14 @@ public class KingdomBuilding : Singleton<KingdomBuilding>
                 bSelected = false;
             }
         }
+       
 
+    }
 
+    private void LateUpdate()
+    {
+        Debug.Log(camera.isBuilding);
+        Debug.Log(bSelected);
         if (camera.isBuilding && !bSelected)
         {
             Vector3 pos = Input.mousePosition;
@@ -52,6 +58,5 @@ public class KingdomBuilding : Singleton<KingdomBuilding>
                 }
             }
         }
-
     }
 }

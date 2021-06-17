@@ -89,6 +89,34 @@ public class SelectedUI : MonoBehaviour
         {
             buildingObjPool.CreateObject("Windmill");
         }
+        else if (buildingName == "쿠키성")
+        {
+            buildingObjPool.CreateObject("Temple");
+        }
+        else if (buildingName == "시계탑")
+        {
+            buildingObjPool.CreateObject("TownHall");
+        }
+        else if (buildingName == "조각상")
+        {
+            buildingObjPool.CreateObject("Tower");
+        }
+        else if (buildingName == "뾰족 정원수")
+        {
+            buildingObjPool.CreateObject("Spruce_B");
+        }
+        else if (buildingName == "동그란 상록수")
+        {
+            buildingObjPool.CreateObject("Birch_B");
+        }
+        else if (buildingName == "회양목")
+        {
+            buildingObjPool.CreateObject("Bush_02");
+        }
+        else if (buildingName == "바위")
+        {
+            buildingObjPool.CreateObject("Mesh1");
+        }
 
     }
 }
