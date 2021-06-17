@@ -17,6 +17,13 @@ public class KingdomEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        float time = particleSystem.time;
+        // Debug.Log(time);
+
+        if (time > 4.9f)
+        {
+            Vector3 pos = new Vector3(0f, +500f, 0f);
+            effect.transform.position = pos;
+        }
     }
 }

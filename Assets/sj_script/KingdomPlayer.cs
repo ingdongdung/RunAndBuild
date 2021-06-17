@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KingdomPlayer : MonoBehaviour
+public class KingdomPlayer : KingdomPlayers
 {
     Animator animator;
     static int tagSize = 9;
@@ -10,10 +10,12 @@ public class KingdomPlayer : MonoBehaviour
     string currentAnim;
     string beforeAnim;
     int randomTag;
-    bool isStartCoroutine;
+    public bool isStartCoroutine;
     int randomRotate;
     float coroutineTime;
     bool isCollision;
+    public enum BUILDING{ beforeBuild, building, buildingEnd};
+    public BUILDING eBuilding;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,7 @@ public class KingdomPlayer : MonoBehaviour
         randomRotate = 0;
         coroutineTime = 1f;
         isCollision = false;
+        eBuilding = BUILDING.beforeBuild;
 
         animTagArr[0] = "Walk";
         animTagArr[1] = "Idle";
@@ -43,7 +46,13 @@ public class KingdomPlayer : MonoBehaviour
         if (isStartCoroutine)
         {
             isStartCoroutine = false;
-            randomTag = Random.Range(0, tagSize);
+            if(isCollision == false)
+                randomTag = Random.Range(0, tagSize);
+            else
+            {
+                randomTag = 3;
+                isCollision = false;
+            }
             randomRotate = Random.Range(0, 2);
             
             StartCoroutine("PlayerAnimationBehavior", animTagArr[randomTag]);
@@ -57,6 +66,18 @@ public class KingdomPlayer : MonoBehaviour
 
         MovePlayer(animTagArr[randomTag]);
 
+        //if (eBuilding == BUILDING.buildingEnd)
+        //{
+        //    Physics.
+        //}
+
+        //if (transform.localRotation.eulerAngles.x >= 90f || transform.localRotation.eulerAngles.z >= 90f ||
+        //    transform.localRotation.eulerAngles.x <= -90f || transform.localRotation.eulerAngles.z <= -90f)
+        //{
+        //    Debug.Log("뒤집어졋다");
+        //    Vector3 rot = new Vector3(0f, 0f, 0f);
+        //    transform.localRotation = Quaternion.Euler(rot);
+        //}
 
     }
 
@@ -176,18 +197,52 @@ public class KingdomPlayer : MonoBehaviour
         yield return new WaitForSeconds(coroutineTime);
        
         isStartCoroutine = true;
-        isCollision = true;
     }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisonEnter(Collider other)
     {
-        if(other.tag != "Tile")
+        if (other.tag != "Tile")
         {
             //Debug.Log(other.tag);
             isStartCoroutine = true;
             randomTag = 3;
             isCollision = true;
         }
+    }
+    private void OnCollisonStay(Collider other)
+    {
+        if (transform.position.y < -1.9f)
+        {
+            Vector3 pos = new Vector3(transform.position.x, -1.581483f, transform.position.z);
+            transform.position = pos;
+        }
 
+        //if (eBuilding == BUILDING.buildingEnd)
+        {
+            if (other.tag == "kingdomBuilding")
+            {
+                Vector3 pos = new Vector3(tiles[Random.Range(0, tiles.Length)].transform.position.x,
+                   transform.position.y, tiles[Random.Range(0, tiles.Length)].transform.position.z);
+
+                transform.position = pos;
+
+            }
+
+            //if (other.tag == "Tile")
+            //    eBuilding = BUILDING.beforeBuild;
+
+        }
+
+    }
+
+
+    private void OnCollisonExit(Collider other)
+    {
+        if (eBuilding == BUILDING.buildingEnd)
+        {
+            if (other.tag == "kingdomBuilding")
+            {
+                eBuilding = BUILDING.beforeBuild;
+            }
+        }
     }
 }

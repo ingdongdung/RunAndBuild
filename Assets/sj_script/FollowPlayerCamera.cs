@@ -34,8 +34,8 @@ public class FollowPlayerCamera : MonoBehaviour
 
         if(isBuilding)
         {
-            cameraTrasnform.position = new Vector3(9.29f, 9.5f, -9.96f);
-            cameraTrasnform.rotation = Quaternion.Euler(29.422f, 0f, 0f);
+            cameraTrasnform.position = new Vector3(9.39f, 25.31f, 4.33f);
+            cameraTrasnform.rotation = Quaternion.Euler(80f, 0f, 0f);
         }
      
     }

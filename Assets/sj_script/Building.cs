@@ -6,19 +6,23 @@ public class Building : KingdomBuilding
 {
     public GameObject target;
     public bool isClick;
+    public bool isModifying;
     private KingdomEffect kingdomEffect;
     float coroutineTime;
     float coroutineTime2;
     float fTimer;
     Material[] material;
     int length;
+    FollowPlayerCamera camera;
 
     Color[] colors;
 
     // Start is called before the first frame update
     void Start()
     {
+        camera = FindObjectOfType<FollowPlayerCamera>();
         isClick = false;
+        isModifying = false;
         kingdomEffect = FindObjectOfType<KingdomEffect>();
         coroutineTime = 1.4f;
         coroutineTime2 = 0.2f;
@@ -37,6 +41,12 @@ public class Building : KingdomBuilding
     // Update is called once per frame
     void Update()
     {
+        
+
+    }
+
+    private void LateUpdate()
+    {
         if (!isClick)
         {
             Vector3 pos = Input.mousePosition;
@@ -48,25 +58,36 @@ public class Building : KingdomBuilding
                 pos = hit.transform.position;
                 target.transform.position = pos;
 
-                if(Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && !isModifying)
                 {
                     target.GetComponent<BoxCollider>().enabled = true;
                     target.GetComponent<Renderer>().enabled = false;
                     isClick = true;
-                    kingdomEffect.effect.transform.position = target.transform.position;
-                    kingdomEffect.particleSystem.Play();
+
                     StartCoroutine("TimerBuilding");
                     StartCoroutine("TimerRenderer");
                 }
 
-                if(Input.mouseScrollDelta.y > 0)
+                if(isModifying)
+                {
+                    for (int i = 0; i < length; i++)
+                    {
+                        colors[i] = material[i].color;
+                        material[i].color = new Color(material[i].color.r * -0.5f, material[i].color.g * 1.2f, material[i].color.b * 1.8f);
+                    }
+                    isModifying = false;
+                }
+
+                if (Input.mouseScrollDelta.y > 0)
                 {
                     target.transform.Rotate(0f, 90f, 0f);
                 }
-                else if(Input.mouseScrollDelta.y < 0)
+                else if (Input.mouseScrollDelta.y < 0)
                 {
                     target.transform.Rotate(0f, -90f, 0f);
                 }
+
+
 
             }
         }
@@ -75,7 +96,7 @@ public class Building : KingdomBuilding
     IEnumerator TimerBuilding()
     {
         yield return new WaitForSeconds(coroutineTime);
-        FollowPlayerCamera camera = FindObjectOfType<FollowPlayerCamera>();
+       
         camera.isBuilding = false;
     }
 
@@ -87,5 +108,9 @@ public class Building : KingdomBuilding
         {
             material[i].color = colors[i];
         }
+
+        kingdomEffect.effect.transform.position = target.transform.position;
+        kingdomEffect.particleSystem.Play();
+        kingdomEffect.particleSystem.time = 0f;
     }
 }
