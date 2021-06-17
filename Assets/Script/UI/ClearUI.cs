@@ -42,7 +42,7 @@ public class ClearUI : MonoBehaviour
 
         this.homeBtn.SetActive(true);
         this.retryBtn.SetActive(!isClear);
-        this.nextBtn.SetActive(isClear);
+        this.nextBtn.SetActive(isClear && this.currentScene != Scene.FinalStage);
         this.rewardUI.SetActive(isClear);
     }
 
@@ -69,7 +69,7 @@ public class ClearUI : MonoBehaviour
 
     public void OnClickNextBtn()
     {
-        SceneLoadManager.Instance.MoveScene(currentScene);
+        SceneLoadManager.Instance.MoveScene(currentScene + 1);
     }
 
     protected void Start()
