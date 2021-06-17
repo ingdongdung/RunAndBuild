@@ -25,6 +25,8 @@ public class FixButtonController : MonoBehaviour, IPointerDownHandler, IPointerU
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        KingdomBuilding.Instance.camera = FindObjectOfType<FollowPlayerCamera>();
+
         if (KingdomBuilding.Instance.camera.isBuilding)
         {
             KingdomBuilding.Instance.camera.isBuilding = false;
