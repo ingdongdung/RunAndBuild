@@ -14,7 +14,7 @@ public class BuildingObjPool : MonoBehaviour
 
     public GameObject CreateObject(string findTag)
     {
-        //Debug.Log("Building Update");
+        Debug.Log("CreateObject111");
         Vector3 position = Input.mousePosition;
         Ray ray = Camera.main.ScreenPointToRay(position);
         RaycastHit hit;
@@ -44,7 +44,10 @@ public class BuildingObjPool : MonoBehaviour
         Quaternion rotation = new Quaternion(0f, 0f, 0f, 1f);
         GameObject target = GameObject.Find("KingdomBuilding").transform.Find(name).gameObject;
         GameObject obj = Instantiate(target, position, rotation);
+       
         obj.SetActive(true);
+        obj.GetComponent<Building>().isClick = true;
+        obj.GetComponent<Building>().setColor();
         poolingObjQueue.Enqueue(obj);
 
         DataManager.Instance.UserData.buildingList.Add(new BuildingData(name, position.x, position.y, position.z));

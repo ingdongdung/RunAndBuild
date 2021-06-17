@@ -17,8 +17,7 @@ public class Building : KingdomBuilding
 
     Color[] colors;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         camera = FindObjectOfType<FollowPlayerCamera>();
         isClick = false;
@@ -31,18 +30,24 @@ public class Building : KingdomBuilding
         length = material.Length;
 
         colors = new Color[length];
-        for (int i = 0;i<length;i++)
+        for (int i = 0; i < length; i++)
         {
             colors[i] = material[i].color;
-            material[i].color = new Color(material[i].color.r*-0.5f, material[i].color.g*1.2f, material[i].color.b*1.8f);
+            material[i].color = new Color(material[i].color.r * -0.5f, material[i].color.g * 1.2f, material[i].color.b * 1.8f);
         }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
 
+        Debug.Log("isClick : "+isClick);
     }
 
     private void LateUpdate()
@@ -66,6 +71,10 @@ public class Building : KingdomBuilding
 
                     StartCoroutine("TimerBuilding");
                     StartCoroutine("TimerRenderer");
+
+                    Debug.Log("KINGDOM SAVE");
+                    DataManager.Instance.UserData.buildingList.Add(new BuildingData(transform.name, transform.position.x, transform.position.y, transform.position.z));
+                    DataManager.Instance.SaveJsonData(DataManager.Instance.UserData);
                 }
 
                 if(isModifying)
@@ -112,5 +121,13 @@ public class Building : KingdomBuilding
         kingdomEffect.effect.transform.position = transform.position;
         kingdomEffect.particleSystem.Play();
         kingdomEffect.particleSystem.time = 0f;
+    }
+
+    public void setColor()
+    {
+        for (int i = 0; i < length; i++)
+        {
+            material[i].color = colors[i];
+        }
     }
 }

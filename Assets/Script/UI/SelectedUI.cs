@@ -21,7 +21,7 @@ public class SelectedUI : MonoBehaviour
     {
         if (DataManager.Instance.UseCoin(this.data.Price))
         {
-            Debug.Log(this.data.Name);
+            Debug.Log("건물 구매");
             DataManager.Instance.PurchaseItem(this.data.Name);
             KingdomScene.Instance.Refresh();
             this.isClose(true);
