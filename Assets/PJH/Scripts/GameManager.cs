@@ -140,6 +140,7 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
+        CheckGameOver();
         GameTimerUpdate();
 
         if (meetEnemy && !onceForCoroutine)
@@ -200,6 +201,24 @@ public class GameManager : Singleton<GameManager>
         {
             gameTimerSec = 60f;
             --gameTimerMin;
+        }
+    }
+
+    private void CheckGameOver()
+    {
+        int count = 0;
+
+        if (!fc)
+            ++count;
+        if (!dc)
+            ++count;
+        if (!ac)
+            ++count;
+
+        if (count == 3)
+        {
+            DataManager.Instance.UserData.isClear = false;
+            SceneLoadManager.Instance.MoveScene(Scene.StageEnd);
         }
     }
 
