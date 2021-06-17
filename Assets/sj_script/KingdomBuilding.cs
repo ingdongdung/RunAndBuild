@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KingdomBuilding : MonoBehaviour
+public class KingdomBuilding : Singleton<KingdomBuilding>
 {
-    protected FollowPlayerCamera camera;
-    bool bSelected;
-    GameObject target;
+    public FollowPlayerCamera camera;
+    public bool bSelected;
+    public GameObject target;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +54,4 @@ public class KingdomBuilding : MonoBehaviour
         }
 
     }
-
-    
 }
