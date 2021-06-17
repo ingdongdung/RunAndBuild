@@ -31,17 +31,17 @@ public class Building : KingdomBuilding
         length = material.Length;
 
         colors = new Color[length];
-        for (int i = 0;i<length;i++)
+        for (int i = 0; i < length; i++)
         {
             colors[i] = material[i].color;
-            material[i].color = new Color(material[i].color.r*-0.5f, material[i].color.g*1.2f, material[i].color.b*1.8f);
+            material[i].color = new Color(material[i].color.r * -0.5f, material[i].color.g * 1.2f, material[i].color.b * 1.8f);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
 
     }
 
@@ -68,7 +68,7 @@ public class Building : KingdomBuilding
                     StartCoroutine("TimerRenderer");
                 }
 
-                if(isModifying)
+                if (isModifying)
                 {
                     for (int i = 0; i < length; i++)
                     {
@@ -96,7 +96,7 @@ public class Building : KingdomBuilding
     IEnumerator TimerBuilding()
     {
         yield return new WaitForSeconds(coroutineTime);
-       
+
         camera.isBuilding = false;
     }
 
@@ -112,5 +112,8 @@ public class Building : KingdomBuilding
         kingdomEffect.effect.transform.position = transform.position;
         kingdomEffect.particleSystem.Play();
         kingdomEffect.particleSystem.time = 0f;
+
+        DataManager.Instance.UserData.buildingList.Add(new BuildingData(this.name, this.transform.position.x, this.transform.position.y, this.transform.position.z));
+        DataManager.Instance.SaveJsonData(DataManager.Instance.UserData);
     }
 }

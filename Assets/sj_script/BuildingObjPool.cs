@@ -31,23 +31,6 @@ public class BuildingObjPool : MonoBehaviour
         FollowPlayerCamera camera = FindObjectOfType<FollowPlayerCamera>();
         camera.isBuilding = true;
 
-        DataManager.Instance.UserData.buildingList.Add(new BuildingData(findTag, position.x, position.y, position.z));
-        DataManager.Instance.SaveJsonData(DataManager.Instance.UserData);
-        return obj;
-
-    }
-
-    public GameObject CreateObject(string name, float x, float y, float z)
-    {
-        Debug.Log("CreateObject");
-        Vector3 position = new Vector3(x, y, z);
-        Quaternion rotation = new Quaternion(0f, 0f, 0f, 1f);
-        GameObject target = GameObject.Find("KingdomBuilding").transform.Find(name).gameObject;
-        GameObject obj = Instantiate(target, position, rotation);
-        obj.SetActive(true);
-        poolingObjQueue.Enqueue(obj);
-
-        DataManager.Instance.UserData.buildingList.Add(new BuildingData(name, position.x, position.y, position.z));
         return obj;
 
     }

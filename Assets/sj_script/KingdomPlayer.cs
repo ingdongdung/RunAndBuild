@@ -14,7 +14,7 @@ public class KingdomPlayer : KingdomPlayers
     int randomRotate;
     float coroutineTime;
     bool isCollision;
-    public enum BUILDING{ beforeBuild, building, buildingEnd};
+    public enum BUILDING { beforeBuild, building, buildingEnd };
     public BUILDING eBuilding;
 
     // Start is called before the first frame update
@@ -44,11 +44,11 @@ public class KingdomPlayer : KingdomPlayers
 
     // Update is called once per frame
     void Update()
-    {       
+    {
         if (isStartCoroutine)
         {
             isStartCoroutine = false;
-            if(isCollision == false)
+            if (isCollision == false)
                 randomTag = Random.Range(0, tagSize);
             else
             {
@@ -56,11 +56,11 @@ public class KingdomPlayer : KingdomPlayers
                 isCollision = false;
             }
             randomRotate = Random.Range(0, 2);
-            
+
             StartCoroutine("PlayerAnimationBehavior", animTagArr[randomTag]);
         }
 
-        if(transform.position.y < -50f)
+        if (transform.position.y < -50f)
         {
             transform.position = new Vector3(6f, 1f, 1f);
             transform.rotation = new Quaternion(0f, 0f, 0f, 1f);
@@ -76,7 +76,7 @@ public class KingdomPlayer : KingdomPlayers
         //if (transform.localRotation.eulerAngles.x >= 90f || transform.localRotation.eulerAngles.z >= 90f ||
         //    transform.localRotation.eulerAngles.x <= -90f || transform.localRotation.eulerAngles.z <= -90f)
         //{
-        //    Debug.Log("µÚÁý¾î º´Ù");
+        //    Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½î ºï¿½ï¿½");
         //    Vector3 rot = new Vector3(0f, 0f, 0f);
         //    transform.localRotation = Quaternion.Euler(rot);
         //}
@@ -87,7 +87,7 @@ public class KingdomPlayer : KingdomPlayers
     {
         if (animationTag == "Walk")
         {
-            transform.Translate(Vector3.forward * Time.deltaTime, Space.Self);           
+            transform.Translate(Vector3.forward * Time.deltaTime, Space.Self);
         }
         else if (animationTag == "Idle")
         {
@@ -97,16 +97,16 @@ public class KingdomPlayer : KingdomPlayers
         {
             transform.Translate(Vector3.forward * Time.deltaTime * 1.5f, Space.Self);
         }
-        else if(animationTag == "rotate")
+        else if (animationTag == "rotate")
         {
             if (randomRotate == 0)
                 transform.Rotate(Vector3.up * Time.deltaTime * 100f);
-            else if(randomRotate == 1)
+            else if (randomRotate == 1)
                 transform.Rotate(Vector3.up * -Time.deltaTime * 100f);
         }
         else if (animationTag == "Relax")
         {
-         
+
         }
         else if (animationTag == "Jump")
         {
@@ -114,15 +114,15 @@ public class KingdomPlayer : KingdomPlayers
         }
         else if (animationTag == "Shake Head")
         {
-            
+
         }
         else if (animationTag == "Clapping")
         {
-           
+
         }
         else if (animationTag == "Crying")
         {
-            
+
         }
 
     }
@@ -152,7 +152,7 @@ public class KingdomPlayer : KingdomPlayers
             animator.SetBool("Run", true);
             coroutineTime = 2f;
         }
-        else if(animationTag == "rotate")
+        else if (animationTag == "rotate")
         {
             currentAnim = "Walk";
             animator.SetBool(beforeAnim, false);
@@ -197,13 +197,13 @@ public class KingdomPlayer : KingdomPlayers
 
 
         yield return new WaitForSeconds(coroutineTime);
-       
+
         isStartCoroutine = true;
     }
 
     private void OnCollisionEnter(Collision collision)
-    {   
-        Debug.Log(collision.collider.tag);
+    {
+        // Debug.Log(collision.collider.tag);
         if (collision.collider.tag != "Tile")
         {
             //Debug.Log(other.tag);
@@ -216,7 +216,7 @@ public class KingdomPlayer : KingdomPlayers
         {
 
             int randomIndex = Random.Range(0, tiles.Length);
-            Debug.Log("°Ç¹°ÀÌ¶û Ãæµ¹ÇÔ");
+            Debug.Log("ï¿½Ç¹ï¿½ï¿½Ì¶ï¿½ ï¿½æµ¹ï¿½ï¿½");
             Vector3 pos = new Vector3(tiles[randomIndex].transform.position.x,
                0.9f, tiles[randomIndex].transform.position.z);
 
@@ -228,7 +228,7 @@ public class KingdomPlayer : KingdomPlayers
 
         if (collision.collider.tag == "Tile" && transform.position.y < -2.2f)
         {
-            //Debug.Log("Å¸ÀÏÀÌ¶û Ãæµ¹ÇÔ");
+            //Debug.Log("Å¸ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½æµ¹ï¿½ï¿½");
             Vector3 pos = new Vector3(transform.position.x, 0.9f, transform.position.z);
             transform.position = pos;
         }
@@ -237,11 +237,11 @@ public class KingdomPlayer : KingdomPlayers
     private void OnCollisionStay(Collision collision)
     {
         //Debug.Log(other.tag);
-       
+
         //Debug.Log(transform.position.y);
         if (collision.collider.tag == "Tile" && transform.position.y < 0.9f)
         {
-            Debug.Log("Å¸ÀÏÀÌ¶û Ãæµ¹ÇÔ");
+            Debug.Log("Å¸ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½æµ¹ï¿½ï¿½");
             Vector3 pos = new Vector3(transform.position.x, 1f, transform.position.z);
             transform.position = pos;
         }

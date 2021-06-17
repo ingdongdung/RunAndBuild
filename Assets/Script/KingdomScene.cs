@@ -28,8 +28,15 @@ public class KingdomScene : Singleton<KingdomScene>
 
         foreach (BuildingData data in DataManager.Instance.UserData.buildingList)
         {
+            Vector3 pos = new Vector3(data.x, data.y, data.z);
+            // GameObject target = GameObject.Find("sj_asset/Prefab_Load/" + data.name + "_load").gameObject;
 
-            buildingObjPool.CreateObject(data.name, data.x, data.y, data.z);
+            //GameObject obj = Resources.Load(objs.Find(o => o.name == data.name) as GameObject;
+            Debug.Log("data nam e: " + data.name.Substring(0, data.name.Length - 7));
+
+            GameObject findObj = objs.Find(o => o.name == data.name.Substring(0, data.name.Length - 7));
+            GameObject obj = Instantiate(findObj, pos, Quaternion.identity);
+            // obj.transform.localPosition = pos;
         }
         this.Refresh();
     }
@@ -38,4 +45,5 @@ public class KingdomScene : Singleton<KingdomScene>
     [SerializeField] ShopContent shopContent;
     [SerializeField] TopUI topUI;
     private BuildingObjPool buildingObjPool;
+    [SerializeField] List<GameObject> objs;
 }

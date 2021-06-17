@@ -17976,6 +17976,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -19770,6 +19771,19 @@ MonoBehaviour:
   selectStage: {fileID: 1163016511}
   shopContent: {fileID: 188648993}
   topUI: {fileID: 6007413389369707440}
+  objs:
+  - {fileID: 9181714470932543166, guid: 195a0ae70dba3f742987e3cc1dfcf3b2, type: 3}
+  - {fileID: 5856941701605702604, guid: cb60a5c56d1d37e43bffd5c5695142a6, type: 3}
+  - {fileID: 8381480073318313800, guid: 22481e0080e48af4985636fa5d365743, type: 3}
+  - {fileID: 2688156977532550528, guid: 3682bb7870d3d644b82a3a06a1d15318, type: 3}
+  - {fileID: 7856469502333921543, guid: fbf81672397900e409a9bf2d34ec3cbe, type: 3}
+  - {fileID: 3416747251012652853, guid: b46f13f2e92affc4d967bfcbbbae3e39, type: 3}
+  - {fileID: 9204025271740917489, guid: 1937c0545078c55489ab2c55bf070ed8, type: 3}
+  - {fileID: 4347737884318344066, guid: 588170b3974784c44812802b81490c76, type: 3}
+  - {fileID: 464945937791620272, guid: c4e6001b7819aed43a140a58e61ea79c, type: 3}
+  - {fileID: 3640605599993017882, guid: a556a46901638c945bf8649c318e4b67, type: 3}
+  - {fileID: 6304390355968641942, guid: e3aadb8d4028f1a4ea1aa7d157ae35a5, type: 3}
+  - {fileID: 7809690150395425339, guid: ea097937fbc91da4bb855f0823ce00a9, type: 3}
 --- !u!4 &925604918
 Transform:
   m_ObjectHideFlags: 0
@@ -22821,6 +22835,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -30921,6 +30936,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -32118,6 +32134,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -32758,6 +32775,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -41095,6 +41113,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

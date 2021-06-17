@@ -18,7 +18,7 @@ public class KingdomBuilding : Singleton<KingdomBuilding>
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F1))
+        if (Input.GetKeyDown(KeyCode.F1))
         {
             if (camera.isBuilding)
                 camera.isBuilding = false;
@@ -28,14 +28,14 @@ public class KingdomBuilding : Singleton<KingdomBuilding>
                 bSelected = false;
             }
         }
-       
+
 
     }
 
     private void LateUpdate()
     {
-        Debug.Log(camera.isBuilding);
-        Debug.Log(bSelected);
+        // Debug.Log(camera.isBuilding);
+        // Debug.Log(bSelected);
         if (camera.isBuilding && !bSelected)
         {
             Vector3 pos = Input.mousePosition;
