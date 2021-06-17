@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PJH/Scenes/FinalStage.unity
     guid: 2788a910b1535234ca61b1dfd37e7cf9
+  - enabled: 1
+    path: Assets/PJH/Scenes/StageEnd.unity
+    guid: fc5dcc984d50468468142dceb37c5637
   m_configObjects: {}
