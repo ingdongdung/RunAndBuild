@@ -22,10 +22,20 @@ public class KingdomScene : Singleton<KingdomScene>
 
     private void Start()
     {
+        buildingObjPool = FindObjectOfType<BuildingObjPool>();
+
+        Debug.Log(DataManager.Instance.UserData.buildingList + "_____");
+
+        foreach (BuildingData data in DataManager.Instance.UserData.buildingList)
+        {
+
+            buildingObjPool.CreateObject(data.name, data.x, data.y, data.z);
+        }
         this.Refresh();
     }
 
     [SerializeField] SelectStage selectStage;
     [SerializeField] ShopContent shopContent;
     [SerializeField] TopUI topUI;
+    private BuildingObjPool buildingObjPool;
 }

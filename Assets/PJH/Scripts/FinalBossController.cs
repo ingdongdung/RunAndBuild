@@ -39,7 +39,7 @@ public class FinalBossController : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(9f);
+            yield return new WaitForSeconds(7.5f);
 
             animator.SetBool("Spin Attack", true);
 
@@ -58,8 +58,6 @@ public class FinalBossController : MonoBehaviour
                 GameObject obj = ObjectPool.Instance.PopFromPool("FinalBossSkillEffect01");
                 obj.transform.position = GameManager.Instance.fc.transform.position + new Vector3(0f, 0.1f, 0f);
             }
-
-            yield return new WaitForSeconds(0.3f);
 
             if (GameManager.Instance.ac)
             {

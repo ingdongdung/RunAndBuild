@@ -989,7 +989,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'First
+  m_Text: 'Middle
 
     Stage'
 --- !u!114 &8962550405226091326
@@ -1368,7 +1368,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'First
+  m_Text: 'Final
 
     Stage'
 --- !u!114 &3106078510232162360
