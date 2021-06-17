@@ -15,6 +15,12 @@ public class KingdomScene : Singleton<KingdomScene>
         shopContent.gameObject.SetActive(true);
     }
 
+    public void OnClickQuit()
+    {
+        Debug.Log("눌리니?");
+        Application.Quit();
+    }
+
     public void Refresh()
     {
         this.topUI.SetData(DataManager.Instance.LoadJsonData(DataManager.Instance.UserData.userName));
